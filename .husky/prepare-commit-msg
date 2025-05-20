@@ -1,0 +1,4 @@
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+COMMIT_MSG_FILE=$1
+
+echo "$BRANCH_NAME: " >> "$COMMIT_MSG_FILE"
