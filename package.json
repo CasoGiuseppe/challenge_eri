@@ -13,15 +13,16 @@
     "type-check": "vue-tsc --build",
     "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
     "lint:eslint": "eslint . --fix",
-    "lint": "run-s lint:*",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
     "format": "prettier --write .",
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,vue,json,css,scss,md}": [
+    "*.{js,jsx,ts,tsx,vue}": [
       "eslint --fix",
       "prettier --write"
-    ]
+    ],
+    "*.{json,css,scss,md}": "prettier --write"
   },
   "dependencies": {
     "pinia": "^3.0.1",

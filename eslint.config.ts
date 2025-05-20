@@ -1,30 +1,62 @@
-import { globalIgnores } from 'eslint/config'
-import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
 import pluginVue from 'eslint-plugin-vue'
+import vueTsEslintConfig from '@vue/eslint-config-typescript'
 import pluginVitest from '@vitest/eslint-plugin'
-import pluginOxlint from 'eslint-plugin-oxlint'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 
-// To allow more languages other than `ts` in `.vue` files, uncomment the following lines:
-// import { configureVueProject } from '@vue/eslint-config-typescript'
-// configureVueProject({ scriptLangs: ['ts', 'tsx'] })
-// More info at https://github.com/vuejs/eslint-config-typescript/#advanced-setup
-
-export default defineConfigWithVueTs(
+export default [
   {
     name: 'app/files-to-lint',
     files: ['**/*.{ts,mts,tsx,vue}'],
   },
 
-  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+  {
+    name: 'app/files-to-ignore',
+    ignores: [
+      '**/dist/**',
+      '**/dist-ssr/**',
+      '**/coverage/**',
+      '**/.storybook/**',
+      '**/eslint.config.js',
+      '**/eslint.config.ts',
+      'src/**/__tests__/*',
+      '**/.husky/**',
+      '**/stories/**',
+    ],
+  },
 
-  pluginVue.configs['flat/essential'],
-  vueTsConfigs.recommended,
-  
+  ...pluginVue.configs['flat/essential'],
+  ...vueTsEslintConfig(),
+
   {
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
-  ...pluginOxlint.configs['flat/recommended'],
   skipFormatting,
-)
+  {
+    rules: {
+      'no-console': ['error', { allow: ['error, table', 'warn'] }],
+      'no-alert': 'error',
+      'no-var': 'error',
+      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-require-imports': 'off',
+      'no-const-assign': 'error',
+      'no-dupe-keys': 'error',
+      'no-dupe-args': 'error',
+      'no-empty': 'error',
+      'no-ex-assign': 'error',
+      'no-extra-boolean-cast': 'error',
+      'no-extra-semi': 'error',
+      'no-func-assign': 'error',
+      'no-irregular-whitespace': 'warn',
+      'no-magic-numbers': ['error', { ignore: [-1, 0, 1, 200, 500, 5173] }],
+      eqeqeq: ['error', 'always'],
+      'dot-notation': 'error',
+      'no-unexpected-multiline': 'error',
+      curly: 'error',
+      'func-name-matching': 'error',
+      'max-lines': ['error', { max: 200, skipComments: true, skipBlankLines: true }],
+      'max-lines-per-function': ['error', { max: 50, skipComments: true, skipBlankLines: true }],
+      'max-params': ['error', 5],
+    },
+  },
+]
