@@ -14,6 +14,17 @@
 
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@app/*": ["./src/app/*"],
+      "@shared/*": ["./src/app/shared/*"],
+      "@router/*": ["./src/app/router/*"],
+      "@components/*": ["./src/app/ui/components/*"],
+      "@layouts/*": ["./src/app/ui/layouts/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@modules/*": ["./src/modules/*"],
+      "@tests/*": ["./src/app/shared/tests/*"]
+    }
   }
 }
