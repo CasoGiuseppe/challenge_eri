@@ -1,0 +1,22 @@
+@layer base {
+  html,
+  body {
+    --reset: none;
+    font-family: var(--font-default-family);
+
+    * {
+      &:is(button) {
+        cursor: pointer;
+        background: var(--reset);
+        border: var(--reset);
+        outline: var(--reset);
+      }
+
+      &:is(ul, ol, li, h1, h2, h3, h4, p, form) {
+        margin: var(--reset);
+        padding: var(--reset);
+        list-style: var(--reset);
+      }
+    }
+  }
+}

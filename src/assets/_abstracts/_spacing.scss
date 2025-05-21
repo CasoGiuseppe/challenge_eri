@@ -1,0 +1,6 @@
+@use './units' as useUnit;
+
+:root {
+  --spacing-00: 0; // 0
+  --spacing-10: #{px2rem(calc(useUnit.$unit-base / 4))}; // 2
+}

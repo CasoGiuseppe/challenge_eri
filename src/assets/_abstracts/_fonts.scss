@@ -1,0 +1,7 @@
+@charset "utf-8";
+@use './units' as useUnit;
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap');
+
+:root {
+  --font-default-family: 'Figtree', sans-serif;
+}

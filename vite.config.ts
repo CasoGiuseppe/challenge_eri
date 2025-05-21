@@ -29,4 +29,11 @@ export default defineConfig({
       '@tests': fileURLToPath(new URL('./src/app/shared/tests', import.meta.url)),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use '@/assets/global.scss' as global;`,
+      },
+    },
+  },
 })
