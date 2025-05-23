@@ -32,7 +32,14 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use '@/assets/global.scss' as global;`,
+        additionalData: `
+          @use '@/assets/_abstracts/_colors' as useColors;
+          @use '@/assets/_abstracts/_easing' as useEasing;
+          @use '@/assets/_abstracts/_fonts' as useFonts;
+          @use '@/assets/_abstracts/_spacing' as useSpacing;
+          @use '@/assets/_abstracts/_units' as useUnits;
+          @use '@/assets/mixins/tipographies' as useTypographies;
+        `,
       },
     },
   },

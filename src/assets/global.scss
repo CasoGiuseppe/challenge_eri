@@ -1,8 +1,9 @@
-@use './tools/size' as tools;
-@use './_abstracts/colors' as colors;
-@use './_abstracts/easing' as easings;
-@use './_abstracts/spacing' as spacings;
-@use './_abstracts/fonts' as fonts;
+@use './tools/size' as useTools;
+@use './_abstracts/colors' as useColors;
+@use './_abstracts/easing' as useEasings;
+@use './_abstracts/spacing' as useSpacings;
+@use './_abstracts/fonts' as useFonts;
 
 // mixins
-@use './mixins/createKeyFrames.scss' as mixinKeyFrame;
+@use './mixins/createKeyFrames.scss' as useMixins;
+@use './mixins/tipographies.scss' as useTypographies;

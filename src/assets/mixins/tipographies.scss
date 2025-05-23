@@ -1,0 +1,83 @@
+@mixin text-heading-xxl($weight: 'regular') {
+  font: var(--font-build-xxl);
+
+  @if $weight == semibold {
+    font-weight: var(--font-weight-600);
+  }
+
+  @if $weight == black {
+    font-weight: var(--font-weight-900);
+  }
+}
+
+@mixin text-heading-xl($weight: 'regular') {
+  font: var(--font-build-xl);
+
+  @if $weight == semibold {
+    font-weight: var(--font-weight-600);
+  }
+
+  @if $weight == black {
+    font-weight: var(--font-weight-900);
+  }
+}
+
+@mixin text-heading-l($weight: 'regular') {
+  font: var(--font-build-l);
+
+  @if $weight == semibold {
+    font-weight: var(--font-weight-600);
+  }
+
+  @if $weight == black {
+    font-weight: var(--font-weight-900);
+  }
+}
+
+@mixin text-heading-m($weight: 'regular') {
+  font: var(--font-build-m);
+
+  @if $weight == semibold {
+    font-weight: var(--font-weight-600);
+  }
+
+  @if $weight == black {
+    font-weight: var(--font-weight-900);
+  }
+}
+
+@mixin text-heading-s($weight: 'regular') {
+  font: var(--font-build-s);
+
+  @if $weight == semibold {
+    font-weight: var(--font-weight-600);
+  }
+
+  @if $weight == black {
+    font-weight: var(--font-weight-900);
+  }
+}
+
+@mixin text-heading-xs($weight: 'regular') {
+  font: var(--font-build-xs);
+
+  @if $weight == semibold {
+    font-weight: var(--font-weight-600);
+  }
+
+  @if $weight == black {
+    font-weight: var(--font-weight-900);
+  }
+}
+
+@mixin text-paragraph-xxs($weight: 'regular') {
+  font: var(--font-build-xxs);
+
+  @if $weight == semibold {
+    font-weight: var(--font-weight-600);
+  }
+
+  @if $weight == black {
+    font-weight: var(--font-weight-900);
+  }
+}

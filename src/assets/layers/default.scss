@@ -1,9 +1,9 @@
+@use '@assets/mixins/tipographies' as useTypographies;
+
 @layer base {
   html,
   body {
     --reset: none;
-    font-family: var(--font-default-family);
-
     * {
       &:is(button) {
         cursor: pointer;
@@ -18,5 +18,9 @@
         list-style: var(--reset);
       }
     }
+  }
+
+  body {
+    @include useTypographies.text-heading-l();
   }
 }

@@ -1,10 +1,11 @@
 @use './units' as useUnit;
+@use '../tools/size' as useTools;
 
 :root {
   --spacing-00: 0; // 0
-  --spacing-10: #{px2rem(calc(useUnit.$unit-base / 4))}; // 2
-  --spacing-20: #{px2rem(calc(useUnit.$unit-base / 2))}; // 4
-  --spacing-30: #{px2rem(calc(useUnit.$unit-base))}; // 8
-  --spacing-40: #{px2rem(calc(useUnit.$unit-base * 2))}; // 16
-  --spacing-50: #{px2rem(calc(useUnit.$unit-base * 4))}; // 32
+  --spacing-10: #{useTools.px2rem(calc(useUnit.$unit-base / 4))}; // 2
+  --spacing-20: #{useTools.px2rem(calc(useUnit.$unit-base / 2))}; // 4
+  --spacing-30: #{useTools.px2rem(calc(useUnit.$unit-base))}; // 8
+  --spacing-40: #{useTools.px2rem(calc(useUnit.$unit-base * 2))}; // 16
+  --spacing-50: #{useTools.px2rem(calc(useUnit.$unit-base * 4))}; // 32
 }
