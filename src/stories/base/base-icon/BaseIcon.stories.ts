@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Meta, StoryObj } from '@storybook/vue3'
-import BaseIcon from '@components/base/BaseIcon/BaseIcon.vue'
+import BaseIcon from '@components/base/base-icon/BaseIcon.vue'
 import {
   SUITABLE_NAMES,
   SUITABLE_SEMANTIC_RULES,
   SUITABLE_SIZES,
   useDefaultSizeKey,
-} from '@components/base/BaseIcon/constants'
+} from '@components/base/base-icon/constants'
 import { computed } from 'vue'
 import { defaultIcon } from './constants'
 
