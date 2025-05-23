@@ -11,6 +11,7 @@
   --btn-gap: var(--spacing-30, 0);
 
   @include useUtilities.resetButton;
+  align-items: center;
   display: inline-flex;
   gap: var(--btn-gap);
   padding-inline: var(--btn-inline-padding);

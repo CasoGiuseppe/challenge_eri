@@ -3,16 +3,27 @@
     :class="['base-button', `base-button--is-${size}`, `base-button--is-${variant}`]"
     :aria-disabled="isDisabled"
   >
+    <component v-if="bindIconProps" :is="shallowIconComponent" v-bind="{ ...bindIconProps }" />
     <!-- @slot Default slot for button label -->
     <slot />
   </button>
 </template>
 <script lang="ts" setup>
-import { computed, toRefs, useAttrs, type PropType } from 'vue'
+import { computed, shallowRef, toRefs, useAttrs, type Component, type PropType, watch } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useValidateTypeUnion } from '@validators/useValidateTypeUnion'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
-import { SUITABLE_SIZES, SUITABLE_TYPES, useDefaultSizeKey, useDefaultTypeKey } from './constants'
+import {
+  ICONS,
+  SUITABLE_SIZES,
+  SUITABLE_TYPES,
+  useDefaultSizeKey,
+  useDefaultTypeKey,
+} from './constants'
+import type { Names } from '@components/base/base-icon/types'
+import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
+import useAsyncComponents from '@composables/useAsyncComponents'
+import useComponentsMapping from '@composables/useComponentsMapping'
 
 const attrs = useAttrs()
 const props = defineProps({
@@ -55,12 +66,55 @@ const props = defineProps({
       return true
     },
   },
+  /**
+   * Set the name of the ui icon component
+   */
+  hasIcon: {
+    type: String as PropType<Names>,
+    validator: (icon: string) => {
+      const splitted = icon?.split('/')
+      new useValidateTypeUnion(
+        new useIsArray([...SUITABLE_NAMES]).value,
+        new useIsString(splitted.length > 1 ? splitted[splitted.length - 1] : icon).value,
+      )
+
+      return true
+    },
+  },
 })
 
-const { size } = toRefs(props)
+const { size, hasIcon } = toRefs(props)
+const { parseGlobModules } = useComponentsMapping({
+  modules: import.meta.glob('@components/**/*.vue'),
+})
+const { create } = useAsyncComponents({ modules: parseGlobModules() })
+const shallowIconComponent: Component = shallowRef()
+
 const isDisabled = computed(() => {
   const { disabled = false } = attrs
   return disabled as boolean
 })
+
+const bindIconProps = computed(() => {
+  if (!hasIcon?.value) {
+    return undefined
+  }
+
+  return {
+    name: hasIcon?.value as Names,
+    size: ICONS[size.value],
+  }
+})
+
+watch(
+  () => hasIcon?.value,
+  async () => {
+    if (!hasIcon?.value) {
+      return
+    }
+    shallowIconComponent.value = await create({ component: 'BaseIcon' })
+  },
+  { immediate: true },
+)
 </script>
 <style src="./BaseButton.scss" lang="scss" scoped></style>

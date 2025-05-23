@@ -8,6 +8,7 @@ import {
   useDefaultTypeKey,
 } from '@components/base/base-button/constants'
 import { computed } from 'vue'
+import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
 
 const meta = {
   title: 'Base/Base Button',
@@ -18,9 +19,15 @@ const meta = {
     size: { control: 'select', options: [...SUITABLE_SIZES] },
     variant: { control: 'select', options: [...SUITABLE_TYPES] },
     default: { control: 'text' },
+    hasIcon: {
+      if: { arg: 'showIcon', eq: true },
+      control: 'select',
+      options: [...SUITABLE_NAMES],
+    },
 
     // extra props
     disabled: { control: 'boolean' },
+    showIcon: { control: 'boolean' },
   },
   args: {
     id: 'button',
@@ -30,6 +37,7 @@ const meta = {
 
     // extra props
     disabled: false,
+    showIcon: false,
   },
 } satisfies Meta
 
