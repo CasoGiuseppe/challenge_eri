@@ -13,12 +13,20 @@ const meta = {
   component: BaseButton,
   tags: ['autodocs'],
   argTypes: {
+    id: { control: 'text' },
     size: { control: 'select', options: [...SUITABLE_SIZES] },
     variant: { control: 'select', options: [...SUITABLE_TYPES] },
+
+    // extra props
+    disabled: { control: 'boolean' },
   },
   args: {
+    id: 'button',
     size: useDefaultSizeKey.description,
     variant: useDefaultTypeKey.description,
+
+    // extra props
+    disabled: false,
   },
 } satisfies Meta
 

@@ -1,15 +1,19 @@
 <template>
-  <button :class="['base-button', `base-button--is-${size}`, `base-button--is-${variant}`]">
+  <button
+    :class="['base-button', `base-button--is-${size}`, `base-button--is-${variant}`]"
+    :aria-disabled="isDisabled"
+  >
     button
   </button>
 </template>
 <script lang="ts" setup>
-import { toRefs, type PropType } from 'vue'
+import { computed, toRefs, useAttrs, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useValidateTypeUnion } from '@validators/useValidateTypeUnion'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import { SUITABLE_SIZES, SUITABLE_TYPES, useDefaultSizeKey, useDefaultTypeKey } from './constants'
 
+const attrs = useAttrs()
 const props = defineProps({
   /**
    * Set uniqueId for ui button component
@@ -53,5 +57,9 @@ const props = defineProps({
 })
 
 const { size } = toRefs(props)
+const isDisabled = computed(() => {
+  const { disabled = false } = attrs
+  return disabled as boolean
+})
 </script>
 <style src="./BaseButton.scss" lang="scss" scoped></style>
