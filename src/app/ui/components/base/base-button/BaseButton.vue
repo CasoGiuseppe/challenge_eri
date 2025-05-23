@@ -3,7 +3,8 @@
     :class="['base-button', `base-button--is-${size}`, `base-button--is-${variant}`]"
     :aria-disabled="isDisabled"
   >
-    button
+    <!-- @slot Default slot for button label -->
+    <slot />
   </button>
 </template>
 <script lang="ts" setup>

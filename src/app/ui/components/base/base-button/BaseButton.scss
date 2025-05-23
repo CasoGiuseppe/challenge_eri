@@ -8,8 +8,11 @@
   --btn-foreground: var(--color-neutral-light, #fff);
   --btn-border: none;
   --btn-border-color: none;
+  --btn-gap: var(--spacing-30, 0);
 
   @include useUtilities.resetButton;
+  display: inline-flex;
+  gap: var(--btn-gap);
   padding-inline: var(--btn-inline-padding);
   padding-block: var(--btn-block-padding);
 

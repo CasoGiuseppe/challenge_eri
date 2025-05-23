@@ -7,6 +7,7 @@ import {
   useDefaultSizeKey,
   useDefaultTypeKey,
 } from '@components/base/base-button/constants'
+import { computed } from 'vue'
 
 const meta = {
   title: 'Base/Base Button',
@@ -16,6 +17,7 @@ const meta = {
     id: { control: 'text' },
     size: { control: 'select', options: [...SUITABLE_SIZES] },
     variant: { control: 'select', options: [...SUITABLE_TYPES] },
+    default: { control: 'text' },
 
     // extra props
     disabled: { control: 'boolean' },
@@ -24,6 +26,7 @@ const meta = {
     id: 'button',
     size: useDefaultSizeKey.description,
     variant: useDefaultTypeKey.description,
+    default: 'Label',
 
     // extra props
     disabled: false,
@@ -38,10 +41,13 @@ const Templates: Story = {
   render: (args: any) => ({
     components: { BaseButton },
     setup() {
-      return { args }
+      const hasDefaultSLot = computed<boolean>(() => args.default !== '')
+      return { args, hasDefaultSLot }
     },
     template: `
-      <BaseButton v-bind="args" />
+      <BaseButton v-bind="args">
+        <template #default v-if="hasDefaultSLot">{{ args.default }}</template>
+      </BaseButton>
     `,
   }),
 }
