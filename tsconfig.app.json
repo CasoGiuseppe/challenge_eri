@@ -11,6 +11,7 @@
       "@app/*": ["./src/app/*"],
       "@shared/*": ["./src/app/shared/*"],
       "@router/*": ["./src/app/router/*"],
+      "@validators/*": ["./src/app/ui/validators/*"],
       "@components/*": ["./src/app/ui/components/*"],
       "@layouts/*": ["./src/app/ui/layouts/*"],
       "@assets/*": ["./src/assets/*"],

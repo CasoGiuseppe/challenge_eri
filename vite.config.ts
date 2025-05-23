@@ -22,6 +22,7 @@ export default defineConfig({
       '@app': fileURLToPath(new URL('./src/app', import.meta.url)),
       '@shared': fileURLToPath(new URL('./src/app/shared', import.meta.url)),
       '@router': fileURLToPath(new URL('./src/app/router', import.meta.url)),
+      '@validators': fileURLToPath(new URL('./src/app/ui/validators', import.meta.url)),
       '@components': fileURLToPath(new URL('./src/app/ui/components', import.meta.url)),
       '@layouts': fileURLToPath(new URL('./src/app/ui/layouts', import.meta.url)),
       '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
