@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { TestFixtureClass } from './fixtures'
 import { $isEmpty, $isUndefinedOrNull, type $IFn } from './configuration'
-import { UndefinedIsNotAcceptedValue } from '@guards/exceptions/UndefinedIsNotAcceptedValue'
-import { EmptyValueIsNotAllowed } from '@guards/exceptions/EmptyValueIsNotAllowed'
+import { UndefinedIsNotAcceptedValue } from '@validators/guards/exceptions/UndefinedIsNotAcceptedValue'
+import { EmptyValueIsNotAllowed } from '@validators/guards/exceptions/EmptyValueIsNotAllowed'
 
 const $fn: $IFn = (value: unknown): boolean => {
   new TestFixtureClass(value)

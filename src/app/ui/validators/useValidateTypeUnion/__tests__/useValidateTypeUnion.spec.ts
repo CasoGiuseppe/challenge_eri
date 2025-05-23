@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect } from 'vitest'
 import { useValidateTypeUnion } from '..'
-import { UndefinedIsNotAcceptedValue } from '@guards/exceptions/UndefinedIsNotAcceptedValue'
-import { ProvidedCollectionIsNotArray } from '@guards/exceptions/ProvidedCollectionIsNotArray'
-import { ValueNotFoundInUnionTypes } from '@guards/exceptions/ValueNotFoundInUnionTypes'
+import { UndefinedIsNotAcceptedValue } from '@validators/guards/exceptions/UndefinedIsNotAcceptedValue'
+import { ProvidedCollectionIsNotArray } from '@validators/guards/exceptions/ProvidedCollectionIsNotArray'
+import { ValueNotFoundInUnionTypes } from '@validators/guards/exceptions/ValueNotFoundInUnionTypes'
 import {
   $isBaz,
   $isFoo,
@@ -12,8 +12,8 @@ import {
   $suitableCollection,
   type $IFn,
 } from './configuration'
-import { useIsArray } from '../../typesChecker/useIsArray'
-import { useIsString } from '../../typesChecker/useIsString'
+import { useIsArray } from '../../typeCheckers/useIsArray'
+import { useIsString } from '../../typeCheckers/useIsString'
 
 const $fn: $IFn = (suit: string[] | any, value: string | undefined): boolean => {
   new useValidateTypeUnion(

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { $isFoo, $isNumber, type $IFn } from './configuration'
 import { useIsString } from '..'
-import { NotCorrectTypeIsDetected } from '@guards/exceptions/NotCorrectTypeIsDetected'
+import { NotCorrectTypeIsDetected } from '@validators/guards/exceptions/NotCorrectTypeIsDetected'
 
 const $fn: $IFn = (value: any): boolean => {
   new useIsString(value)

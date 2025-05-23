@@ -1,10 +1,10 @@
-import { BaseGuard } from '@guards/index'
-export class useValidateTypeUnion<T extends unknown[]> extends BaseGuard {
+import { ValueNotFoundInUnionTypes } from '@validators/guards/exceptions/ValueNotFoundInUnionTypes'
+
+export class useValidateTypeUnion<T extends unknown[]> {
   constructor(
     public readonly suit: T,
     public readonly value: string,
   ) {
-    super()
     this.ensureTypeUnionValueExistsInSuite<T>(suit, value)
   }
 
@@ -14,11 +14,7 @@ export class useValidateTypeUnion<T extends unknown[]> extends BaseGuard {
   ): value is T[number] {
     const checkIfValueExist = suit.includes(value)
     if (!checkIfValueExist) {
-      const error = new Error()
-      error.name = 'valueNotFoundInUnionType'
-      error.message = typeof value === 'string' ? value : JSON.stringify(value)
-
-      throw this.handleError(error).error
+      throw new ValueNotFoundInUnionTypes(value)
     }
     return checkIfValueExist
   }

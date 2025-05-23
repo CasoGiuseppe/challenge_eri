@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { useIsArray } from '..'
 import { $isWrongArray, $suitableCollection, type $IFn } from './configuration'
-import { ProvidedCollectionIsNotArray } from '@guards/exceptions/ProvidedCollectionIsNotArray'
+import { ProvidedCollectionIsNotArray } from '@validators/guards/exceptions/ProvidedCollectionIsNotArray'
 
 const $fn: $IFn = (suit: unknown[] | any): boolean => {
   new useIsArray(suit)

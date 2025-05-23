@@ -1,5 +1,5 @@
 import { ValueObject } from '../../abstracts/valueObject/ValueObject'
-import { NotCorrectTypeIsDetected } from '@guards/exceptions/NotCorrectTypeIsDetected'
+import { NotCorrectTypeIsDetected } from '@validators/guards/exceptions/NotCorrectTypeIsDetected'
 
 export class useIsString extends ValueObject<string> {
   constructor(public readonly value: string) {

@@ -1,4 +1,4 @@
-import { ProvidedCollectionIsNotArray } from '@guards/exceptions/ProvidedCollectionIsNotArray'
+import { ProvidedCollectionIsNotArray } from '@validators/guards/exceptions/ProvidedCollectionIsNotArray'
 import { ValueObject } from '../../abstracts/valueObject/ValueObject'
 
 export class useIsArray<T extends unknown[]> extends ValueObject<unknown[]> {
