@@ -2,6 +2,7 @@
   <button
     :class="['base-button', `base-button--is-${size}`, `base-button--is-${variant}`]"
     :aria-disabled="isDisabled"
+    @click="handleClick"
   >
     <component
       v-if="bindIconProps"
@@ -31,6 +32,7 @@ import type { Names } from '@components/base/base-icon/types'
 import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
 import useAsyncComponents from '@composables/useAsyncComponents'
 import useComponentsMapping from '@composables/useComponentsMapping'
+import type { IClick } from './types'
 
 const attrs = useAttrs()
 const props = defineProps({
@@ -103,10 +105,14 @@ const props = defineProps({
   },
 })
 
-const { size, hasIcon, iconPosition } = toRefs(props)
+const { id, size, hasIcon, iconPosition } = toRefs(props)
 const { parseGlobModules } = useComponentsMapping({
   modules: import.meta.glob('@components/**/*.vue'),
 })
+const emits = defineEmits<{
+  (e: 'click', id: IClick): void
+}>()
+
 const { create } = useAsyncComponents({ modules: parseGlobModules() })
 const shallowIconComponent: Component = shallowRef()
 
@@ -127,6 +133,9 @@ const bindIconProps = computed(() => {
   }
 })
 
+const handleClick = () => {
+  emits('click', { id: id?.value })
+}
 watch(
   () => hasIcon?.value,
   async () => {

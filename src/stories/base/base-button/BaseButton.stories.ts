@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Meta, StoryObj } from '@storybook/vue3'
+import { action } from '@storybook/addon-actions'
 import BaseButton from '@components/base/base-button/BaseButton.vue'
 import {
   SUITABLE_POSITION,
@@ -61,10 +62,16 @@ const Templates: Story = {
       return { args, hasDefaultSLot }
     },
     template: `
-      <BaseButton v-bind="args">
+      <BaseButton
+        v-bind="args"
+        @click="click"
+      >
         <template #default v-if="hasDefaultSLot">{{ args.default }}</template>
       </BaseButton>
     `,
+    methods: {
+      click: action('click'),
+    },
   }),
 }
 
