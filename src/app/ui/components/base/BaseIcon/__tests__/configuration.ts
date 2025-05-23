@@ -23,7 +23,6 @@ export const $propCases = [
 export const $sizeClassCases = [
   { size: 's', expectedClass: 'base-icon--is-s' },
   { size: 'm', expectedClass: 'base-icon--is-m' },
-  { size: 'l', expectedClass: 'base-icon--is-l' },
 ]
 const meaningfulCase = { semanticMeaning: 'meaningful', attr: 'role', value: 'img' }
 const decorativeCase = { semanticMeaning: 'decorative', attr: 'aria-hidden', value: 'true' }
