@@ -21,6 +21,7 @@ export default [
       'src/**/__tests__/*',
       '**/.husky/**',
       '**/stories/**',
+      '**/commitlint.config.ts',
     ],
   },
 
