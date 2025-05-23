@@ -12,5 +12,44 @@
   --font-style-normal: normal;
   --font-style-bold: bold;
 
+  --font-xxl: #{px2rem(calc(33))} / auto;
+  --font-xl: #{px2rem(calc(29))} / auto;
+  --font-l: #{px2rem(calc(26))} / auto;
+  --font-m: #{px2rem(calc(23))} / auto;
+  --font-s: #{px2rem(calc(20))} / auto;
+  --font-xs: #{px2rem(calc(18))} / auto;
+  --font-xxs: #{px2rem(calc(16))} / auto;
+
   --font-underline: underline;
+}
+
+:root {
+  // font style
+  // font weight
+  // font size
+  // font line-height
+  // font family
+  --font-build-xxl:
+    var(--font-style-normal, normal), var(--font-weight-400, regular), var(--font-xxl, 1rem),
+    var(--font-default-family);
+
+  --font-build-xl:
+    var(--font-style-normal, normal), var(--font-weight-400, regular), var(--font-xl, 1rem),
+    var(--font-default-family);
+
+  --font-build-l:
+    var(--font-style-normal, normal), var(--font-weight-400, regular), var(--font-l, 1rem),
+    var(--font-default-family);
+
+  --font-build-m:
+    var(--font-style-normal, normal), var(--font-weight-400, regular), var(--font-m, 1rem),
+    var(--font-default-family);
+
+  --font-build-s:
+    var(--font-style-normal, normal), var(--font-weight-400, regular), var(--font-s, 1rem),
+    var(--font-default-family);
+
+  --font-build-xs:
+    var(--font-style-normal, normal), var(--font-weight-400, regular), var(--font-xs, 1rem),
+    var(--font-default-family);
 }
