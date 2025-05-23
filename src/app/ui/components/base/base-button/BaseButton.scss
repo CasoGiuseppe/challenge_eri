@@ -3,10 +3,23 @@
 
   --btn-inline-padding: var(--spacing-40, 0);
   --btn-block-padding: var(--spacing-30, 0);
+  --btn-radius: var(--spacing-30, 0);
+  --btn-background: var(--color-primary-red-500, #000);
+  --btn-foreground: var(--color-neutral-light, #fff);
+  --btn-border: none;
 
   @include useUtilities.resetButton;
   padding-inline: var(--btn-inline-padding);
   padding-block: var(--btn-block-padding);
+
+  background: var(--btn-background);
+  border-radius: var(--btn-radius);
+  color: var(--btn-foreground);
+  border: var(--btn-border);
+
+  transition:
+    background var(--animationTime, 0) var(--ease-out, 'linear'),
+    color var(--animationTime, 0) var(--ease-out, 'linear');
 
   &--is- {
     &s {
@@ -18,6 +31,38 @@
 
       --btn-inline-padding: calc(var(--spacing-40) + 4px);
       --btn-block-padding: calc(var(--spacing-30) + 2px);
+    }
+
+    &secondary {
+      --btn-background: none;
+      --btn-foreground: var(--color-primary-red-500, #000);
+      --btn-border: 1px solid var(--color-primary-red-500, #000);
+    }
+  }
+
+  @media (hover) {
+    &:not(:disabled):not(:active) {
+      &:hover {
+        &#{$basebutton}--is-primary {
+          --btn-background: var(--color-primary-red-600, #000);
+        }
+        &#{$basebutton}--is-secondary {
+          --btn-foreground: var(--color-primary-red-600, #000);
+          --btn-border: 1px solid var(--color-primary-red-600, #000);
+        }
+      }
+    }
+  }
+
+  &:active {
+    &:not(:disabled) {
+      &#{$basebutton}--is-primary {
+        --btn-background: var(--color-primary-red-700, #000);
+      }
+      &#{$basebutton}--is-secondary {
+        --btn-foreground: var(--color-primary-red-700, #000);
+        --btn-border: 1px solid var(--color-primary-red-700, #000);
+      }
     }
   }
 }
