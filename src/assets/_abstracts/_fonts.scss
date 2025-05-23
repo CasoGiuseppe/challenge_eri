@@ -1,7 +1,16 @@
 @charset "utf-8";
 @use './units' as useUnit;
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-  --font-default-family: 'Figtree', sans-serif;
+  --font-default-family: 'Montserrat', sans-serif;
+
+  --font-weight-400: 400;
+  --font-weight-600: 600;
+  --font-weight-900: 900;
+
+  --font-style-normal: normal;
+  --font-style-bold: bold;
+
+  --font-underline: underline;
 }
