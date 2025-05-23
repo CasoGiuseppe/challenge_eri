@@ -92,4 +92,4 @@ watchEffect(async () => {
 })
 </script>
 
-<style src="./BaseIcon.less" lang="less"></style>
+<style src="./BaseIcon.scss" lang="scss" scoped></style>

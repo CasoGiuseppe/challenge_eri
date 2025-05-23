@@ -6,8 +6,8 @@ export const useDataBrandKey = Symbol('brand')
 export const SUITABLE_SIZES = ['l', 'm', 's'] as const
 export const SUITABLE_SEMANTIC_RULES = ['meaningful', 'decorative'] as const
 export const DEFAULT_IMPORT_MODULE = import.meta.glob([
-  '@ui/components/icons/**/icon*.vue',
-  '!@ui/components/icons/__mocks__/**/*',
+  '@components/icons/**/icon*.vue',
+  '!@components/icons/__mocks__/**/*',
 ])
 
 export const SUITABLE_NAMES = [

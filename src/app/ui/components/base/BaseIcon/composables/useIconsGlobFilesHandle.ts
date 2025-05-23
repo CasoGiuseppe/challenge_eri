@@ -1,7 +1,7 @@
 import type { collectionMappingRow } from '@composables/useComponentsMapping/interfaces'
-import { escapeRegExp } from '@utilities/index'
+import { escapeRegExp } from '@shared/utilities'
 import type { IGlobFilesHandle, IGlobFilesTypeHandler } from './interfaces'
-import { useIsString } from '@ui/validators/typesChecker/useIsString'
+import { useIsString } from '@validators/typeCheckers/useIsString'
 import useComponentsMapping from '@composables/useComponentsMapping'
 import useAsyncComponents from '@composables/useAsyncComponents'
 
@@ -17,7 +17,7 @@ export default function useIconsGlobFilesHandle({
   name,
   mapping = useComponentsMapping,
   loader = useAsyncComponents,
-  defaultPath = import.meta.glob('@ui/components/icons/icon*.vue'),
+  defaultPath = import.meta.glob('@components/icons/icon*.vue'),
   filterByBrand,
 }: IGlobFilesTypeHandler): IGlobFilesHandle {
   const getPathsList = (): collectionMappingRow => {
@@ -26,7 +26,7 @@ export default function useIconsGlobFilesHandle({
       // get file in list of files of provided folder
       const filterByName = filteredPaths({
         collection: filteredPaths({
-          collection: import.meta.glob('@ui/components/**/*.vue'),
+          collection: import.meta.glob('@components/**/*.vue'),
           filter: filterByBrand,
         }),
         filter: name,

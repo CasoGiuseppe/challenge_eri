@@ -11,7 +11,8 @@
   "compilerOptions": {
     "noEmit": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "target": "esnext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "types": ["node"],
@@ -20,6 +21,7 @@
       "@app/*": ["./src/app/*"],
       "@shared/*": ["./src/app/shared/*"],
       "@router/*": ["./src/app/router/*"],
+      "@composables/*": ["./src/app/shared/composables/*"],
       "@validators/*": ["./src/app/ui/validators/*"],
       "@components/*": ["./src/app/ui/components/*"],
       "@layouts/*": ["./src/app/ui/layouts/*"],

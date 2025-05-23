@@ -1,0 +1,15 @@
+.base-icon {
+  --size: #{useTools.px2rem(calc(useUnits.$unit-base * 3))}; // 24;
+
+  display: flex;
+  justify-content: center;
+  width: var(--size, 100%);
+  flex: 0 0 var(--size, 100%);
+  aspect-ratio: 1/1;
+
+  &--is {
+    &-s {
+      --size: #{useTools.px2rem(12)}; // 12;
+    }
+  }
+}
