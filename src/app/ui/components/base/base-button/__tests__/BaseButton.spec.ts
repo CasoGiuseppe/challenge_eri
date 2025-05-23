@@ -62,6 +62,20 @@ describe('BaseButton component tests', () => {
     )
   })
 
+  describe('Test emit behaviours', () => {
+    beforeEach(async () => {
+      $wrapper = await renderButton({
+        props: {
+          id: $isDefaultID,
+        },
+      })
+    })
+    it('should have correct emit on click event', async () => {
+      $wrapper.trigger('click')
+      expect($wrapper.emitted()).toHaveProperty('click')
+    })
+  })
+
   describe('Test html props behaviours', () => {
     beforeEach(async () => {
       $wrapper = await renderButton({
@@ -74,7 +88,6 @@ describe('BaseButton component tests', () => {
 
     it('should has correct disabled state when prop is true', async () => {
       const htmlAttributes = $wrapper.attributes()
-      const wrapperStyle = window.getComputedStyle($wrapper.wrapperElement)
       expect(htmlAttributes).toHaveProperty('disabled')
     })
   })
