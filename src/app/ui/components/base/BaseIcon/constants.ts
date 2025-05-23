@@ -2,9 +2,11 @@
 export const useMeaningfulKey = Symbol('meaningful')
 export const useDecorativeKey = Symbol('decorative')
 export const useDataBrandKey = Symbol('brand')
+export const useDefaultSizeKey = Symbol('m')
 
-export const SUITABLE_SIZES = ['l', 'm', 's'] as const
+export const SUITABLE_SIZES = ['m', 's'] as const
 export const SUITABLE_SEMANTIC_RULES = ['meaningful', 'decorative'] as const
+
 export const DEFAULT_IMPORT_MODULE = import.meta.glob([
   '@components/icons/**/icon*.vue',
   '!@components/icons/__mocks__/**/*',

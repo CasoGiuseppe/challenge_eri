@@ -1,5 +1,5 @@
 .base-icon {
-  --size: #{useTools.px2rem(calc(useUnits.$unit-base * 3))}; // 24;
+  --size: auto;
 
   display: flex;
   justify-content: center;
@@ -8,6 +8,10 @@
   aspect-ratio: 1/1;
 
   &--is {
+    &-m {
+      --size: #{useTools.px2rem(calc(useUnits.$unit-base * 3))}; // 24;
+    }
+
     &-s {
       --size: #{useTools.px2rem(12)}; // 12;
     }

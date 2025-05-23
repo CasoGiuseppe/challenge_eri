@@ -5,6 +5,7 @@ import {
   SUITABLE_NAMES,
   SUITABLE_SEMANTIC_RULES,
   SUITABLE_SIZES,
+  useDefaultSizeKey,
 } from '@components/base/BaseIcon/constants'
 import { computed } from 'vue'
 import { defaultIcon } from './constants'
@@ -22,7 +23,7 @@ const meta = {
   },
   args: {
     name: defaultIcon,
-    size: 'm',
+    size: useDefaultSizeKey.description,
     semanticMeaning: 'decorative',
     customSize: 0,
   },

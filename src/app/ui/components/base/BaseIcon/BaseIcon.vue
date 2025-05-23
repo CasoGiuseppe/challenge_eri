@@ -15,6 +15,7 @@ import {
   SUITABLE_SEMANTIC_RULES,
   SUITABLE_SIZES,
   DEFAULT_RULE_TYPE,
+  useDefaultSizeKey,
 } from './constants'
 import { useValidateTypeUnion } from '@validators/useValidateTypeUnion'
 import { useIsString } from '@validators/typeCheckers/useIsString'
@@ -37,11 +38,11 @@ const props = defineProps({
     },
   },
   /**
-   * Set the size of the ui icon component [l, m, s]
+   * Set the size of the ui icon component [m, s]
    */
   size: {
     type: String as PropType<(typeof SUITABLE_SIZES)[number]>,
-    default: 'm',
+    default: useDefaultSizeKey.description,
     validator: (type: (typeof SUITABLE_SIZES)[number]) => {
       new useValidateTypeUnion(
         new useIsArray([...SUITABLE_SIZES]).value,
