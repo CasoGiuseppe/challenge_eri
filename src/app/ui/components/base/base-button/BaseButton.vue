@@ -3,7 +3,12 @@
     :class="['base-button', `base-button--is-${size}`, `base-button--is-${variant}`]"
     :aria-disabled="isDisabled"
   >
-    <component v-if="bindIconProps" :is="shallowIconComponent" v-bind="{ ...bindIconProps }" />
+    <component
+      v-if="bindIconProps"
+      data-testID="ui-icon"
+      :is="shallowIconComponent"
+      v-bind="{ ...bindIconProps }"
+    />
     <!-- @slot Default slot for button label -->
     <slot />
   </button>
@@ -74,10 +79,9 @@ const props = defineProps({
   hasIcon: {
     type: String as PropType<Names>,
     validator: (icon: string) => {
-      const splitted = icon?.split('/')
       new useValidateTypeUnion(
         new useIsArray([...SUITABLE_NAMES]).value,
-        new useIsString(splitted.length > 1 ? splitted[splitted.length - 1] : icon).value,
+        new useIsString(icon).value,
       )
 
       return true

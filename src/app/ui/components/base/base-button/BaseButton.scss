@@ -73,7 +73,7 @@
   }
 
   &:disabled {
-    cursor: default;
+    pointer-events: none;
 
     &#{$basebutton}--is-primary {
       --btn-background: var(--color-gray-50, #000);

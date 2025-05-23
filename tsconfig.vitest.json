@@ -18,7 +18,7 @@
       "@layouts/*": ["./src/app/ui/layouts/*"],
       "@assets/*": ["./src/assets/*"],
       "@modules/*": ["./src/modules/*"],
-      "@tests/*": ["./src/app/shared/tests/*"]
+      "@tests/*": ["./src/app/shared/utilities/tests/*"]
     }
   }
 }
