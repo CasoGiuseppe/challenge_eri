@@ -1,0 +1,8 @@
+export { default as iconAdd } from './iconAdd.vue'
+export { default as iconAdministration } from './iconAdministration.vue'
+export { default as iconArrowRight } from './iconArrowRight.vue'
+export { default as iconCustomer } from './iconCustomer.vue'
+export { default as iconDropDown } from './iconDropDown.vue'
+export { default as iconFolder } from './iconFolder.vue'
+export { default as iconManegement } from './iconManegement.vue'
+export { default as iconSearch } from './iconSearch.vue'
