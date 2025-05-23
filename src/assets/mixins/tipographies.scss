@@ -70,8 +70,20 @@
   }
 }
 
-@mixin text-paragraph-xxs($weight: 'regular') {
+@mixin text-paragraph-s($weight: 'regular') {
   font: var(--font-build-xxs);
+
+  @if $weight == semibold {
+    font-weight: var(--font-weight-600);
+  }
+
+  @if $weight == black {
+    font-weight: var(--font-weight-900);
+  }
+}
+
+@mixin text-paragraph-xs($weight: 'regular') {
+  font: var(--font-build-xxxs);
 
   @if $weight == semibold {
     font-weight: var(--font-weight-600);

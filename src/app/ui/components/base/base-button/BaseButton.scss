@@ -9,7 +9,13 @@
   padding-block: var(--btn-block-padding);
 
   &--is- {
+    &s {
+      @include useTypographies.text-paragraph-xs();
+    }
+
     &l {
+      @include useTypographies.text-paragraph-s($weight: black);
+
       --btn-inline-padding: calc(var(--spacing-40) + 4px);
       --btn-block-padding: calc(var(--spacing-30) + 2px);
     }

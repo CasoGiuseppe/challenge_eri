@@ -1,5 +1,4 @@
 <template>
-  {{ size }}
   <button :class="['base-button', `base-button--is-${size}`, `base-button--is-${variant}`]">
     button
   </button>
