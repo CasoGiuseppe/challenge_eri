@@ -84,4 +84,13 @@
       --btn-border-color: var(--color-gray-50, #000);
     }
   }
+
+  > svg {
+    &[position='leading'] {
+      order: 1;
+    }
+    &[position='trailing'] {
+      order: 2;
+    }
+  }
 }

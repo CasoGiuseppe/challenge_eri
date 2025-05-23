@@ -2,8 +2,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import BaseButton from '@components/base/base-button/BaseButton.vue'
 import {
+  SUITABLE_POSITION,
   SUITABLE_SIZES,
   SUITABLE_TYPES,
+  useDefaultPositionKey,
   useDefaultSizeKey,
   useDefaultTypeKey,
 } from '@components/base/base-button/constants'
@@ -24,6 +26,11 @@ const meta = {
       control: 'select',
       options: [...SUITABLE_NAMES],
     },
+    iconPosition: {
+      if: { arg: 'showIcon', eq: true },
+      control: 'select',
+      options: [...SUITABLE_POSITION],
+    },
 
     // extra props
     disabled: { control: 'boolean' },
@@ -33,6 +40,7 @@ const meta = {
     id: 'button',
     size: useDefaultSizeKey.description,
     variant: useDefaultTypeKey.description,
+    iconPosition: useDefaultPositionKey.description,
     default: 'Label',
 
     // extra props

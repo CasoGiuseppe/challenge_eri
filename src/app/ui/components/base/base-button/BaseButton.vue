@@ -15,8 +15,10 @@ import { useValidateTypeUnion } from '@validators/useValidateTypeUnion'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import {
   ICONS,
+  SUITABLE_POSITION,
   SUITABLE_SIZES,
   SUITABLE_TYPES,
+  useDefaultPositionKey,
   useDefaultSizeKey,
   useDefaultTypeKey,
 } from './constants'
@@ -81,9 +83,23 @@ const props = defineProps({
       return true
     },
   },
+  /**
+   * Set the icon positon inside button [leading, trailing]
+   */
+  iconPosition: {
+    type: String as PropType<(typeof SUITABLE_POSITION)[number]>,
+    default: useDefaultPositionKey.description,
+    validator: (position: (typeof SUITABLE_POSITION)[number]) => {
+      new useValidateTypeUnion(
+        new useIsArray([...SUITABLE_POSITION]).value,
+        new useIsString(position).value,
+      )
+      return true
+    },
+  },
 })
 
-const { size, hasIcon } = toRefs(props)
+const { size, hasIcon, iconPosition } = toRefs(props)
 const { parseGlobModules } = useComponentsMapping({
   modules: import.meta.glob('@components/**/*.vue'),
 })
@@ -103,6 +119,7 @@ const bindIconProps = computed(() => {
   return {
     name: hasIcon?.value as Names,
     size: ICONS[size.value],
+    position: iconPosition.value,
   }
 })
 
