@@ -92,5 +92,4 @@ watchEffect(async () => {
   asyncComponents.value = await asyncLoader()
 })
 </script>
-
 <style src="./BaseIcon.scss" lang="scss" scoped></style>

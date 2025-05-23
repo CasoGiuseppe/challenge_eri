@@ -41,6 +41,7 @@ export default defineConfig({
           @use '@/assets/_abstracts/_fonts.scss' as useFonts;
           @use '@/assets/_abstracts/_spacing.scss' as useSpacing;
           @use '@/assets/_abstracts/_units.scss' as useUnits;
+          @use '@/assets/mixins/utilities.scss' as useUtilities;
           @use '@/assets/mixins/tipographies.scss' as useTypographies;
         `,
       },

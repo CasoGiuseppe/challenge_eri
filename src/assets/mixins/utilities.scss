@@ -1,0 +1,12 @@
+@mixin resetButton {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+@mixin resetSpacing {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

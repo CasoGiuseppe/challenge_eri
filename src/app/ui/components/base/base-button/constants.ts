@@ -1,5 +1,5 @@
 // SYMBOLS
-export const useDefaultSizeKey = Symbol('s')
+export const useDefaultSizeKey = Symbol('l')
 export const useDefaultTypeKey = Symbol('primary')
 
 export const SUITABLE_SIZES = ['l', 's'] as const

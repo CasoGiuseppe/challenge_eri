@@ -1,21 +1,15 @@
 @use '@assets/mixins/tipographies' as useTypographies;
+@use '@assets/mixins/utilities' as useUtilities;
 
 @layer base {
-  html,
   body {
-    --reset: none;
     * {
       &:is(button) {
-        cursor: pointer;
-        background: var(--reset);
-        border: var(--reset);
-        outline: var(--reset);
+        @include useUtilities.resetButton;
       }
 
       &:is(ul, ol, li, h1, h2, h3, h4, p, form) {
-        margin: var(--reset);
-        padding: var(--reset);
-        list-style: var(--reset);
+        @include useUtilities.resetSpacing;
       }
     }
   }

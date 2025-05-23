@@ -1,0 +1,17 @@
+.base-button {
+  $basebutton: &;
+
+  --btn-inline-padding: var(--spacing-40, 0);
+  --btn-block-padding: var(--spacing-30, 0);
+
+  @include useUtilities.resetButton;
+  padding-inline: var(--btn-inline-padding);
+  padding-block: var(--btn-block-padding);
+
+  &--is- {
+    &l {
+      --btn-inline-padding: calc(var(--spacing-40) + 4px);
+      --btn-block-padding: calc(var(--spacing-30) + 2px);
+    }
+  }
+}

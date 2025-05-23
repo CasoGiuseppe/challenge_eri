@@ -1,6 +1,8 @@
 <template>
   {{ size }}
-  <button :class="[`base-button--is-${size}`, `base-button--is-${variant}`]">button</button>
+  <button :class="['base-button', `base-button--is-${size}`, `base-button--is-${variant}`]">
+    button
+  </button>
 </template>
 <script lang="ts" setup>
 import { toRefs, type PropType } from 'vue'
@@ -53,3 +55,4 @@ const props = defineProps({
 
 const { size } = toRefs(props)
 </script>
+<style src="./BaseButton.scss" lang="scss" scoped></style>

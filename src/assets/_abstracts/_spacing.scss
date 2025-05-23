@@ -7,5 +7,6 @@
   --spacing-20: #{useTools.px2rem(calc(useUnits.$unit-base / 2))}; // 4
   --spacing-30: #{useTools.px2rem(calc(useUnits.$unit-base))}; // 8
   --spacing-40: #{useTools.px2rem(calc(useUnits.$unit-base * 2))}; // 16
-  --spacing-50: #{useTools.px2rem(calc(useUnits.$unit-base * 4))}; // 32
+  --spacing-50: #{useTools.px2rem(calc(useUnits.$unit-base * 3))}; // 24
+  --spacing-60: #{useTools.px2rem(calc(useUnits.$unit-base * 4))}; // 32
 }
