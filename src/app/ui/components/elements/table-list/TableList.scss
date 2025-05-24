@@ -1,0 +1,29 @@
+.table-list {
+  $tablelist: &;
+  --table-block-padding-: var(--spacing-40, 0);
+  --table-inline-padding-: var(--spacing-60, 0);
+  --table-collapse: collapse;
+  --table-th-border: 1px solid var(--color-primary-blue-500);
+
+  border-collapse: var(--table-collapse);
+
+  thead {
+    tr {
+      background: var(--color-primary-red-500);
+    }
+  }
+
+  th,
+  td {
+    @include useTypographies.text-paragraph-xs();
+
+    padding-inline: var(--table-inline-padding-);
+    padding-block: var(--table-block-padding-);
+    color: var(--color-neutral-light);
+  }
+
+  th {
+    @include useTypographies.text-paragraph-xs($weight: semibold);
+    border: var(--table-th-border);
+  }
+}

@@ -1,7 +1,7 @@
 .base-button {
   $basebutton: &;
 
-  --btn-inline-padding: var(--spacing-40, 0);
+  --btn-inline-padding: var(--spacing-50, 0);
   --btn-block-padding: var(--spacing-30, 0);
   --btn-radius: var(--spacing-30, 0);
   --btn-background: var(--color-primary-red-500, #000);
@@ -34,7 +34,7 @@
     &l {
       @include useTypographies.text-paragraph-s($weight: black);
 
-      --btn-inline-padding: calc(var(--spacing-40) + 4px);
+      --btn-inline-padding: calc(var(--spacing-50) + 4px);
       --btn-block-padding: calc(var(--spacing-30) + 2px);
     }
 

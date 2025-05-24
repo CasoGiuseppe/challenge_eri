@@ -1,1 +1,1 @@
-export const defaultIcon: string = 'iconAdd'
+export const DEFAULT_ICON: string = 'iconAdd'

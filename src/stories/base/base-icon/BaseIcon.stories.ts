@@ -8,7 +8,7 @@ import {
   useDefaultSizeKey,
 } from '@components/base/base-icon/constants'
 import { computed } from 'vue'
-import { defaultIcon } from './constants'
+import { DEFAULT_ICON } from './constants'
 
 const meta = {
   title: 'Base/Base Icon',
@@ -22,7 +22,7 @@ const meta = {
     customSize: { control: 'number' },
   },
   args: {
-    name: defaultIcon,
+    name: DEFAULT_ICON,
     size: useDefaultSizeKey.description,
     semanticMeaning: 'decorative',
     customSize: 0,
