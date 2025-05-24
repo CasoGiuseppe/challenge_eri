@@ -43,7 +43,7 @@ const props = defineProps({
     type: String as PropType<string>,
     required: true,
     validator: (type: string) => {
-      new useIsString(type as string)
+      new useIsString(type)
       return true
     },
   },

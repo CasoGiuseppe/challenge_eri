@@ -8,8 +8,15 @@ const meta = {
   title: 'Tools/Navigation range',
   component: NavigationRange,
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
+  argTypes: {
+    id: { control: 'text' },
+    items: { control: 'number' },
+    steps: { control: 'number' },
+  },
+  args: {
+    id: 'navigation',
+    items: 10,
+  },
 } satisfies Meta
 
 export default meta
