@@ -1,5 +1,8 @@
 <template>
-  <span :id="id" :class="['base-pill', `base-pill--is-${variant}`]">pill</span>
+  <span :id="id" :class="['base-pill', `base-pill--is-${variant}`]">
+    <!-- @slot Default slot for pill label -->
+    <slot />
+  </span>
 </template>
 <script setup lang="ts">
 import type { PropType } from 'vue'

@@ -10,9 +10,11 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     variant: { control: 'select', options: [...SUITABLE_TYPES] },
+    default: { control: 'text' },
   },
   args: {
     variant: useDefaultTypeKey.description,
+    default: 'Pill',
   },
 } satisfies Meta
 
