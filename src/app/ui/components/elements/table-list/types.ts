@@ -1,7 +1,8 @@
+import { SUITABLE_TYPES } from '@components/base/base-pill/constants'
 export interface ICell {
   id: string
   label: string
-  action?: () => void
+  state?: (typeof SUITABLE_TYPES)[number]
 }
 
 export interface IRow {

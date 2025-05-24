@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { action } from '@storybook/addon-actions'
 import TableList from '@components/elements/table-list/TableList.vue'
 import { DEFAULT_BODY, DEFAULT_HEAD } from './constants'
-import BaseButton from '@components/base/base-button/BaseButton.vue'
+import BasePill from '@components/base/base-pill/BasePill.vue'
 
 const meta = {
   title: 'Elements/Table list',
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof TableList>
 
 const Templates: Story = {
   render: (args: any) => ({
-    components: { TableList, BaseButton },
+    components: { TableList, BasePill },
     setup() {
       return { args }
     },
@@ -36,9 +36,9 @@ const Templates: Story = {
         v-bind="args"
       >
         <template #head="{ property: { label }}">{{ label }}</template>
-        <template #body="{ property: { id, label, action }}">
-          <template v-if="action">
-            <BaseButton size="s" id="id" @click="action">{{ label }}</BaseButton>
+        <template #body="{ property: { id, label, state }}">
+          <template v-if="state">
+            <BasePill :variant="state" id="id">{{ state }}</BasePill>
           </template>
           <template v-else>{{ label }}</template>
         </template>

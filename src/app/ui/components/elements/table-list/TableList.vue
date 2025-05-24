@@ -4,11 +4,11 @@
     <thead v-if="hasHead">
       <TransitionIs group tag="tr" type="from-bottom">
         <th
-          v-for="({ id, label, action }, index) of head"
+          v-for="({ id, label, state }, index) of head"
           :key="id"
           :style="{ transitionDelay: `${index * 0.05}s` }"
         >
-          <slot name="head" :property="{ label, action }" />
+          <slot name="head" :property="{ label, state }" />
         </th>
       </TransitionIs>
     </thead>
@@ -18,8 +18,8 @@
         :key="index"
         :style="{ transitionDelay: `${index * 0.05}s` }"
       >
-        <td v-for="{ id, label, action } of row" :key="id">
-          <slot name="body" :property="{ id, label, action }" />
+        <td v-for="{ id, label, state } of row" :key="id">
+          <slot name="body" :property="{ id, label, state }" />
         </td>
       </tr>
     </TransitionIs>

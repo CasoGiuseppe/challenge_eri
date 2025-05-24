@@ -19,7 +19,7 @@ export const DEFAULT_HEAD: ICell[] = [
   },
   {
     id: '5',
-    label: 'Date of last movement',
+    label: 'Status',
   },
 ]
 
@@ -45,7 +45,7 @@ export const DEFAULT_BODY: IRow[] = [
       {
         id: '5',
         label: 'Body',
-        action: () => console.log('this is row 1'),
+        state: 'active',
       },
     ],
   },
@@ -70,9 +70,7 @@ export const DEFAULT_BODY: IRow[] = [
       {
         id: '5',
         label: 'Body',
-        action: () => {
-          console.log('this is row 2')
-        },
+        state: 'inactive',
       },
     ],
   },
@@ -97,7 +95,7 @@ export const DEFAULT_BODY: IRow[] = [
       {
         id: '5',
         label: 'Body',
-        action: () => console.log('this is row 3'),
+        state: 'active',
       },
     ],
   },
