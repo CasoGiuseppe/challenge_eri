@@ -3,3 +3,7 @@ export interface ICell {
   label: string
   action?: () => void
 }
+
+export interface IRow {
+  row: ICell[]
+}

@@ -1,4 +1,4 @@
-import type { ICell } from '@components/elements/table-list/types'
+import type { ICell, IRow } from '@components/elements/table-list/types'
 
 export const DEFAULT_HEAD: ICell[] = [
   {
@@ -20,5 +20,80 @@ export const DEFAULT_HEAD: ICell[] = [
   {
     id: '5',
     label: 'Date of last movement',
+  },
+]
+
+export const DEFAULT_BODY: IRow[] = [
+  {
+    row: [
+      {
+        id: '1',
+        label: 'Body',
+      },
+      {
+        id: '2',
+        label: 'Body',
+      },
+      {
+        id: '3',
+        label: 'Body',
+      },
+      {
+        id: '4',
+        label: 'Body',
+      },
+      {
+        id: '5',
+        label: 'Body',
+      },
+    ],
+  },
+  {
+    row: [
+      {
+        id: '1',
+        label: 'Body',
+      },
+      {
+        id: '2',
+        label: 'Body',
+      },
+      {
+        id: '3',
+        label: 'Body',
+      },
+      {
+        id: '4',
+        label: 'Body',
+      },
+      {
+        id: '5',
+        label: 'Body',
+      },
+    ],
+  },
+  {
+    row: [
+      {
+        id: '1',
+        label: 'Body',
+      },
+      {
+        id: '2',
+        label: 'Body',
+      },
+      {
+        id: '3',
+        label: 'Body',
+      },
+      {
+        id: '4',
+        label: 'Body',
+      },
+      {
+        id: '5',
+        label: 'Body',
+      },
+    ],
   },
 ]

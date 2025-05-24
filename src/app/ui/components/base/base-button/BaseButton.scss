@@ -76,12 +76,12 @@
     pointer-events: none;
 
     &#{$basebutton}--is-primary {
-      --btn-background: var(--color-gray-50, #000);
+      --btn-background: var(--color-gray-100, #000);
     }
 
     &#{$basebutton}--is-secondary {
-      --btn-foreground: var(--color-gray-50, #000);
-      --btn-border-color: var(--color-gray-50, #000);
+      --btn-foreground: var(--color-gray-100, #000);
+      --btn-border-color: var(--color-gray-100, #000);
     }
   }
 

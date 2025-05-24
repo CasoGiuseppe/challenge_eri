@@ -12,13 +12,24 @@
         </th>
       </TransitionIs>
     </thead>
+    <TransitionIs v-if="hasBody" group tag="tbody" type="from-bottom">
+      <tr
+        v-for="({ row }, index) of body"
+        :key="index"
+        :style="{ transitionDelay: `${index * 0.05}s` }"
+      >
+        <td v-for="{ id, label, action } of row" :key="id">
+          <slot name="body" :property="{ label, action }" />
+        </td>
+      </tr>
+    </TransitionIs>
   </table>
 </template>
 <script setup lang="ts">
 import { computed, toRefs, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
-import type { ICell } from './types'
+import type { ICell, IRow } from './types'
 import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
 
 const props = defineProps({
@@ -42,11 +53,26 @@ const props = defineProps({
       return true
     },
   },
+  /**
+   * Set the elements for tbody
+   */
+  body: {
+    type: Array as PropType<IRow[]>,
+    required: true,
+    validator: (type: IRow[]) => {
+      new useIsArray(type)
+      return true
+    },
+  },
 })
 
-const { id, head } = toRefs(props)
+const { id, head, body } = toRefs(props)
 const hasHead = computed(() => {
   const evaluables = [head?.value !== undefined, (head?.value?.length ?? 0) > 0]
+  return evaluables.every((state: boolean) => state)
+})
+const hasBody = computed(() => {
+  const evaluables = [body?.value !== undefined, (body?.value?.length ?? 0) > 0]
   return evaluables.every((state: boolean) => state)
 })
 </script>

@@ -4,6 +4,7 @@
   --table-inline-padding-: var(--spacing-60, 0);
   --table-collapse: collapse;
   --table-th-border: 1px solid var(--color-primary-blue-500);
+  --table-tr-even: var(--color-gray-50, #000);
 
   border-collapse: var(--table-collapse);
 
@@ -13,10 +14,16 @@
     }
   }
 
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        background: var(--table-tr-even);
+      }
+    }
+  }
+
   th,
   td {
-    @include useTypographies.text-paragraph-xs();
-
     padding-inline: var(--table-inline-padding-);
     padding-block: var(--table-block-padding-);
     color: var(--color-neutral-light);
@@ -25,5 +32,10 @@
   th {
     @include useTypographies.text-paragraph-xs($weight: semibold);
     border: var(--table-th-border);
+  }
+
+  td {
+    @include useTypographies.text-paragraph-xxs($weight: black);
+    color: var(--color-neutral-dark);
   }
 }

@@ -2,7 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { action } from '@storybook/addon-actions'
 import TableList from '@components/elements/table-list/TableList.vue'
-import { DEFAULT_HEAD } from './constants'
+import { DEFAULT_BODY, DEFAULT_HEAD } from './constants'
 
 const meta = {
   title: 'Elements/Table list',
@@ -11,10 +11,12 @@ const meta = {
   argTypes: {
     id: { control: 'text' },
     head: { control: 'object' },
+    body: { control: 'object' },
   },
   args: {
     id: 'table',
     head: DEFAULT_HEAD,
+    body: DEFAULT_BODY,
   },
 } satisfies Meta
 
@@ -33,6 +35,7 @@ const Templates: Story = {
         v-bind="args"
       >
         <template #head="{ property: { label }}">{{ label }}</template>
+        <template #body="{ property: { label }}">{{ label }}</template>
       </TableList>
     `,
     methods: {

@@ -21,7 +21,8 @@
   --font-s: #{useTools.px2rem(calc(20))} / normal;
   --font-xs: #{useTools.px2rem(calc(18))} / normal;
   --font-xxs: #{useTools.px2rem(calc(16))} / normal;
-  --font-xxxs: #{useTools.px2rem(calc(14))} / normal;
+  --font-3xs: #{useTools.px2rem(calc(14))} / normal;
+  --font-4xs: #{useTools.px2rem(calc(12))} / normal;
 
   --font-underline: underline;
 }
@@ -53,6 +54,9 @@
   --font-build-xxs: var(--font-style-normal, normal) var(--font-weight-400, regular)
     var(--font-xxs, 1rem) var(--font-default-family);
 
-  --font-build-xxxs: var(--font-style-normal, normal) var(--font-weight-400, regular)
-    var(--font-xxxs, 1rem) var(--font-default-family);
+  --font-build-3xs: var(--font-style-normal, normal) var(--font-weight-400, regular)
+    var(--font-3xs, 1rem) var(--font-default-family);
+
+  --font-build-4xs: var(--font-style-normal, normal) var(--font-weight-400, regular)
+    var(--font-4xs, 1rem) var(--font-default-family);
 }
