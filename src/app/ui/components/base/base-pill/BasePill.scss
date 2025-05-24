@@ -1,0 +1,30 @@
+.base-pill {
+  $basepill: &;
+  --pill-inline-padding: var(--spacing-50, 0);
+  --pill-block-padding: var(--spacing-30, 0);
+  --pill-radius: var(--spacing-30, 0);
+  --pill-background: transparent;
+  --pill-foreground: var(--color-neutral-light, #fff);
+
+  @include useTypographies.text-paragraph-xs;
+
+  display: inline-flex;
+  padding-inline: var(--pill-inline-padding);
+  padding-block: var(--pill-block-padding);
+
+  background: var(--pill-background);
+  border-radius: var(--pill-radius);
+  color: var(--pill-foreground);
+
+  transition: background var(--animationTime, 0) var(--ease-out, 'linear');
+
+  &--is- {
+    &active {
+      --pill-background: var(--color-primary-blue-100, #000);
+    }
+
+    &inactive {
+      --pill-background: var(--color-primary-red-500, #000);
+    }
+  }
+}
