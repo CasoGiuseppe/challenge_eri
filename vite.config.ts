@@ -43,6 +43,7 @@ export default defineConfig({
           @use '@/assets/_abstracts/_units.scss' as useUnits;
           @use '@/assets/mixins/utilities.scss' as useUtilities;
           @use '@/assets/mixins/tipographies.scss' as useTypographies;
+          @use '@/assets/mixins/createAnimations.scss' as useAnimations;
         `,
       },
     },

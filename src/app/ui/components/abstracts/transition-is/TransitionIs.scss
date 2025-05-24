@@ -1,0 +1,7 @@
+.transition-is {
+  ul,
+  ol,
+  li {
+    @include useUtilities.resetSpacing;
+  }
+}

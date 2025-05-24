@@ -2,11 +2,15 @@
   <table :id="id" class="table-list">
     <!--thead elements-->
     <thead v-if="hasHead">
-      <tr>
-        <th v-for="{ id, label, action } of head" :key="id">
+      <TransitionIs group tag="tr" type="from-bottom">
+        <th
+          v-for="({ id, label, action }, index) of head"
+          :key="id"
+          :style="{ transitionDelay: `${index * 0.05}s` }"
+        >
           <slot name="head" :property="{ label, action }" />
         </th>
-      </tr>
+      </TransitionIs>
     </thead>
   </table>
 </template>
@@ -15,6 +19,7 @@ import { computed, toRefs, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import type { ICell } from './types'
+import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
 
 const props = defineProps({
   /**
