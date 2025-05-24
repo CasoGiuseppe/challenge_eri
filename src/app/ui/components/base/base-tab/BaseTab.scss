@@ -1,0 +1,33 @@
+.base-tab {
+  $basetab: &;
+  --tab-inline-padding: var(--spacing-50, 0);
+  --tab-block-padding: var(--spacing-30, 0);
+  --tab-background: var(--color-primary-red-500, #000);
+  --tab-foreground: var(--color-neutral-light, #fff);
+  --tab-radius: var(--spacing-30, 0);
+
+  @include useUtilities.resetButton;
+  @include useTypographies.text-paragraph-xs();
+
+  padding-inline: var(--tab-inline-padding);
+  padding-block: var(--tab-block-padding);
+
+  background: var(--tab-background);
+  border-top-left-radius: var(--tab-radius);
+  border-top-right-radius: var(--tab-radius);
+  color: var(--tab-foreground);
+
+  transition: background var(--animationTime, 0) var(--ease-out, 'linear');
+
+  @media (hover) {
+    &:not(:disabled):not(:active) {
+      &:hover {
+        --tab-background: var(--color-primary-red-600, #000);
+      }
+    }
+  }
+
+  &:active {
+    --tab-background: var(--color-primary-red-700, #000);
+  }
+}
