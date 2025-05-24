@@ -45,6 +45,7 @@ export const DEFAULT_BODY: IRow[] = [
       {
         id: '5',
         label: 'Body',
+        action: () => console.log('this is row 1'),
       },
     ],
   },
@@ -69,6 +70,9 @@ export const DEFAULT_BODY: IRow[] = [
       {
         id: '5',
         label: 'Body',
+        action: () => {
+          console.log('this is row 2')
+        },
       },
     ],
   },
@@ -93,6 +97,7 @@ export const DEFAULT_BODY: IRow[] = [
       {
         id: '5',
         label: 'Body',
+        action: () => console.log('this is row 3'),
       },
     ],
   },

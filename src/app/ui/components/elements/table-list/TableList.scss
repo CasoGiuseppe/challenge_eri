@@ -37,5 +37,6 @@
   td {
     @include useTypographies.text-paragraph-xxs($weight: black);
     color: var(--color-neutral-dark);
+    text-align: center;
   }
 }

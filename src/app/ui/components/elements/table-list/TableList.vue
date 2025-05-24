@@ -19,7 +19,7 @@
         :style="{ transitionDelay: `${index * 0.05}s` }"
       >
         <td v-for="{ id, label, action } of row" :key="id">
-          <slot name="body" :property="{ label, action }" />
+          <slot name="body" :property="{ id, label, action }" />
         </td>
       </tr>
     </TransitionIs>
