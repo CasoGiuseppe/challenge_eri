@@ -1,5 +1,9 @@
 <template>
-  <button class="base-tab" :aria-disabled="isDisabled" @click="handleClick">
+  <button
+    :class="['base-tab', isSelected ? 'base-tab--is-selected' : null]"
+    :aria-disabled="isDisabled"
+    @click="handleClick"
+  >
     <!-- @slot Default slot for tab label -->
     <slot />
   </button>
@@ -21,6 +25,11 @@ const props = defineProps({
       new useIsString(type as string)
       return true
     },
+  },
+
+  isSelected: {
+    type: Boolean as PropType<boolean>,
+    default: false,
   },
 })
 

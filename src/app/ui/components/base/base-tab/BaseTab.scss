@@ -27,12 +27,21 @@
     }
   }
 
-  &:active {
+  &:active,
+  &--is-selected {
     --tab-background: var(--color-primary-red-700, #000);
   }
 
   &:disabled {
     pointer-events: none;
     --tab-background: var(--color-gray-100, #000);
+  }
+
+  &--is- {
+    &selected {
+      &:not(:disabled) {
+        pointer-events: none;
+      }
+    }
   }
 }

@@ -10,6 +10,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     id: { control: 'text' },
+    isSelected: { control: 'boolean' },
     default: { control: 'text' },
 
     // extra props
@@ -17,6 +18,7 @@ const meta = {
   },
   args: {
     id: 'tab',
+    isSelected: false,
     default: 'Tab',
 
     // extra props
