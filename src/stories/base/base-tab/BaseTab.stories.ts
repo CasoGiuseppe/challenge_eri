@@ -9,10 +9,18 @@ const meta = {
   component: BaseTab,
   tags: ['autodocs'],
   argTypes: {
+    id: { control: 'text' },
     default: { control: 'text' },
+
+    // extra props
+    disabled: { control: 'boolean' },
   },
   args: {
+    id: 'tab',
     default: 'Tab',
+
+    // extra props
+    disabled: false,
   },
 } satisfies Meta
 
