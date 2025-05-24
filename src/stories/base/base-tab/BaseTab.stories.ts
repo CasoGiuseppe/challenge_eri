@@ -8,8 +8,12 @@ const meta = {
   title: 'Base/Base Tab',
   component: BaseTab,
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
+  argTypes: {
+    default: { control: 'text' },
+  },
+  args: {
+    default: 'Tab',
+  },
 } satisfies Meta
 
 export default meta
