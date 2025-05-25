@@ -6,7 +6,7 @@ export default {
   components: {
     default: () =>
       import(
-        /* webpackChunkName: "SideNavigation" */ '@modules/administration/presentation/ui/administration-board/AdministrationBoard.vue'
+        /* webpackChunkName: "AdministrationBoard" */ '@modules/administration/presentation/ui/administration-board/AdministrationBoard.vue'
       ),
   },
 } as RouteRecordRaw

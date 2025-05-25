@@ -1,0 +1,1 @@
+// domain shape entity

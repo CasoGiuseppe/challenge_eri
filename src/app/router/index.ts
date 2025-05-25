@@ -24,18 +24,6 @@ const router = createRouter({
                 /* webpackChunkName: "ContentBody" */ '@layouts/partials/section-content/SectionContent.vue'
               ),
           },
-          children: [
-            {
-              path: 'folders',
-              name: 'Folders',
-              components: {
-                default: () =>
-                  import(
-                    /* webpackChunkName: "SideNavigation" */ '@components/fakes/FakeTabContent1.vue'
-                  ),
-              },
-            },
-          ],
         },
         {
           path: '/:pathMatch(.*)*',
