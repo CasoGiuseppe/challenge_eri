@@ -6,10 +6,70 @@ const router = createRouter({
     {
       path: '/',
       name: 'root',
+      redirect: { name: 'app' },
       component: () =>
         import(/* webpackChunkName: "RootLayout" */ '@layouts/skeleton-root/SkeletonRoot.vue'),
+
+      children: [
+        {
+          path: 'app/:lang?',
+          name: 'app',
+          components: {
+            aside: () =>
+              import(
+                /* webpackChunkName: "SideNavigation" */ '@layouts/partials/side-navigation/SideNavigation.vue'
+              ),
+            content: () =>
+              import(
+                /* webpackChunkName: "ContentBody" */ '@layouts/partials/section-content/SectionContent.vue'
+              ),
+          },
+          children: [
+            {
+              path: 'admin',
+              name: 'Admin',
+              components: {
+                default: () =>
+                  import(
+                    /* webpackChunkName: "SideNavigation" */ '@components/fakes/FakeTabContent1.vue'
+                  ),
+              },
+            },
+            {
+              path: 'customers',
+              name: 'Customers',
+              components: {
+                default: () =>
+                  import(
+                    /* webpackChunkName: "SideNavigation" */ '@components/fakes/FakeTabContent2.vue'
+                  ),
+              },
+            },
+            {
+              path: 'folders',
+              name: 'Folders',
+              components: {
+                default: () =>
+                  import(
+                    /* webpackChunkName: "SideNavigation" */ '@components/fakes/FakeTabContent1.vue'
+                  ),
+              },
+            },
+          ],
+        },
+        {
+          path: '/:pathMatch(.*)*',
+          redirect: { name: 'app' },
+        },
+      ],
     },
   ],
+})
+
+router.beforeEach((to) => {
+  if (!to.name) {
+    return { name: 'app' }
+  }
 })
 
 export default router

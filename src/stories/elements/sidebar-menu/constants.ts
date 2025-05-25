@@ -5,18 +5,18 @@ export const DEFAULT_NAVIGATION: INavigation[] = [
     id: '1',
     label: 'Administration',
     icon: 'iconAdministration',
-    to: 'root',
+    to: { name: 'root' },
   },
   {
     id: '2',
     label: 'Customer',
     icon: 'iconCustomer',
-    to: 'root',
+    to: { name: 'root' },
   },
   {
     id: '3',
     label: 'Folder',
     icon: 'iconFolder',
-    to: 'root',
+    to: { name: 'root' },
   },
 ]

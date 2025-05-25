@@ -4,7 +4,9 @@
 @layer base {
   body {
     @include useUtilities.resetSpacing;
+
     height: 100lvh;
+    background: var(--color-gray-25, #000);
 
     * {
       &:is(button) {

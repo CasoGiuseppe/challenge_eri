@@ -1,5 +1,5 @@
 <template>
-  <aside :class="['sidebar-menu', isExpanded ? 'sidebar-menu--is-expanded' : null]">
+  <section :class="['sidebar-menu', isExpanded ? 'sidebar-menu--is-expanded' : null]">
     <nav v-if="hasNavigation" class="sidebar-menu__list">
       <TransitionIs class="sidebar-menu__items" group tag="ul" type="from-left">
         <li
@@ -11,7 +11,7 @@
         </li>
       </TransitionIs>
     </nav>
-  </aside>
+  </section>
 </template>
 <script setup lang="ts">
 import { computed, toRefs, type PropType } from 'vue'
