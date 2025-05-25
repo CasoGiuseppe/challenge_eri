@@ -1,5 +1,5 @@
 <template>
-  <button
+  <ComponentIs
     :class="[
       'base-button',
       `base-button--is-${size}`,
@@ -7,6 +7,8 @@
       !isRounded ? 'base-button--is-square' : null,
       unsetStyle ? 'base-button--is-unset' : null,
     ]"
+    :is="is"
+    :to="toRouter"
     :aria-disabled="isDisabled"
     @click="handleClick"
   >
@@ -20,7 +22,7 @@
     <p v-if="isRenderableSlot('default')" class="base-button__label">
       <slot />
     </p>
-  </button>
+  </ComponentIs>
 </template>
 <script lang="ts" setup>
 import { computed, shallowRef, toRefs, useAttrs, type Component, type PropType, watch } from 'vue'
@@ -42,6 +44,9 @@ import useAsyncComponents from '@composables/useAsyncComponents'
 import useComponentsMapping from '@composables/useComponentsMapping'
 import type { IClick } from './types'
 import { useRenderableSlots } from '@composables/useRenderableSlots'
+import ComponentIs from '@components/abstracts/component-is/ComponentIs.vue'
+import { SUITABLE_IS, useDefaultIsKey } from '@components/abstracts/component-is/constants'
+import type { RouteLocationNamedRaw } from 'vue-router'
 
 const attrs = useAttrs()
 const props = defineProps({
@@ -127,9 +132,24 @@ const props = defineProps({
     type: Boolean as PropType<boolean>,
     default: false,
   },
+
+  /**
+   * Set the component type [button, router-link]
+   */
+  is: {
+    type: String as PropType<(typeof SUITABLE_IS)[number]>,
+    default: useDefaultIsKey.description,
+    validator: (variant: (typeof SUITABLE_IS)[number]) => {
+      new useValidateTypeUnion(
+        new useIsArray([...SUITABLE_IS]).value,
+        new useIsString(variant).value,
+      )
+      return true
+    },
+  },
 })
 
-const { id, size, hasIcon, iconPosition } = toRefs(props)
+const { id, size, hasIcon, iconPosition, is } = toRefs(props)
 const { isRenderableSlot } = useRenderableSlots()
 const { parseGlobModules } = useComponentsMapping({
   modules: import.meta.glob('@components/**/*.vue'),
@@ -158,9 +178,20 @@ const bindIconProps = computed(() => {
   }
 })
 
+const toRouter = computed(() => {
+  const { to = { path: '/' } } = attrs
+  return to as RouteLocationNamedRaw
+})
+
+const isTypeLink = computed(() => is.value === 'router-link')
+
 const handleClick = () => {
+  if (isTypeLink.value) {
+    return
+  }
   emits('click', { id: id?.value })
 }
+
 watch(
   () => hasIcon?.value,
   async () => {

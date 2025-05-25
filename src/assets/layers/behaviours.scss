@@ -1,0 +1,23 @@
+.app {
+  &-layout {
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-template-rows: min-content auto;
+    min-height: 100lvh;
+
+    &__sidebar {
+      grid-area: 1 / 1 / 3 / 2;
+      background: red;
+    }
+
+    &__header {
+      grid-area: 1 / 2 / 2 / 3;
+      background: yellow;
+    }
+
+    &__content {
+      grid-area: 2 / 2 / 3 / 3;
+      background: blue;
+    }
+  }
+}

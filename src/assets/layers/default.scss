@@ -3,6 +3,9 @@
 
 @layer base {
   body {
+    @include useUtilities.resetSpacing;
+    height: 100lvh;
+
     * {
       &:is(button) {
         @include useUtilities.resetButton;
@@ -16,5 +19,9 @@
 
   body {
     @include useTypographies.text-heading-l();
+  }
+
+  #app {
+    min-height: 100%;
   }
 }
