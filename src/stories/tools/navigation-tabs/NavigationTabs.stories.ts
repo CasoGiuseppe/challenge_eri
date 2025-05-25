@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { action } from '@storybook/addon-actions'
 import NavigationTabs from '@components/tools/navigation-tabs/NavigationTabs.vue'
 import { computed } from 'vue'
+import { DEFAULT_TABS } from './constants'
 
 const meta = {
   title: 'Tools/Navigation Tabs',
@@ -10,9 +11,11 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     id: { control: 'text' },
+    tabs: { control: 'object' },
   },
   args: {
     id: 'navigation tabs',
+    tabs: DEFAULT_TABS,
   },
 } satisfies Meta
 
