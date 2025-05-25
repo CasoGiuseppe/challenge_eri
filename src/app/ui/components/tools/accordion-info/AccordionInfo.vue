@@ -2,6 +2,7 @@
   <details
     :id="id"
     :title="title"
+    :open="open"
     aria-labelledby="accordion-summary"
     aria-describedby="accordion-content"
     class="accordion-info"

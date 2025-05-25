@@ -10,11 +10,13 @@ const meta = {
   argTypes: {
     id: { control: 'text' },
     title: { control: 'text' },
+    open: { control: 'boolean' },
     summary: { control: 'text' },
     content: { control: 'text' },
   },
   args: {
     id: 'accordion',
+    open: false,
     summary: 'Summary',
     content: 'content',
   },
