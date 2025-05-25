@@ -6,6 +6,8 @@
     aria-labelledby="accordion-summary"
     aria-describedby="accordion-content"
     class="accordion-info"
+    @toggle="handleToggle"
+    ref="accordionDetail"
   >
     <summary id="accordion-summary" class="accordion-info__summary">
       <component
@@ -23,11 +25,13 @@
   </details>
 </template>
 <script setup lang="ts">
-import { computed, onMounted, shallowRef, toRefs, type Component, type PropType } from 'vue'
+import { computed, onMounted, ref, shallowRef, toRefs, type Component, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import useAsyncComponents from '@composables/useAsyncComponents'
 import useComponentsMapping from '@composables/useComponentsMapping'
 
+const accordionDetail = ref<HTMLDetailsElement | null>(null)
+const currentIcon = ref<string | null>(null)
 const props = defineProps({
   /**
    * Set uniqueId for ui accordion component
@@ -65,11 +69,16 @@ const bindIconProps = computed(() => {
   return {
     id: `openClose${id?.value}`,
     size: 's',
-    hasIcon: 'iconAdd',
+    hasIcon: currentIcon.value ?? 'iconAdd',
     isRounded: false,
     unsetStyle: true,
   }
 })
+
+const handleToggle = (event: Event) => {
+  const targetDetails = event.target as HTMLDetailsElement
+  currentIcon.value = targetDetails.open ? 'iconSubtract' : 'iconAdd'
+}
 
 onMounted(async () => {
   shallowIconComponent.value = await create({ component: 'BaseButton' })
