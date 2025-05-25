@@ -1,9 +1,16 @@
 .section-content {
   $sectioncontent: &;
+  --section-padding: var(--spacing-70, 0) var(--spacing-70, 0) var(--spacing-70, 0)
+    var(--spacing-100, 0);
 
   align-items: center;
   display: flex;
   flex: 1;
   justify-content: center;
-  min-height: 100%;
+  overflow: auto;
+  padding: var(--section-padding);
+
+  > * {
+    flex: 1;
+  }
 }
