@@ -7,7 +7,6 @@
   --accordion-border: none;
 
   border: var(--accordion-border);
-
   &[open] {
     --accordion-border: 1px solid var(--color-primary-blue-500);
 
@@ -22,7 +21,10 @@
     @include useTypographies.text-heading-s;
     @include useUtilities.resetSpacing;
 
+    align-items: center;
+    display: flex;
     margin: 0;
+
     background: var(--accordion-summary-background);
     border: var(--accordion-summary-border);
     cursor: pointer;

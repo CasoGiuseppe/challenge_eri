@@ -17,7 +17,9 @@
       v-bind="{ ...bindIconProps }"
     />
     <!-- @slot Default slot for button label -->
-    <p class="base-button__label"><slot /></p>
+    <p v-if="isRenderableSlot('default')" class="base-button__label">
+      <slot />
+    </p>
   </button>
 </template>
 <script lang="ts" setup>
@@ -39,6 +41,7 @@ import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
 import useAsyncComponents from '@composables/useAsyncComponents'
 import useComponentsMapping from '@composables/useComponentsMapping'
 import type { IClick } from './types'
+import { useRenderableSlots } from '@composables/useRenderableSlots'
 
 const attrs = useAttrs()
 const props = defineProps({
@@ -127,6 +130,7 @@ const props = defineProps({
 })
 
 const { id, size, hasIcon, iconPosition } = toRefs(props)
+const { isRenderableSlot } = useRenderableSlots()
 const { parseGlobModules } = useComponentsMapping({
   modules: import.meta.glob('@components/**/*.vue'),
 })
