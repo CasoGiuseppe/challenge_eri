@@ -26,6 +26,10 @@
     background var(--animationTime, 0) var(--ease-out, 'linear'),
     color var(--animationTime, 0) var(--ease-out, 'linear');
 
+  &:is(a) {
+    text-decoration: none;
+  }
+
   &:not(#{$basebutton}--is-square) {
     border-radius: var(--btn-radius);
   }
@@ -66,7 +70,7 @@
   }
 
   @media (hover) {
-    &:not(:disabled):not(:active) {
+    &:not([aria-disabled='true']):not(:active) {
       &:hover {
         &#{$basebutton}--is-primary {
           --btn-background: var(--color-primary-red-600, #000);
@@ -80,7 +84,7 @@
   }
 
   &:active {
-    &:not(:disabled) {
+    &:not([aria-disabled='true']) {
       &#{$basebutton}--is-primary {
         --btn-background: var(--color-primary-red-700, #000);
       }
@@ -91,7 +95,7 @@
     }
   }
 
-  &:disabled {
+  &[aria-disabled='true'] {
     &:not(&#{$basebutton}--is-unset) {
       pointer-events: none;
 

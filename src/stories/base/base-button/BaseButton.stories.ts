@@ -12,6 +12,8 @@ import {
 } from '@components/base/base-button/constants'
 import { computed } from 'vue'
 import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
+import { SUITABLE_IS } from '@components/abstracts/component-is/constants'
+import { vueRouter } from 'storybook-vue3-router'
 
 const meta = {
   title: 'Base/Base Button',
@@ -34,6 +36,10 @@ const meta = {
     },
     isRounded: { control: 'boolean' },
     unsetStyle: { control: 'boolean' },
+    is: {
+      control: 'select',
+      options: [...SUITABLE_IS],
+    },
 
     // extra props
     disabled: { control: 'boolean' },
@@ -47,6 +53,7 @@ const meta = {
     isRounded: true,
     unsetStyle: false,
     default: 'Label',
+    is: 'router-link',
 
     // extra props
     disabled: false,
@@ -82,3 +89,4 @@ const Templates: Story = {
 export const Default: Story = {
   ...Templates,
 }
+Default.decorators = [vueRouter()]
