@@ -33,6 +33,7 @@ const meta = {
       options: [...SUITABLE_POSITION],
     },
     isRounded: { control: 'boolean' },
+    unsetStyle: { control: 'boolean' },
 
     // extra props
     disabled: { control: 'boolean' },
@@ -44,6 +45,7 @@ const meta = {
     variant: useDefaultTypeKey.description,
     iconPosition: useDefaultPositionKey.description,
     isRounded: true,
+    unsetStyle: false,
     default: 'Label',
 
     // extra props

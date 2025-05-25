@@ -42,12 +42,27 @@
       --btn-block-padding: calc(var(--spacing-30) + 2px);
     }
 
+    &primary {
+      &#{$basebutton}--is-unset {
+        --btn-foreground: var(--color-neutral-dark);
+      }
+    }
+
     &secondary {
       --btn-background: none;
       --btn-foreground: var(--color-primary-red-500, #000);
       --btn-border-color: var(--color-primary-red-500, #000);
       --btn-border: 1px solid var(--btn-border-color);
     }
+
+    &unset {
+      --btn-background: none;
+      --btn-border-color: none;
+    }
+  }
+
+  &__label {
+    @include useUtilities.resetSpacing;
   }
 
   @media (hover) {
@@ -89,12 +104,23 @@
     }
   }
 
-  > svg {
-    &[position='leading'] {
+  &:has(> svg[position='leading']) {
+    > svg {
       order: 1;
     }
-    &[position='trailing'] {
+
+    #{$basebutton}__label {
       order: 2;
+    }
+  }
+
+  &:has(> svg[position='trailing']) {
+    > svg {
+      order: 2;
+    }
+
+    #{$basebutton}__label {
+      order: 1;
     }
   }
 }
