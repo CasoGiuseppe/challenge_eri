@@ -1,8 +1,8 @@
 .app {
   &-layout {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: min-content auto;
+    grid-template-rows: min-content auto;
     min-height: 100lvh;
 
     &__sidebar {
