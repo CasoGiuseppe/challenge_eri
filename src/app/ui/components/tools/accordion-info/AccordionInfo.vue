@@ -16,7 +16,24 @@
         :is="shallowIconComponent"
         v-bind="{ ...bindIconProps }"
       />
-      <slot name="summary" />
+      <p v-if="isRenderableSlot('summary')" class="accordion-info__title">
+        <slot name="summary" />
+      </p>
+      <TransitionIs
+        v-if="hasActions"
+        class="accordion-info__actions"
+        group
+        tag="ul"
+        type="from-bottom"
+      >
+        <li
+          v-for="({ id, icon }, index) of actions"
+          :key="id"
+          :style="{ transitionDelay: `${index * 0.05}s` }"
+        >
+          <slot name="actions" :property="{ id, icon }"></slot>
+        </li>
+      </TransitionIs>
     </summary>
     <article id="accordion-content" class="accordion-info__content">
       <!-- @slot Content: slot to show accordion nested content -->
@@ -29,6 +46,10 @@ import { computed, onMounted, ref, shallowRef, toRefs, type Component, type Prop
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import useAsyncComponents from '@composables/useAsyncComponents'
 import useComponentsMapping from '@composables/useComponentsMapping'
+import { useRenderableSlots } from '@composables/useRenderableSlots'
+import { useIsArray } from '@validators//typeCheckers/useIsArray'
+import type { IAction } from './types'
+import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
 
 const accordionDetail = ref<HTMLDetailsElement | null>(null)
 const currentIcon = ref<string | null>(null)
@@ -57,13 +78,26 @@ const props = defineProps({
     type: Boolean as PropType<boolean>,
     default: false,
   },
+
+  /**
+   * Set action button collection
+   */
+  actions: {
+    type: Array as PropType<IAction[]>,
+    validator: (type: IAction[]) => {
+      new useIsArray(type)
+      return true
+    },
+  },
 })
-const { id } = toRefs(props)
+const { id, actions } = toRefs(props)
 const { parseGlobModules } = useComponentsMapping({
   modules: import.meta.glob('@components/**/*.vue'),
 })
 
 const { create } = useAsyncComponents({ modules: parseGlobModules() })
+const { isRenderableSlot } = useRenderableSlots()
+
 const shallowIconComponent: Component = shallowRef()
 const bindIconProps = computed(() => {
   return {
@@ -79,6 +113,11 @@ const handleToggle = (event: Event) => {
   const targetDetails = event.target as HTMLDetailsElement
   currentIcon.value = targetDetails.open ? 'iconSubtract' : 'iconAdd'
 }
+
+const hasActions = computed(() => {
+  const evaluables = [actions?.value !== undefined, (actions?.value?.length ?? 0) > 0]
+  return evaluables.every((state: boolean) => state)
+})
 
 onMounted(async () => {
   shallowIconComponent.value = await create({ component: 'BaseButton' })
