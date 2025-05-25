@@ -39,7 +39,7 @@ const isDisabled = computed(() => {
 })
 
 const toRouter = computed(() => {
-  const { to = { name: 'root' } } = attrs
+  const { to = { path: '/' } } = attrs
   return to as RouteLocationNamedRaw
 })
 </script>
