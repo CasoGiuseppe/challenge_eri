@@ -1,3 +1,44 @@
 .accordion-info {
   $accordioninfo: &;
+  --accordion-inline-padding: var(--spacing-70, 0);
+  --accordion-block-padding: var(--spacing-30, 0);
+  --accordion-summary-background: var(--color-primary-red-50);
+  --accordion-summary-border: 1px solid var(--color-primary-blue-500);
+  --accordion-border: none;
+
+  border: var(--accordion-border);
+
+  &[open] {
+    --accordion-border: 1px solid var(--color-primary-blue-500);
+
+    > summary {
+      margin-bottom: var(--spacing-10);
+      border: none;
+      border-bottom: var(--accordion-summary-border);
+    }
+  }
+
+  &__summary {
+    @include useTypographies.text-heading-s;
+    @include useUtilities.resetSpacing;
+
+    margin: 0;
+    background: var(--accordion-summary-background);
+    border: var(--accordion-summary-border);
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+
+    transition: margin var(--animationTime, 0) var(--ease-out, 'linear');
+
+    &::marker {
+      display: none;
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    padding-inline: var(--accordion-inline-padding);
+    padding-block: var(--accordion-block-padding);
+  }
 }

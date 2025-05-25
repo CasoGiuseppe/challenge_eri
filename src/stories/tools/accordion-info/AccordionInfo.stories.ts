@@ -7,8 +7,17 @@ const meta = {
   title: 'Tools/Accordion Info',
   component: AccordionInfo,
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
+  argTypes: {
+    id: { control: 'text' },
+    title: { control: 'text' },
+    summary: { control: 'text' },
+    content: { control: 'text' },
+  },
+  args: {
+    id: 'accordion',
+    summary: 'Summary',
+    content: 'content',
+  },
 } satisfies Meta
 
 export default meta
@@ -19,14 +28,17 @@ const Templates: Story = {
   render: (args: any) => ({
     components: { AccordionInfo },
     setup() {
-      const hasDefaultSLot = computed<boolean>(() => args.default !== '')
-      return { args, hasDefaultSLot }
+      const hasSummarytSLot = computed<boolean>(() => args.summary !== '')
+      const hasContenttSLot = computed<boolean>(() => args.content !== '')
+      return { args, hasSummarytSLot, hasContenttSLot }
     },
     template: `
       <AccordionInfo
         v-bind="args"
         @click="click"
       >
+        <template #summary v-if="hasSummarytSLot">{{ args.summary }}</template>
+        <template #content v-if="hasContenttSLot">{{ args.content }}</template>
       </AccordionInfo>
     `,
     methods: {
