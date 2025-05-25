@@ -12,7 +12,7 @@
       </TransitionIs>
     </nav>
     <section class="navigation-tabs__view">
-      <RouterView v-slot="{ Component }" name="tabs">
+      <RouterView v-if="route" v-slot="{ Component }" name="tabs">
         <TransitionIs type="from-bottom">
           <component :is="Component" />
         </TransitionIs>
