@@ -1,6 +1,12 @@
 <template>
   <button
-    :class="['base-button', `base-button--is-${size}`, `base-button--is-${variant}`]"
+    :class="[
+      'base-button',
+      `base-button--is-${size}`,
+      `base-button--is-${variant}`,
+      !isRounded ? 'base-button--is-square' : null,
+      unsetStyle ? 'base-button--is-unset' : null,
+    ]"
     :aria-disabled="isDisabled"
     @click="handleClick"
   >
@@ -11,7 +17,7 @@
       v-bind="{ ...bindIconProps }"
     />
     <!-- @slot Default slot for button label -->
-    <slot />
+    <p class="base-button__label"><slot /></p>
   </button>
 </template>
 <script lang="ts" setup>
@@ -102,6 +108,21 @@ const props = defineProps({
       )
       return true
     },
+  },
+  /**
+   * Set corner component rounded state
+   */
+  isRounded: {
+    type: Boolean as PropType<boolean>,
+    default: true,
+  },
+
+  /**
+   * Remove applied styles as background or border
+   */
+  unsetStyle: {
+    type: Boolean as PropType<boolean>,
+    default: true,
   },
 })
 
