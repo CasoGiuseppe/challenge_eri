@@ -35,16 +35,7 @@ const router = createRouter({
                   ),
               },
             },
-            {
-              path: 'customers',
-              name: 'Customers',
-              components: {
-                default: () =>
-                  import(
-                    /* webpackChunkName: "SideNavigation" */ '@components/fakes/FakeTabContent2.vue'
-                  ),
-              },
-            },
+
             {
               path: 'folders',
               name: 'Folders',
