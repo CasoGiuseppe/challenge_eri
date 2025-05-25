@@ -1,20 +1,20 @@
 <template>
-  <button
+  <RouterLink
     :class="['base-tab', isSelected ? 'base-tab--is-selected' : null]"
     :aria-disabled="isDisabled"
-    @click="handleClick"
+    :to="toRouter"
   >
     <!-- @slot Default slot for tab label -->
     <slot />
-  </button>
+  </RouterLink>
 </template>
 <script setup lang="ts">
-import { computed, toRefs, useAttrs, type PropType } from 'vue'
+import { computed, useAttrs, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
-import type { IClick } from '@components/base/base-button/types'
+import type { RouteLocationAsPathGeneric } from 'vue-router'
 
 const attrs = useAttrs()
-const props = defineProps({
+defineProps({
   /**
    * Set uniqueId for ui tab component
    */
@@ -33,18 +33,14 @@ const props = defineProps({
   },
 })
 
-const { id } = toRefs(props)
-const emits = defineEmits<{
-  (e: 'click', id: IClick): void
-}>()
-
 const isDisabled = computed(() => {
   const { disabled = false } = attrs
   return disabled as boolean
 })
 
-const handleClick = () => {
-  emits('click', { id: id?.value })
-}
+const toRouter = computed(() => {
+  const { to = { path: '/' } } = attrs
+  return to as RouteLocationAsPathGeneric
+})
 </script>
 <style src="./BaseTab.scss" lang="scss" scoped></style>

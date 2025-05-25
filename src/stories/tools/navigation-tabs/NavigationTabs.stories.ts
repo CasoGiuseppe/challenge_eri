@@ -1,50 +1,39 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { action } from '@storybook/addon-actions'
-import BaseTab from '@components/base/base-tab/BaseTab.vue'
+import NavigationTabs from '@components/tools/navigation-tabs/NavigationTabs.vue'
 import { computed } from 'vue'
-import { vueRouter } from 'storybook-vue3-router'
 
 const meta = {
-  title: 'Base/Base Tab',
-  component: BaseTab,
+  title: 'Tools/Navigation Tabs',
+  component: NavigationTabs,
   tags: ['autodocs'],
   argTypes: {
     id: { control: 'text' },
-    isSelected: { control: 'boolean' },
-    default: { control: 'text' },
-
-    // extra props
-    disabled: { control: 'boolean' },
   },
   args: {
-    id: 'tab',
-    isSelected: false,
-    default: 'Tab',
-
-    // extra props
-    disabled: false,
+    id: 'navigation tabs',
   },
 } satisfies Meta
 
 export default meta
 
-type Story = StoryObj<typeof BaseTab>
+type Story = StoryObj<typeof NavigationTabs>
 
 const Templates: Story = {
   render: (args: any) => ({
-    components: { BaseTab },
+    components: { NavigationTabs },
     setup() {
       const hasDefaultSLot = computed<boolean>(() => args.default !== '')
       return { args, hasDefaultSLot }
     },
     template: `
-      <BaseTab
+      <NavigationTabs
         v-bind="args"
         @click="click"
       >
         <template #default v-if="hasDefaultSLot">{{ args.default }}</template>
-      </BaseTab>
+      </NavigationTabs>
     `,
     methods: {
       click: action('click'),
@@ -55,5 +44,3 @@ const Templates: Story = {
 export const Default: Story = {
   ...Templates,
 }
-
-Default.decorators = [vueRouter()]
