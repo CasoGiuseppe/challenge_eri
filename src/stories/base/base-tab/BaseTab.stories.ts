@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { action } from '@storybook/addon-actions'
 import BaseTab from '@components/base/base-tab/BaseTab.vue'
 import { computed } from 'vue'
+import { SUITABLE_IS } from '@components/abstracts/component-is/constants'
 import { vueRouter } from 'storybook-vue3-router'
 
 const meta = {
@@ -13,6 +14,10 @@ const meta = {
     id: { control: 'text' },
     selected: { control: 'boolean' },
     default: { control: 'text' },
+    is: {
+      control: 'select',
+      options: [...SUITABLE_IS],
+    },
 
     // extra props
     disabled: { control: 'boolean' },
@@ -21,6 +26,7 @@ const meta = {
     id: 'tab',
     selected: false,
     default: 'Tab',
+    is: 'router-link',
 
     // extra props
     disabled: false,

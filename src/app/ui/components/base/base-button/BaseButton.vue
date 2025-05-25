@@ -8,7 +8,7 @@
       unsetStyle ? 'base-button--is-unset' : null,
     ]"
     :is="is"
-    :to="to"
+    :to="toRouter"
     :aria-disabled="isDisabled"
     @click="handleClick"
   >
@@ -147,17 +147,9 @@ const props = defineProps({
       return true
     },
   },
-
-  /**
-   * Set the router-to object for navigation
-   */
-  to: {
-    type: Object as PropType<RouteLocationNamedRaw>,
-    default: () => ({ path: '/' }),
-  },
 })
 
-const { id, size, hasIcon, iconPosition } = toRefs(props)
+const { id, size, hasIcon, iconPosition, is } = toRefs(props)
 const { isRenderableSlot } = useRenderableSlots()
 const { parseGlobModules } = useComponentsMapping({
   modules: import.meta.glob('@components/**/*.vue'),
@@ -186,9 +178,20 @@ const bindIconProps = computed(() => {
   }
 })
 
+const toRouter = computed(() => {
+  const { to = { path: '/' } } = attrs
+  return to as RouteLocationNamedRaw
+})
+
+const isTypeLink = computed(() => is.value === 'router-link')
+
 const handleClick = () => {
+  if (isTypeLink.value) {
+    return
+  }
   emits('click', { id: id?.value })
 }
+
 watch(
   () => hasIcon?.value,
   async () => {
