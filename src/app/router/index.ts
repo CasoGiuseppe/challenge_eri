@@ -6,7 +6,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'root',
-      component: () => import(/* webpackChunkName: "Test" */ '@components/base/BaseIndex.vue'),
+      component: () =>
+        import(/* webpackChunkName: "RootLayout" */ '@layouts/skeleton-root/SkeletonRoot.vue'),
     },
   ],
 })
