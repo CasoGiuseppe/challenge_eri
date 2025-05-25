@@ -26,17 +26,6 @@ const router = createRouter({
           },
           children: [
             {
-              path: 'admin',
-              name: 'Admin',
-              components: {
-                default: () =>
-                  import(
-                    /* webpackChunkName: "SideNavigation" */ '@components/fakes/FakeTabContent1.vue'
-                  ),
-              },
-            },
-
-            {
               path: 'folders',
               name: 'Folders',
               components: {
