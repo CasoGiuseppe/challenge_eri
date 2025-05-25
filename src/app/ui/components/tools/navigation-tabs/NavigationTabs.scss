@@ -21,6 +21,8 @@
   }
 
   &__view {
+    @include useTypographies.text-paragraph-xs;
+
     align-items: center;
     display: flex;
     justify-content: center;
@@ -28,7 +30,6 @@
 
     &:empty {
       &:before {
-        @include useTypographies.text-paragraph-xs;
         content: 'load here tab view';
       }
     }
