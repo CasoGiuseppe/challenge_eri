@@ -54,6 +54,7 @@ const Templates: Story = {
             :isRounded="false"
             :unsetStyle="true"
             @click="click"
+            :style="{'--custom-foreground': 'black'}"
           />
         </template>
       </AccordionInfo>

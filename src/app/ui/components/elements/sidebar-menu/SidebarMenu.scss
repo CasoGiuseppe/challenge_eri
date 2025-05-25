@@ -1,0 +1,27 @@
+.sidebar-menu {
+  $sidebarmenu: &;
+  --sidebar-background: inherit;
+  --sidebar-items-inline-padding: var(--spacing-70, 0);
+  --sidebar-items-gap: var(--spacing-70, 0);
+
+  display: inline-flex;
+  overflow: hidden;
+
+  background: var(--custom-sidebar-background, var(--sidebar-background));
+
+  &__items {
+    @include useUtilities.resetSpacing;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--sidebar-items-gap);
+    padding-inline: var(--sidebar-items-inline-padding);
+
+    transition: gap var(--animationTime, 0) var(--ease-out, 'linear');
+
+    #{$sidebarmenu}--is-expanded & {
+      --sidebar-items-inline-padding: 0;
+      --sidebar-items-gap: 0;
+    }
+  }
+}

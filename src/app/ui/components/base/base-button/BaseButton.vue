@@ -6,6 +6,7 @@
       `base-button--is-${variant}`,
       !isRounded ? 'base-button--is-square' : null,
       unsetStyle ? 'base-button--is-unset' : null,
+      isFullSize ? 'base-button--is-fullsize' : null,
     ]"
     :is="is"
     :to="toRouter"
@@ -146,6 +147,14 @@ const props = defineProps({
       )
       return true
     },
+  },
+
+  /**
+   * Set fullsize component width
+   */
+  isFullSize: {
+    type: Boolean as PropType<boolean>,
+    default: false,
   },
 })
 

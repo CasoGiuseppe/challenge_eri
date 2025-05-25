@@ -106,6 +106,7 @@ const bindIconProps = computed(() => {
     hasIcon: currentIcon.value ?? 'iconAdd',
     isRounded: false,
     unsetStyle: true,
+    style: { '--custom-foreground': 'black' },
   }
 })
 

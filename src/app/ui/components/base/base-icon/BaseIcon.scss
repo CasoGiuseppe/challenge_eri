@@ -7,6 +7,8 @@
   flex: 0 0 var(--size, 100%);
   aspect-ratio: 1/1;
 
+  transition: flex var(--animationTime, 0) var(--ease-out, 'linear');
+
   &--is {
     &-m {
       --size: #{useTools.px2rem(calc(useUnits.$unit-base * 3))}; // 24;

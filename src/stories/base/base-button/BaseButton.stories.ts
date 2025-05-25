@@ -40,6 +40,7 @@ const meta = {
       control: 'select',
       options: [...SUITABLE_IS],
     },
+    isFullSize: { control: 'boolean' },
 
     // extra props
     disabled: { control: 'boolean' },
@@ -54,6 +55,7 @@ const meta = {
     unsetStyle: false,
     default: 'Label',
     is: 'router-link',
+    isFullSize: false,
 
     // extra props
     disabled: false,

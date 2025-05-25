@@ -1,9 +1,13 @@
 <template>
-  <aside class="sidebar-menu">
+  <aside :class="['sidebar-menu', isExpanded ? 'sidebar-menu--is-expanded' : null]">
     <nav v-if="hasNavigation" class="sidebar-menu__list">
-      <TransitionIs group tag="ul" type="from-left">
-        <li v-for="{ id, label, icon, to } of navigation" :key="id">
-          <slot name="body" :property="{ id, label, icon, to }" />
+      <TransitionIs class="sidebar-menu__items" group tag="ul" type="from-left">
+        <li
+          v-for="({ id, label, icon, to }, index) of navigation"
+          :key="id"
+          :style="{ transitionDelay: `${index * 0.05}s` }"
+        >
+          <slot name="navigation" :property="{ id, label, icon, to }" />
         </li>
       </TransitionIs>
     </nav>
@@ -37,6 +41,13 @@ const props = defineProps({
       return true
     },
   },
+  /**
+   * Set expanded sidebar state
+   */
+  isExpanded: {
+    type: Boolean as PropType<boolean>,
+    default: true,
+  },
 })
 
 const { navigation } = toRefs(props)
@@ -45,3 +56,4 @@ const hasNavigation = computed(() => {
   return evaluables.every((state: boolean) => state)
 })
 </script>
+<style src="./SidebarMenu.scss" lang="scss" scoped></style>
