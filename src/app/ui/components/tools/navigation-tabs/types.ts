@@ -1,7 +1,7 @@
-import type { RouteLocationAsPathGeneric } from 'vue-router'
+import type { RouteLocationNamedRaw } from 'vue-router'
 
 export interface ITab {
-  id?: string
+  id: string
   label: string
-  to: RouteLocationAsPathGeneric
+  to: RouteLocationNamedRaw
 }

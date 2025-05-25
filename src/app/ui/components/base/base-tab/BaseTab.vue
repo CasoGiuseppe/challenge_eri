@@ -1,6 +1,6 @@
 <template>
   <RouterLink
-    :class="['base-tab', isSelected ? 'base-tab--is-selected' : null]"
+    :class="['base-tab', selected ? 'base-tab--is-selected' : null]"
     :aria-disabled="isDisabled"
     :to="toRouter"
   >
@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { computed, useAttrs, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
-import type { RouteLocationAsPathGeneric } from 'vue-router'
+import type { RouteLocationNamedRaw } from 'vue-router'
 
 const attrs = useAttrs()
 defineProps({
@@ -27,7 +27,7 @@ defineProps({
     },
   },
 
-  isSelected: {
+  selected: {
     type: Boolean as PropType<boolean>,
     default: false,
   },
@@ -39,8 +39,8 @@ const isDisabled = computed(() => {
 })
 
 const toRouter = computed(() => {
-  const { to = { path: '/' } } = attrs
-  return to as RouteLocationAsPathGeneric
+  const { to = { name: 'root' } } = attrs
+  return to as RouteLocationNamedRaw
 })
 </script>
 <style src="./BaseTab.scss" lang="scss" scoped></style>

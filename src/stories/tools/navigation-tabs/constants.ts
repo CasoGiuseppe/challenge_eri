@@ -4,11 +4,11 @@ export const DEFAULT_TABS: ITab[] = [
   {
     id: '1',
     label: 'tab 1',
-    to: { path: '/' },
+    to: { name: 'root' },
   },
   {
     id: '2',
     label: 'tab 2',
-    to: { path: '/' },
+    to: { name: 'root' },
   },
 ]

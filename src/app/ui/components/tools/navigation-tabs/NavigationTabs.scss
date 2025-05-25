@@ -2,6 +2,10 @@
   $navigationtabs: &;
   --tabs-gap: var(--spacing-40, 0);
 
+  &__bar {
+    overflow: hidden;
+  }
+
   &__list {
     @include useUtilities.resetSpacing;
 

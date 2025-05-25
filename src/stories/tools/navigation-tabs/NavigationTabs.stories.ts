@@ -35,8 +35,8 @@ const Templates: Story = {
         v-bind="args"
         @click="click"
       >
-        <template #tab="{ property: { id, label, to }}">
-          <BaseTab :id="id" :to="to">{{ label }}</BaseTab>
+        <template #tab="{ property: { id, label, to, selected = false }}">
+          <BaseTab :id="id" :to="to" :selected="selected">{{ label }}</BaseTab>
         </template>
       </NavigationTabs>
     `,
