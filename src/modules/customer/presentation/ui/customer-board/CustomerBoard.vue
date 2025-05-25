@@ -1,7 +1,7 @@
 <template>
   <NavigationTabs :tabs="DEFAULT_TABS">
     <template #tab="{ property: { id, label, to, selected = false } }">
-      <BaseTab :id="id" :to="to" :selected="selected" is="router-link">{{ label }}</BaseTab>
+      <BaseTab :id="id" :to="to" :isSelected="selected" is="router-link">{{ label }}</BaseTab>
     </template>
   </NavigationTabs>
 </template>

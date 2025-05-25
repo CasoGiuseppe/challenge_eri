@@ -1,6 +1,6 @@
 <template>
   <ComponentIs
-    :class="['base-tab', isSelected ? 'base-tab--is-isSelected' : null]"
+    :class="['base-tab', isSelected ? 'base-tab--is-selected' : null]"
     :aria-disabled="isDisabled"
     :to="toRouter"
     :is="is"
