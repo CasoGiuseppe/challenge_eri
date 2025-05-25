@@ -1,0 +1,9 @@
+.section-content {
+  $sectioncontent: &;
+
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  min-height: 100%;
+}
