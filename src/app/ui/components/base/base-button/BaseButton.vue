@@ -8,6 +8,7 @@
       unsetStyle ? 'base-button--is-unset' : null,
     ]"
     :is="is"
+    :to="to"
     :aria-disabled="isDisabled"
     @click="handleClick"
   >
@@ -45,6 +46,7 @@ import type { IClick } from './types'
 import { useRenderableSlots } from '@composables/useRenderableSlots'
 import ComponentIs from '@components/abstracts/component-is/ComponentIs.vue'
 import { SUITABLE_IS, useDefaultIsKey } from '@components/abstracts/component-is/constants'
+import type { RouteLocationNamedRaw } from 'vue-router'
 
 const attrs = useAttrs()
 const props = defineProps({
@@ -144,6 +146,14 @@ const props = defineProps({
       )
       return true
     },
+  },
+
+  /**
+   * Set the router-to object for navigation
+   */
+  to: {
+    type: Object as PropType<RouteLocationNamedRaw>,
+    default: () => ({ path: '/' }),
   },
 })
 
