@@ -1,6 +1,11 @@
 <template>
   <button
-    :class="['base-button', `base-button--is-${size}`, `base-button--is-${variant}`]"
+    :class="[
+      'base-button',
+      `base-button--is-${size}`,
+      `base-button--is-${variant}`,
+      !isRounded ? 'base-button--is-square' : null,
+    ]"
     :aria-disabled="isDisabled"
     @click="handleClick"
   >
@@ -102,6 +107,13 @@ const props = defineProps({
       )
       return true
     },
+  },
+  /**
+   * Set corner component rounded state
+   */
+  isRounded: {
+    type: Boolean as PropType<boolean>,
+    default: true,
   },
 })
 
