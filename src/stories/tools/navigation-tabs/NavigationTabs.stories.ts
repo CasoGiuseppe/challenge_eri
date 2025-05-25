@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import NavigationTabs from '@components/tools/navigation-tabs/NavigationTabs.vue'
 import { computed } from 'vue'
 import { DEFAULT_TABS } from './constants'
-
+import BaseTab from '@components/base/base-tab/BaseTab.vue'
 const meta = {
   title: 'Tools/Navigation Tabs',
   component: NavigationTabs,
@@ -25,7 +25,7 @@ type Story = StoryObj<typeof NavigationTabs>
 
 const Templates: Story = {
   render: (args: any) => ({
-    components: { NavigationTabs },
+    components: { NavigationTabs, BaseTab },
     setup() {
       const hasDefaultSLot = computed<boolean>(() => args.default !== '')
       return { args, hasDefaultSLot }
@@ -35,7 +35,9 @@ const Templates: Story = {
         v-bind="args"
         @click="click"
       >
-        <template #default v-if="hasDefaultSLot">{{ args.default }}</template>
+        <template #tab="{ property: { id, label, to }}">
+          <BaseTab :id="id" :to="to">{{ label }}</BaseTab>
+        </template>
       </NavigationTabs>
     `,
     methods: {

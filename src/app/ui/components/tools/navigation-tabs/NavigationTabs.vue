@@ -1,6 +1,6 @@
 <template>
   <nav v-if="hasTabs" :id="id" class="navigation-tabs">
-    <TransitionIs group tag="ul" type="from-bottom">
+    <TransitionIs class="navigation-tabs__list" group tag="ul" type="from-bottom">
       <li
         v-for="({ id, label, to }, index) of tabs"
         :key="id"
@@ -16,6 +16,7 @@ import { computed, toRefs, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import type { ITab } from './types'
+import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
 
 const props = defineProps({
   /**

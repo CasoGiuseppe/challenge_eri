@@ -1,3 +1,17 @@
 .navigation-tabs {
   $navigationtabs: &;
+  --tabs-gap: var(--spacing-40, 0);
+
+  &__list {
+    @include useUtilities.resetSpacing;
+
+    display: flex;
+    gap: var(--tabs-gap);
+
+    border-bottom: 1px solid var(--color-neutral-dark, #000);
+
+    > li {
+      display: flex;
+    }
+  }
 }
