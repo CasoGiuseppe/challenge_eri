@@ -11,6 +11,13 @@
         </li>
       </TransitionIs>
     </nav>
+    <section class="navigation-tabs__view">
+      <RouterView v-slot="{ Component }" name="header">
+        <TransitionIs type="from-bottom">
+          <component :is="Component" />
+        </TransitionIs>
+      </RouterView>
+    </section>
   </section>
 </template>
 <script setup lang="ts">

@@ -1,6 +1,7 @@
 .navigation-tabs {
   $navigationtabs: &;
   --tabs-gap: var(--spacing-40, 0);
+  --tabs-view-padding: var(--spacing-60, 0);
 
   &__bar {
     overflow: hidden;
@@ -16,6 +17,20 @@
 
     > li {
       display: flex;
+    }
+  }
+
+  &__view {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: var(--tabs-view-padding);
+
+    &:empty {
+      &:before {
+        @include useTypographies.text-paragraph-xs;
+        content: 'load here current view';
+      }
     }
   }
 }
