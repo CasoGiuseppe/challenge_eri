@@ -1,5 +1,15 @@
 <template>
-  <nav v-if="hasTabs" :id="id" class="navigation-tabs">navigation tabs</nav>
+  <nav v-if="hasTabs" :id="id" class="navigation-tabs">
+    <TransitionIs group tag="ul" type="from-bottom">
+      <li
+        v-for="({ id, label, to }, index) of tabs"
+        :key="id"
+        :style="{ transitionDelay: `${index * 0.05}s` }"
+      >
+        <slot name="tab" :property="{ id, label, to }" />
+      </li>
+    </TransitionIs>
+  </nav>
 </template>
 <script setup lang="ts">
 import { computed, toRefs, type PropType } from 'vue'
