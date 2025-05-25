@@ -122,7 +122,7 @@ const props = defineProps({
    */
   unsetStyle: {
     type: Boolean as PropType<boolean>,
-    default: true,
+    default: false,
   },
 })
 
