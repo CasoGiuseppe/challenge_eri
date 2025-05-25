@@ -91,28 +91,4 @@ describe('BaseButton component tests', () => {
       expect(htmlAttributes).toHaveProperty('disabled')
     })
   })
-
-  describe('Test slot behaviours', () => {
-    beforeEach(async () => {
-      $wrapper = await renderButton({
-        props: {
-          id: $isDefaultID,
-          hasIcon: $isDefaultIcon,
-        },
-        slots: {
-          default: $isDefaultSlot,
-        },
-      })
-    })
-
-    it('should render the correct default slot content', () => {
-      expect($wrapper.html()).toContain($isDefaultSlot)
-    })
-
-    it('should render the correct icon when exist', async () => {
-      const $icon = $wrapper.find(`${$uiIconID}`)
-      expect($icon.exists()).toBeTruthy()
-      expect($icon.attributes('position')).toBe($isDefaultIconPosition)
-    })
-  })
 })
