@@ -9,10 +9,12 @@
 </template>
 <script setup lang="ts">
 import { onBeforeMount, provide } from 'vue'
-import { keyUseAsyncComponent } from '@shared/types/symbols'
+import { keyUseAsyncComponent, keyUseMappingComponent } from '@shared/types/symbols'
 import useAsyncComponents from '@composables/useAsyncComponents'
+import useComponentsMapping from '@composables/useComponentsMapping'
 
 onBeforeMount(() => {
   provide(keyUseAsyncComponent, useAsyncComponents)
+  provide(keyUseMappingComponent, useComponentsMapping)
 })
 </script>
