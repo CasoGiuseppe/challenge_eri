@@ -1,4 +1,7 @@
 <template>
+  <AccordionInfo>
+    <template #summary>Client <strong>015454156 - Client 1111111111 NC</strong></template>
+  </AccordionInfo>
   <NavigationTabs :tabs="DEFAULT_TABS">
     <template #tab="{ property: { id, label, to, selected = false } }">
       <BaseTab :id="id" :to="to" :isSelected="selected" is="router-link">{{ label }}</BaseTab>
@@ -10,7 +13,7 @@ import { computed } from 'vue'
 import NavigationTabs from '@components/tools/navigation-tabs/NavigationTabs.vue'
 import BaseTab from '@components/base/base-tab/BaseTab.vue'
 import type { ITab } from '@components/tools/navigation-tabs/types'
-
+import AccordionInfo from '@components/tools/accordion-info/AccordionInfo.vue'
 const DEFAULT_TABS = computed<ITab[]>(() => {
   return [
     {

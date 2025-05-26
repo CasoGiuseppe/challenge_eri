@@ -3,6 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 export default {
   path: 'admin',
   name: 'Admin',
+  meta: { family: 'admin' },
   components: {
     default: () =>
       import(

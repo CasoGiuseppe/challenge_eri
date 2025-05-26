@@ -3,6 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 export default {
   path: 'folders',
   name: 'Folders',
+  meta: { family: 'folders' },
   components: {
     default: () =>
       import(
