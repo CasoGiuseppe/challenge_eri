@@ -28,4 +28,10 @@
   &__actions {
     @include useUtilities.resetSpacing;
   }
+
+  &__actions {
+    align-items: center;
+    display: flex;
+    gap: var(--spacing-20, 0);
+  }
 }

@@ -13,24 +13,35 @@
       <p v-if="isRenderableSlot('summary')" class="accordion-body__title">
         <slot name="summary" />
       </p>
-      <ul class="accordion-body__actions">
+      <TransitionIs class="accordion-body__actions" group tag="ul" type="from-bottom">
+        <template v-if="hasActions">
+          <li
+            v-for="({ id, icon }, index) of actions"
+            :key="id"
+            :style="{ transitionDelay: `${index * 0.05}s` }"
+          >
+            <slot name="actions" :property="{ id, icon }"></slot>
+          </li>
+        </template>
         <li>
           <component
-            v-if="shallowIconComponent"
-            :is="shallowIconComponent"
+            v-if="shallowTrailingIconComponent"
+            :is="shallowTrailingIconComponent"
             v-bind="{ ...bindIconProps }"
           />
         </li>
-      </ul>
+      </TransitionIs>
     </summary>
   </details>
 </template>
 <script setup lang="ts">
 import { computed, onMounted, ref, shallowRef, toRefs, type Component, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
+import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import { useRenderableSlots } from '@composables/useRenderableSlots'
 import useAsyncComponents from '@composables/useAsyncComponents'
 import useComponentsMapping from '@composables/useComponentsMapping'
+import type { IAction } from './types'
 
 const currentIcon = ref<string | null>(null)
 const props = defineProps({
@@ -58,9 +69,19 @@ const props = defineProps({
     type: Boolean as PropType<boolean>,
     default: false,
   },
+  /**
+   * Set action button collection
+   */
+  actions: {
+    type: Array as PropType<IAction[]>,
+    validator: (type: IAction[]) => {
+      new useIsArray(type)
+      return true
+    },
+  },
 })
 
-const { id } = toRefs(props)
+const { id, actions } = toRefs(props)
 const { isRenderableSlot } = useRenderableSlots()
 const { parseGlobModules } = useComponentsMapping({
   modules: import.meta.glob('@components/**/*.vue'),
@@ -68,7 +89,9 @@ const { parseGlobModules } = useComponentsMapping({
 
 const { create } = useAsyncComponents({ modules: parseGlobModules() })
 
-const shallowIconComponent: Component = shallowRef()
+const shallowTrailingIconComponent: Component = shallowRef()
+//const shallowLeadingIconComponent: Component = shallowRef()
+
 const bindIconProps = computed(() => {
   return {
     id: `openClose${id?.value}`,
@@ -80,13 +103,18 @@ const bindIconProps = computed(() => {
   }
 })
 
+const hasActions = computed(() => {
+  const evaluables = [actions?.value !== undefined, (actions?.value?.length ?? 0) > 0]
+  return evaluables.every((state: boolean) => state)
+})
+
 const handleToggle = (event: Event) => {
   const targetDetails = event.target as HTMLDetailsElement
   currentIcon.value = targetDetails.open ? 'iconSubtract' : 'iconAdd'
 }
 
 onMounted(async () => {
-  shallowIconComponent.value = await create({ component: 'BaseButton' })
+  shallowTrailingIconComponent.value = await create({ component: 'BaseButton' })
 })
 </script>
 <style src="./AccordionBody.scss" lang="scss" scoped></style>
