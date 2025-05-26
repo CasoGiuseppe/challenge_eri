@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { NetworkConstants } from '@modules/core/utilities/index'
 
-const { BASE_APP_LOCALE } = NetworkConstants
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -10,14 +8,13 @@ const router = createRouter({
       name: 'root',
       redirect: () => ({
         name: 'app',
-        query: { lang: BASE_APP_LOCALE },
       }),
       component: () =>
         import(/* webpackChunkName: "RootLayout" */ '@layouts/skeleton-root/SkeletonRoot.vue'),
 
       children: [
         {
-          path: 'app/:lang?',
+          path: 'app',
           name: 'app',
           components: {
             aside: () =>
