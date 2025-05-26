@@ -1,17 +1,10 @@
 import type { InjectionKey } from 'vue'
-import type { IAsyncComponent } from '@composables/useAsyncComponents/interfaces'
-import type {
-  collectionMappingRow,
-  IComponentMapping,
-} from '@composables/useComponentsMapping/interfaces'
-import type { IRenderableSlots } from '@composables/useRenderableSlots/interfaces'
+import type { IProvidedAsyncComponent } from '@composables/useAsyncComponents/interfaces'
+import type { IProvidedComponentMapping } from '@composables/useComponentsMapping/interfaces'
+import type { IProvidedRenderableCheck } from '@composables/useRenderableSlots/interfaces'
+import type { IProvidedTranslation } from '@composables/useTranslations/interfaces'
 
-export const keyUseAsyncComponent = Symbol() as InjectionKey<
-  ({ modules }: { modules: collectionMappingRow }) => IAsyncComponent
->
-
-export const keyUseMappingComponent = Symbol() as InjectionKey<
-  ({ modules }: { modules: collectionMappingRow }) => IComponentMapping
->
-
-export const keyUseRenderableSlot = Symbol() as InjectionKey<() => IRenderableSlots>
+export const keyUseAsyncComponent = Symbol() as InjectionKey<IProvidedAsyncComponent>
+export const keyUseMappingComponent = Symbol() as InjectionKey<IProvidedComponentMapping>
+export const keyUseRenderableSlot = Symbol() as InjectionKey<IProvidedRenderableCheck>
+export const keyUseTranslation = Symbol() as InjectionKey<IProvidedTranslation>
