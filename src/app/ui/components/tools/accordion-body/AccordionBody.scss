@@ -1,0 +1,29 @@
+.accordion-body {
+  $accordionbody: &;
+  --accordion-summary-border: 1px solid var(--color-neutral-dark, #000);
+  --accordion-summary-block-padding: var(--spacing-20, 0);
+  --accordion-summary-inline-padding: var(--spacing-60, 0);
+
+  &__summary {
+    @include useTypographies.text-heading-s($weight: semibold);
+    @include useUtilities.resetSpacing;
+
+    border-bottom: var(--accordion-summary-border);
+    padding-inline: var(--accordion-summary-inline-padding);
+    padding-block: var(--accordion-summary-block-padding);
+    overflow: hidden;
+
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+
+    &::marker {
+      display: none;
+    }
+  }
+
+  &__title,
+  &__actions {
+    @include useUtilities.resetSpacing;
+  }
+}

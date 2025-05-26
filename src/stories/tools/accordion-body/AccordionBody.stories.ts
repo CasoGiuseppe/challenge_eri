@@ -8,8 +8,12 @@ const meta = {
   title: 'Tools/Accordion Body',
   component: AccordionBody,
   tags: ['autodocs'],
-  argTypes: {},
-  args: {},
+  argTypes: {
+    summary: { control: 'text' },
+  },
+  args: {
+    summary: 'Accordion title',
+  },
 } satisfies Meta
 
 export default meta
@@ -29,6 +33,7 @@ const Templates: Story = {
         v-bind="args"
         @click="click"
       >
+        <template #summary v-if="hasSummarytSLot">{{ args.summary }}</template>
       </AccordionBody>
     `,
     methods: {

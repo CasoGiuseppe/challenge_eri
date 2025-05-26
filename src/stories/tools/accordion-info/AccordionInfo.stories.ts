@@ -21,7 +21,7 @@ const meta = {
   args: {
     id: 'accordion',
     open: false,
-    summary: 'Client',
+    summary: 'Accordion title',
     content: 'content',
     actions: DEFAULT_ACTIONS,
   },
@@ -44,7 +44,7 @@ const Templates: Story = {
         v-bind="args"
         @click="click"
       >
-        <template #summary v-if="hasSummarytSLot">{{ args.summary }} <strong>015454156 - Client 1111111111 NC</strong></template>
+        <template #summary v-if="hasSummarytSLot">{{ args.summary }}</template>
         <template #content v-if="hasContenttSLot">{{ args.content }}</template>
         <template #actions="{ property: { id, icon }}">
           <BaseButton

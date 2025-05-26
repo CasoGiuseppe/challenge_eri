@@ -78,7 +78,6 @@ const props = defineProps({
     type: Boolean as PropType<boolean>,
     default: false,
   },
-
   /**
    * Set action button collection
    */
