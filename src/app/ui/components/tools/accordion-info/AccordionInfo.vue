@@ -12,7 +12,6 @@
     <summary id="accordion-summary" class="accordion-info__summary">
       <component
         v-if="shallowIconComponent"
-        data-testID="ui-icon"
         :is="shallowIconComponent"
         v-bind="{ ...bindIconProps }"
       />

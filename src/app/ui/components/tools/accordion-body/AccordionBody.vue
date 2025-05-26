@@ -14,17 +14,26 @@
         <slot name="summary" />
       </p>
       <ul class="accordion-body__actions">
-        <li>action</li>
+        <li>
+          <component
+            v-if="shallowIconComponent"
+            :is="shallowIconComponent"
+            v-bind="{ ...bindIconProps }"
+          />
+        </li>
       </ul>
     </summary>
   </details>
 </template>
 <script setup lang="ts">
-import type { PropType } from 'vue'
+import { computed, onMounted, ref, shallowRef, toRefs, type Component, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useRenderableSlots } from '@composables/useRenderableSlots'
+import useAsyncComponents from '@composables/useAsyncComponents'
+import useComponentsMapping from '@composables/useComponentsMapping'
 
-defineProps({
+const currentIcon = ref<string | null>(null)
+const props = defineProps({
   /**
    * Set uniqueId for ui accordion component
    */
@@ -51,12 +60,33 @@ defineProps({
   },
 })
 
+const { id } = toRefs(props)
 const { isRenderableSlot } = useRenderableSlots()
+const { parseGlobModules } = useComponentsMapping({
+  modules: import.meta.glob('@components/**/*.vue'),
+})
 
-const handleToggle = () => {
-  //const targetDetails = event.target as HTMLDetailsElement
-  // currentIcon.value = targetDetails.open ? 'iconSubtract' : 'iconAdd'
-  return 'iconAdd'
+const { create } = useAsyncComponents({ modules: parseGlobModules() })
+
+const shallowIconComponent: Component = shallowRef()
+const bindIconProps = computed(() => {
+  return {
+    id: `openClose${id?.value}`,
+    size: 's',
+    hasIcon: currentIcon.value ?? 'iconAdd',
+    isRounded: false,
+    unsetStyle: true,
+    style: { '--custom-foreground': 'black' },
+  }
+})
+
+const handleToggle = (event: Event) => {
+  const targetDetails = event.target as HTMLDetailsElement
+  currentIcon.value = targetDetails.open ? 'iconSubtract' : 'iconAdd'
 }
+
+onMounted(async () => {
+  shallowIconComponent.value = await create({ component: 'BaseButton' })
+})
 </script>
 <style src="./AccordionBody.scss" lang="scss" scoped></style>

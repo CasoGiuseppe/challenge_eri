@@ -16,6 +16,8 @@
     cursor: pointer;
     display: flex;
     justify-content: space-between;
+    outline: none;
+    user-select: none;
 
     &::marker {
       display: none;
