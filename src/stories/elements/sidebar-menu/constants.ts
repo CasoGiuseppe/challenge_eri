@@ -1,21 +1,21 @@
-import type { INavigation } from '@components/elements/sidebar-menu/types'
+import type { IGlobalNavigation } from '@/app/shared/stores/configuration/navigation/interfaces'
 
-export const DEFAULT_NAVIGATION: INavigation[] = [
+export const DEFAULT_NAVIGATION: IGlobalNavigation[] = [
   {
     id: '1',
-    label: 'Administration',
+    translation: 'Administration',
     icon: 'iconAdministration',
     to: { name: 'root' },
   },
   {
     id: '2',
-    label: 'Customer',
+    translation: 'Customer',
     icon: 'iconCustomer',
     to: { name: 'root' },
   },
   {
     id: '3',
-    label: 'Folder',
+    translation: 'Folder',
     icon: 'iconFolder',
     to: { name: 'root' },
   },

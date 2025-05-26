@@ -47,7 +47,7 @@ const Templates: Story = {
         v-bind="args"
         :style="{'--custom-sidebar-background': 'hsla(358, 78%, 55%, 1)'}"
       >
-        <template #navigation="{ property: { id, label, icon, to }}">
+        <template #navigation="{ property: { id, translation, icon, to }}">
           <BaseButton
             :id="id"
             is="router-link"
@@ -60,7 +60,7 @@ const Templates: Story = {
                 v-if="isExpanded"
                 #default
               >
-                  {{ label }}
+                  {{ translation }}
               </template>
             </BaseButton>
         </template>

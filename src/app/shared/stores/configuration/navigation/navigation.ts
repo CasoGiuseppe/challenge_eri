@@ -12,3 +12,9 @@ export const useGlobalNavigation = defineStore('useGlobalNavigation', () => {
     mainNavigationItems,
   }
 })
+
+export const useGlobalNavigationStore = useGlobalNavigation()
+export type GlobalNavigationeStore = Omit<
+  ReturnType<typeof useGlobalNavigation>,
+  keyof ReturnType<typeof defineStore>
+>

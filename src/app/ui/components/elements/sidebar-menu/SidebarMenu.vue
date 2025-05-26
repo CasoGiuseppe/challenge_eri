@@ -17,8 +17,8 @@
 import { computed, toRefs, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
-import type { INavigation } from './types'
 import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
+import type { IGlobalNavigation } from '@shared/stores/configuration/navigation/interfaces'
 
 const props = defineProps({
   /**
@@ -35,8 +35,8 @@ const props = defineProps({
    * Set the navigation items
    */
   navigation: {
-    type: Array as PropType<INavigation[]>,
-    validator: (type: INavigation[]) => {
+    type: Array as PropType<IGlobalNavigation[]>,
+    validator: (type: IGlobalNavigation[]) => {
       new useIsArray(type)
       return true
     },
