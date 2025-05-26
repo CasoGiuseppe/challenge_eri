@@ -57,14 +57,18 @@ import {
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import { useValidateTypeUnion } from '@validators/useValidateTypeUnion'
-import { useRenderableSlots } from '@composables/useRenderableSlots'
 import type { IAction } from './types'
 import type { Names } from '@components/base/base-icon/types'
 import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
 import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
-import { keyUseAsyncComponent, keyUseMappingComponent } from '@shared/types/symbols'
+import {
+  keyUseAsyncComponent,
+  keyUseMappingComponent,
+  keyUseRenderableSlot,
+} from '@shared/types/symbols'
 import type { IProvidedAsyncComponent } from '@shared/composables/useAsyncComponents/interfaces'
 import type { IProvidedComponentMapping } from '@composables/useComponentsMapping/interfaces'
+import type { IProvidedRenderableCheck } from '@composables/useRenderableSlots/interfaces'
 
 const currentIcon = ref<string | null>(null)
 const props = defineProps({
@@ -119,14 +123,15 @@ const props = defineProps({
 })
 
 const { id, actions, hasIcon } = toRefs(props)
-const { isRenderableSlot } = useRenderableSlots()
 
+const useRenderableKeyCheck = inject(keyUseRenderableSlot) as IProvidedRenderableCheck
 const useMappingKeyGetter = inject(keyUseMappingComponent) as IProvidedComponentMapping
 const useAsyncKeyLoader = inject(keyUseAsyncComponent) as IProvidedAsyncComponent
 const { parseGlobModules } = useMappingKeyGetter({
   modules: import.meta.glob('@components/**/*.vue'),
 })
 const { create } = useAsyncKeyLoader({ modules: parseGlobModules() })
+const { isRenderableSlot } = useRenderableKeyCheck()
 
 const shallowIconComponent: Component = shallowRef()
 

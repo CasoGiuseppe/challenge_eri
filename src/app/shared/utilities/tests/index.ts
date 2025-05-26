@@ -1,9 +1,14 @@
 import type { Component } from 'vue'
 import type { TestPropType } from './types'
 import * as VueTestUtils from '@vue/test-utils'
-import { keyUseAsyncComponent, keyUseMappingComponent } from '@shared/types/symbols'
+import {
+  keyUseAsyncComponent,
+  keyUseMappingComponent,
+  keyUseRenderableSlot,
+} from '@shared/types/symbols'
 import useAsyncComponents from '@composables/useAsyncComponents'
-import useComponentsMapping from '@composables//useComponentsMapping'
+import useComponentsMapping from '@composables/useComponentsMapping'
+import { useRenderableSlots } from '@composables/useRenderableSlots'
 
 export const mountComponent = async (
   component: Component,
@@ -20,6 +25,7 @@ export const mountComponent = async (
       provide: {
         [keyUseAsyncComponent as symbol]: useAsyncComponents,
         [keyUseMappingComponent as symbol]: useComponentsMapping,
+        [keyUseRenderableSlot as symbol]: useRenderableSlots,
       },
     },
   })
