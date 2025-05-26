@@ -7,3 +7,12 @@
     </Suspense>
   </RouterView>
 </template>
+<script setup lang="ts">
+import { onBeforeMount, provide } from 'vue'
+import { keyUseAsyncComponent } from '@shared/types/symbols'
+import useAsyncComponents from '@composables/useAsyncComponents'
+
+onBeforeMount(() => {
+  provide(keyUseAsyncComponent, useAsyncComponents)
+})
+</script>

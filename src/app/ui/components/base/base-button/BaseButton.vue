@@ -26,7 +26,16 @@
   </ComponentIs>
 </template>
 <script lang="ts" setup>
-import { computed, shallowRef, toRefs, useAttrs, type Component, type PropType, watch } from 'vue'
+import {
+  computed,
+  shallowRef,
+  toRefs,
+  useAttrs,
+  type Component,
+  type PropType,
+  watch,
+  inject,
+} from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useValidateTypeUnion } from '@validators/useValidateTypeUnion'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
@@ -41,13 +50,16 @@ import {
 } from './constants'
 import type { Names } from '@components/base/base-icon/types'
 import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
-import useAsyncComponents from '@composables/useAsyncComponents'
+
 import useComponentsMapping from '@composables/useComponentsMapping'
 import type { IClick } from './types'
 import { useRenderableSlots } from '@composables/useRenderableSlots'
 import ComponentIs from '@components/abstracts/component-is/ComponentIs.vue'
 import { SUITABLE_IS, useDefaultIsKey } from '@components/abstracts/component-is/constants'
 import type { RouteLocationNamedRaw } from 'vue-router'
+import { keyUseAsyncComponent } from '@shared/types/symbols'
+import type { IAsyncComponent } from '@shared/composables/useAsyncComponents/interfaces'
+import type { collectionMappingRow } from '@composables/useComponentsMapping/interfaces'
 
 const attrs = useAttrs()
 const props = defineProps({
@@ -167,7 +179,12 @@ const emits = defineEmits<{
   (e: 'click', id: IClick): void
 }>()
 
-const { create } = useAsyncComponents({ modules: parseGlobModules() })
+const useAsyncKeyLoader = inject(keyUseAsyncComponent) as ({
+  modules,
+}: {
+  modules: collectionMappingRow
+}) => IAsyncComponent
+const { create } = useAsyncKeyLoader({ modules: parseGlobModules() })
 const shallowIconComponent: Component = shallowRef()
 
 const isDisabled = computed(() => {
