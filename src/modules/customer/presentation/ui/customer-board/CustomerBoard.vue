@@ -1,5 +1,5 @@
 <template>
-  <AccordionBody hasIcon="iconCustomer" :actions="DEFAULT_ICONS">
+  <AccordionBody hasIcon="iconCustomer" :actions="DEFAULT_ICONS" open>
     <template #summary>Client <strong>015454156</strong></template>
     <template #actions="{ property: { id, icon } }">
       <BaseIcon :id="id" :name="icon"></BaseIcon>
@@ -11,11 +11,19 @@
       </AccordionInfo>
     </template>
   </AccordionBody>
-  <NavigationTabs :tabs="DEFAULT_TABS">
-    <template #tab="{ property: { id, label, to, selected = false } }">
-      <BaseTab :id="id" :to="to" :isSelected="selected" is="router-link">{{ label }}</BaseTab>
+  <AccordionBody hasIcon="iconCustomer" :actions="DEFAULT_ICONS" open>
+    <template #summary>Client detail</template>
+    <template #actions="{ property: { id, icon } }">
+      <BaseIcon :id="id" :name="icon"></BaseIcon>
     </template>
-  </NavigationTabs>
+    <template #content>
+      <NavigationTabs :tabs="DEFAULT_TABS">
+        <template #tab="{ property: { id, label, to, selected = false } }">
+          <BaseTab :id="id" :to="to" :isSelected="selected" is="router-link">{{ label }}</BaseTab>
+        </template>
+      </NavigationTabs>
+    </template>
+  </AccordionBody>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'

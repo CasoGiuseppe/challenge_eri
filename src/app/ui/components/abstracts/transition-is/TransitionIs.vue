@@ -103,7 +103,7 @@ const beforeEnter = (el: Element) => emits('before', { el })
 @include useAnimations.create-animation(
   $name: 'from-top',
   $from: translateY(-50%),
-  $to: translateY(-50%),
+  $to: translateY(5%),
   $duration: v-bind(timing),
   $duration-out: var(--outAnimationTime),
   $ease: v-bind(easing),
@@ -113,7 +113,7 @@ const beforeEnter = (el: Element) => emits('before', { el })
 @include useAnimations.create-animation(
   $name: 'from-bottom',
   $from: translateY(55%),
-  $to: translateY(55%),
+  $to: translateY(-5%),
   $duration: v-bind(timing),
   $duration-out: var(--outAnimationTime),
   $ease: v-bind(easing),
@@ -123,7 +123,7 @@ const beforeEnter = (el: Element) => emits('before', { el })
 @include useAnimations.create-animation(
   $name: 'from-left',
   $from: translateX(-50%),
-  $to: translateX(-50%),
+  $to: translateX(5%),
   $duration: v-bind(timing),
   $duration-out: var(--outAnimationTime),
   $ease: v-bind(easing),
@@ -133,7 +133,7 @@ const beforeEnter = (el: Element) => emits('before', { el })
 @include useAnimations.create-animation(
   $name: 'from-right',
   $from: translateX(50%),
-  $to: translateX(50%),
+  $to: translateX(-5%),
   $duration: v-bind(timing),
   $duration-out: var(--outAnimationTime),
   $ease: v-bind(easing),
