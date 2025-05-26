@@ -44,17 +44,27 @@
   </details>
 </template>
 <script setup lang="ts">
-import { computed, onMounted, ref, shallowRef, toRefs, type Component, type PropType } from 'vue'
+import {
+  computed,
+  inject,
+  onMounted,
+  ref,
+  shallowRef,
+  toRefs,
+  type Component,
+  type PropType,
+} from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import { useValidateTypeUnion } from '@validators/useValidateTypeUnion'
 import { useRenderableSlots } from '@composables/useRenderableSlots'
-import useAsyncComponents from '@composables/useAsyncComponents'
 import useComponentsMapping from '@composables/useComponentsMapping'
 import type { IAction } from './types'
 import type { Names } from '@components/base/base-icon/types'
 import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
 import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
+import { keyUseAsyncComponent } from '@shared/types/symbols'
+import type { IProvidedAsyncComponent } from '@shared/composables/useAsyncComponents/interfaces'
 
 const currentIcon = ref<string | null>(null)
 const props = defineProps({
@@ -114,7 +124,8 @@ const { parseGlobModules } = useComponentsMapping({
   modules: import.meta.glob('@components/**/*.vue'),
 })
 
-const { create } = useAsyncComponents({ modules: parseGlobModules() })
+const useAsyncKeyLoader = inject(keyUseAsyncComponent) as IProvidedAsyncComponent
+const { create } = useAsyncKeyLoader({ modules: parseGlobModules() })
 
 const shallowIconComponent: Component = shallowRef()
 

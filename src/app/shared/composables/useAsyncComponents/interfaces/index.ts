@@ -1,4 +1,5 @@
 import type { Component } from 'vue'
+import type { collectionMappingRow } from '@composables/useComponentsMapping/interfaces'
 
 export interface IAsyncComponent {
   create({
@@ -11,3 +12,9 @@ export interface IAsyncComponent {
     loader?: Component
   }): Promise<Component>
 }
+
+export type IProvidedAsyncComponent = ({
+  modules,
+}: {
+  modules: collectionMappingRow
+}) => IAsyncComponent

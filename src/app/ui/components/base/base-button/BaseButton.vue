@@ -58,8 +58,7 @@ import ComponentIs from '@components/abstracts/component-is/ComponentIs.vue'
 import { SUITABLE_IS, useDefaultIsKey } from '@components/abstracts/component-is/constants'
 import type { RouteLocationNamedRaw } from 'vue-router'
 import { keyUseAsyncComponent } from '@shared/types/symbols'
-import type { IAsyncComponent } from '@shared/composables/useAsyncComponents/interfaces'
-import type { collectionMappingRow } from '@composables/useComponentsMapping/interfaces'
+import type { IProvidedAsyncComponent } from '@shared/composables/useAsyncComponents/interfaces'
 
 const attrs = useAttrs()
 const props = defineProps({
@@ -179,11 +178,7 @@ const emits = defineEmits<{
   (e: 'click', id: IClick): void
 }>()
 
-const useAsyncKeyLoader = inject(keyUseAsyncComponent) as ({
-  modules,
-}: {
-  modules: collectionMappingRow
-}) => IAsyncComponent
+const useAsyncKeyLoader = inject(keyUseAsyncComponent) as IProvidedAsyncComponent
 const { create } = useAsyncKeyLoader({ modules: parseGlobModules() })
 const shallowIconComponent: Component = shallowRef()
 
