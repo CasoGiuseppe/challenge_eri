@@ -58,13 +58,13 @@ import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import { useValidateTypeUnion } from '@validators/useValidateTypeUnion'
 import { useRenderableSlots } from '@composables/useRenderableSlots'
-import useComponentsMapping from '@composables/useComponentsMapping'
 import type { IAction } from './types'
 import type { Names } from '@components/base/base-icon/types'
 import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
 import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
-import { keyUseAsyncComponent } from '@shared/types/symbols'
+import { keyUseAsyncComponent, keyUseMappingComponent } from '@shared/types/symbols'
 import type { IProvidedAsyncComponent } from '@shared/composables/useAsyncComponents/interfaces'
+import type { IProvidedComponentMapping } from '@composables/useComponentsMapping/interfaces'
 
 const currentIcon = ref<string | null>(null)
 const props = defineProps({
@@ -120,11 +120,12 @@ const props = defineProps({
 
 const { id, actions, hasIcon } = toRefs(props)
 const { isRenderableSlot } = useRenderableSlots()
-const { parseGlobModules } = useComponentsMapping({
+
+const useMappingKeyGetter = inject(keyUseMappingComponent) as IProvidedComponentMapping
+const useAsyncKeyLoader = inject(keyUseAsyncComponent) as IProvidedAsyncComponent
+const { parseGlobModules } = useMappingKeyGetter({
   modules: import.meta.glob('@components/**/*.vue'),
 })
-
-const useAsyncKeyLoader = inject(keyUseAsyncComponent) as IProvidedAsyncComponent
 const { create } = useAsyncKeyLoader({ modules: parseGlobModules() })
 
 const shallowIconComponent: Component = shallowRef()

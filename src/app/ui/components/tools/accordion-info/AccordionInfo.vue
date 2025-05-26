@@ -56,13 +56,13 @@ import {
   type PropType,
 } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
-import useComponentsMapping from '@composables/useComponentsMapping'
 import { useRenderableSlots } from '@composables/useRenderableSlots'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import type { IAction } from './types'
 import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
-import { keyUseAsyncComponent } from '@shared/types/symbols'
+import { keyUseAsyncComponent, keyUseMappingComponent } from '@shared/types/symbols'
 import type { IProvidedAsyncComponent } from '@shared/composables/useAsyncComponents/interfaces'
+import type { IProvidedComponentMapping } from '@composables/useComponentsMapping/interfaces'
 
 const accordionDetail = ref<HTMLDetailsElement | null>(null)
 const currentIcon = ref<string | null>(null)
@@ -103,11 +103,12 @@ const props = defineProps({
   },
 })
 const { id, actions } = toRefs(props)
-const { parseGlobModules } = useComponentsMapping({
+
+const useMappingKeyGetter = inject(keyUseMappingComponent) as IProvidedComponentMapping
+const useAsyncKeyLoader = inject(keyUseAsyncComponent) as IProvidedAsyncComponent
+const { parseGlobModules } = useMappingKeyGetter({
   modules: import.meta.glob('@components/**/*.vue'),
 })
-
-const useAsyncKeyLoader = inject(keyUseAsyncComponent) as IProvidedAsyncComponent
 const { create } = useAsyncKeyLoader({ modules: parseGlobModules() })
 const { isRenderableSlot } = useRenderableSlots()
 
