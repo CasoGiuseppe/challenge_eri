@@ -1,14 +1,5 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest'
-import {
-  $classesCases,
-  $isDefaultIcon,
-  $isDefaultIconPosition,
-  $isDefaultID,
-  $isDefaultSlot,
-  $propCases,
-  $typographyCases,
-  $uiIconID,
-} from './configuration'
+import { $classesCases, $isDefaultID, $propCases } from './configuration'
 import { mountComponent } from '@tests/index'
 import type { TestPropType } from '@tests/types'
 import BaseButton from '../BaseButton.vue'
@@ -23,7 +14,9 @@ const renderButton = async (mountOptions: TestPropType = {}) => {
 describe('BaseButton component tests', () => {
   describe('Test props behaviours', () => {
     beforeEach(async () => {
-      $wrapper = await renderButton({ props: { id: $isDefaultID } })
+      $wrapper = await renderButton({
+        props: { id: $isDefaultID },
+      })
     })
 
     it.each($propCases)(

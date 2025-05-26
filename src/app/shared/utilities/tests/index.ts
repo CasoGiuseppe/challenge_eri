@@ -1,6 +1,8 @@
 import type { Component } from 'vue'
 import type { TestPropType } from './types'
 import * as VueTestUtils from '@vue/test-utils'
+import { keyUseAsyncComponent } from '@shared/types/symbols'
+import useAsyncComponents from '@composables/useAsyncComponents'
 
 export const mountComponent = async (
   component: Component,
@@ -13,6 +15,9 @@ export const mountComponent = async (
       ...(props?.global || {}),
       directives: {
         ...(props?.global?.directives || {}),
+      },
+      provide: {
+        [keyUseAsyncComponent as symbol]: useAsyncComponents,
       },
     },
   })
