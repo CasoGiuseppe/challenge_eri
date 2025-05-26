@@ -1,3 +1,9 @@
 export const es = {
-  TEST: 'IDIOMA FRANCÉS',
+  NAVIGATION: {
+    items: {
+      administration: 'Administración',
+      customers: 'Clientes',
+      folder: 'Carpetas',
+    },
+  },
 }

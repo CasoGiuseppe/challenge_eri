@@ -1,3 +1,9 @@
 export const en = {
-  TEST: 'FRENCH LANGUAGE',
+  NAVIGATION: {
+    items: {
+      administration: 'Administration',
+      customers: 'Customers',
+      folder: 'Folder',
+    },
+  },
 }

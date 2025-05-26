@@ -1,3 +1,9 @@
 export const fr = {
-  TEST: 'LANGUE FRANÇAISE',
+  NAVIGATION: {
+    items: {
+      administration: 'Administration',
+      customers: 'Clients',
+      folder: 'Dossiers',
+    },
+  },
 }
