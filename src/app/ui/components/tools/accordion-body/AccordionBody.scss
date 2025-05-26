@@ -44,15 +44,6 @@
     gap: var(--accordion-gap);
   }
 
-  &__actions {
-    > li {
-      &:last-child {
-        min-height: useTools.px2rem(28);
-        min-width: useTools.px2rem(44);
-      }
-    }
-  }
-
   &__content {
     @include useTypographies.text-paragraph-xs;
 
@@ -62,5 +53,9 @@
     overflow: hidden;
     padding-block: var(--accordion-block-padding);
     padding-inline: var(--accordion-summary-inline-padding);
+
+    > * {
+      flex: 1;
+    }
   }
 }

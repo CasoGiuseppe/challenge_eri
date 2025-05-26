@@ -26,8 +26,8 @@
         </template>
         <li>
           <component
-            v-if="shallowButtonComponent"
-            :is="shallowButtonComponent"
+            v-if="shallowIconComponent"
+            :is="shallowIconComponent"
             v-bind="{ ...bindButtonProps }"
           />
         </li>
@@ -44,16 +44,7 @@
   </details>
 </template>
 <script setup lang="ts">
-import {
-  computed,
-  onMounted,
-  ref,
-  shallowRef,
-  toRefs,
-  watch,
-  type Component,
-  type PropType,
-} from 'vue'
+import { computed, onMounted, ref, shallowRef, toRefs, type Component, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import { useValidateTypeUnion } from '@validators/useValidateTypeUnion'
@@ -63,6 +54,7 @@ import useComponentsMapping from '@composables/useComponentsMapping'
 import type { IAction } from './types'
 import type { Names } from '@components/base/base-icon/types'
 import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
+import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
 
 const currentIcon = ref<string | null>(null)
 const props = defineProps({
@@ -124,17 +116,12 @@ const { parseGlobModules } = useComponentsMapping({
 
 const { create } = useAsyncComponents({ modules: parseGlobModules() })
 
-const shallowButtonComponent: Component = shallowRef()
 const shallowIconComponent: Component = shallowRef()
 
 const bindButtonProps = computed(() => {
   return {
     id: `openClose${id?.value}`,
-    size: 's',
-    hasIcon: currentIcon.value ?? 'iconAdd',
-    isRounded: false,
-    unsetStyle: true,
-    style: { '--custom-foreground': 'black' },
+    name: currentIcon.value ?? 'iconAdd',
   }
 })
 
@@ -148,19 +135,8 @@ const handleToggle = (event: Event) => {
   currentIcon.value = targetDetails.open ? 'iconSubtract' : 'iconAdd'
 }
 
-watch(
-  () => hasIcon?.value,
-  async () => {
-    if (!hasIcon?.value) {
-      return
-    }
-    shallowIconComponent.value = await create({ component: 'BaseIcon' })
-  },
-  { immediate: true },
-)
-
 onMounted(async () => {
-  shallowButtonComponent.value = await create({ component: 'BaseButton' })
+  shallowIconComponent.value = await create({ component: 'BaseIcon' })
 })
 </script>
 <style src="./AccordionBody.scss" lang="scss" scoped></style>
