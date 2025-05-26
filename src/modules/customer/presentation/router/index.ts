@@ -3,6 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 export default {
   path: 'customers',
   name: 'Customers',
+  meta: { family: 'customer' },
   redirect: { name: 'General' },
   components: {
     default: () =>
