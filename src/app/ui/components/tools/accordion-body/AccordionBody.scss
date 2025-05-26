@@ -1,8 +1,16 @@
 .accordion-body {
   $accordionbody: &;
+  --accordion-block-padding: var(--spacing-60, 0);
+  --accordion-gap: var(--spacing-40, 0);
   --accordion-summary-border: 1px solid var(--color-neutral-dark, #000);
   --accordion-summary-block-padding: var(--spacing-20, 0);
   --accordion-summary-inline-padding: var(--spacing-60, 0);
+
+  &[open] {
+    > summary {
+      margin-bottom: var(--spacing-10);
+    }
+  }
 
   &__summary {
     @include useTypographies.text-heading-s($weight: semibold);
@@ -17,7 +25,10 @@
     display: flex;
     justify-content: space-between;
     outline: none;
+    margin: 0;
     user-select: none;
+
+    transition: margin var(--animationTime, 0) var(--ease-out, 'linear');
 
     &::marker {
       display: none;
@@ -27,11 +38,29 @@
   &__title,
   &__actions {
     @include useUtilities.resetSpacing;
+
+    align-items: center;
+    display: flex;
+    gap: var(--accordion-gap);
   }
 
   &__actions {
+    > li {
+      &:last-child {
+        min-height: useTools.px2rem(28);
+        min-width: useTools.px2rem(44);
+      }
+    }
+  }
+
+  &__content {
+    @include useTypographies.text-paragraph-xs;
+
     align-items: center;
     display: flex;
-    gap: var(--spacing-20, 0);
+    justify-content: center;
+    overflow: hidden;
+    padding-block: var(--accordion-block-padding);
+    padding-inline: var(--accordion-summary-inline-padding);
   }
 }

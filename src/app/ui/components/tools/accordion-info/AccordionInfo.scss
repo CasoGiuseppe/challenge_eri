@@ -54,13 +54,6 @@
     overflow: hidden;
     padding-inline: var(--accordion-inline-padding);
     padding-block: var(--accordion-block-padding);
-
-    &:empty {
-      &:before {
-        @include useTypographies.text-paragraph-xs;
-        content: 'accordion content here';
-      }
-    }
   }
 
   &__title {

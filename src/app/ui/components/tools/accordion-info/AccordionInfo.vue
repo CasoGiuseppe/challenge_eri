@@ -34,7 +34,11 @@
         </li>
       </TransitionIs>
     </summary>
-    <article id="accordion-content" class="accordion-info__content">
+    <article
+      v-if="isRenderableSlot('content')"
+      id="accordion-content"
+      class="accordion-info__content"
+    >
       <!-- @slot Content: slot to show accordion nested content -->
       <slot name="content" />
     </article>

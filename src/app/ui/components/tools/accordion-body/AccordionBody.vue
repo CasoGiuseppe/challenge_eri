@@ -11,6 +11,7 @@
   >
     <summary id="accordion-summary" class="accordion-body__summary">
       <p v-if="isRenderableSlot('summary')" class="accordion-body__title">
+        <component v-if="shallowIconComponent" :is="shallowIconComponent" :name="hasIcon" />
         <slot name="summary" />
       </p>
       <TransitionIs class="accordion-body__actions" group tag="ul" type="from-bottom">
@@ -25,23 +26,43 @@
         </template>
         <li>
           <component
-            v-if="shallowTrailingIconComponent"
-            :is="shallowTrailingIconComponent"
-            v-bind="{ ...bindIconProps }"
+            v-if="shallowButtonComponent"
+            :is="shallowButtonComponent"
+            v-bind="{ ...bindButtonProps }"
           />
         </li>
       </TransitionIs>
     </summary>
+    <article
+      v-if="isRenderableSlot('content')"
+      id="accordion-content"
+      class="accordion-body__content"
+    >
+      <!-- @slot Content: slot to show accordion nested content -->
+      <slot name="content" />
+    </article>
   </details>
 </template>
 <script setup lang="ts">
-import { computed, onMounted, ref, shallowRef, toRefs, type Component, type PropType } from 'vue'
+import {
+  computed,
+  onMounted,
+  ref,
+  shallowRef,
+  toRefs,
+  watch,
+  type Component,
+  type PropType,
+} from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
+import { useValidateTypeUnion } from '@validators/useValidateTypeUnion'
 import { useRenderableSlots } from '@composables/useRenderableSlots'
 import useAsyncComponents from '@composables/useAsyncComponents'
 import useComponentsMapping from '@composables/useComponentsMapping'
 import type { IAction } from './types'
+import type { Names } from '@components/base/base-icon/types'
+import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
 
 const currentIcon = ref<string | null>(null)
 const props = defineProps({
@@ -79,9 +100,23 @@ const props = defineProps({
       return true
     },
   },
+  /**
+   * Set the name of the ui accordion component
+   */
+  hasIcon: {
+    type: String as PropType<Names>,
+    validator: (icon: string) => {
+      new useValidateTypeUnion(
+        new useIsArray([...SUITABLE_NAMES]).value,
+        new useIsString(icon).value,
+      )
+
+      return true
+    },
+  },
 })
 
-const { id, actions } = toRefs(props)
+const { id, actions, hasIcon } = toRefs(props)
 const { isRenderableSlot } = useRenderableSlots()
 const { parseGlobModules } = useComponentsMapping({
   modules: import.meta.glob('@components/**/*.vue'),
@@ -89,10 +124,10 @@ const { parseGlobModules } = useComponentsMapping({
 
 const { create } = useAsyncComponents({ modules: parseGlobModules() })
 
-const shallowTrailingIconComponent: Component = shallowRef()
-//const shallowLeadingIconComponent: Component = shallowRef()
+const shallowButtonComponent: Component = shallowRef()
+const shallowIconComponent: Component = shallowRef()
 
-const bindIconProps = computed(() => {
+const bindButtonProps = computed(() => {
   return {
     id: `openClose${id?.value}`,
     size: 's',
@@ -113,8 +148,19 @@ const handleToggle = (event: Event) => {
   currentIcon.value = targetDetails.open ? 'iconSubtract' : 'iconAdd'
 }
 
+watch(
+  () => hasIcon?.value,
+  async () => {
+    if (!hasIcon?.value) {
+      return
+    }
+    shallowIconComponent.value = await create({ component: 'BaseIcon' })
+  },
+  { immediate: true },
+)
+
 onMounted(async () => {
-  shallowTrailingIconComponent.value = await create({ component: 'BaseButton' })
+  shallowButtonComponent.value = await create({ component: 'BaseButton' })
 })
 </script>
 <style src="./AccordionBody.scss" lang="scss" scoped></style>
