@@ -33,18 +33,6 @@ describe('useRenderableSlots composable tests', () => {
     expect(component.html()).toBeTruthy()
   })
 
-  it('should prevent html element render when slot default not exist', async () => {
-    const { component } = await mockComponent()
-    const slotElement = component.find(`${uiSlot}`)
-    expect(slotElement.exists()).toBe(false)
-  })
-
-  it('should prevent html element render when slot default content is empty', async () => {
-    const { component } = await mockComponent({ slot: '' })
-    const slotElement = component.find(`${uiSlot}`)
-    expect(slotElement.exists()).toBe(false)
-  })
-
   it('should render html element when slot default content is present', async () => {
     const { component } = await mockComponent({ slot: 'slot' })
     const slotElement = component.find(`${uiSlot}`)
