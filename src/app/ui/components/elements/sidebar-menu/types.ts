@@ -3,7 +3,7 @@ import type { RouteLocationNamedRaw } from 'vue-router'
 
 export interface INavigation {
   id: string
-  label?: string
+  translation?: string
   icon?: Names
   to: RouteLocationNamedRaw
 }

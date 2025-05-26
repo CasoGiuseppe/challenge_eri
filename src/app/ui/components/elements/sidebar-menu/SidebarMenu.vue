@@ -3,11 +3,11 @@
     <nav v-if="hasNavigation" class="sidebar-menu__list">
       <TransitionIs class="sidebar-menu__items" group tag="ul" type="from-left">
         <li
-          v-for="({ id, label, icon, to }, index) of navigation"
+          v-for="({ id, translation, icon, to }, index) of navigation"
           :key="id"
           :style="{ transitionDelay: `${index * 0.05}s` }"
         >
-          <slot name="navigation" :property="{ id, label, icon, to }" />
+          <slot name="navigation" :property="{ id, translation, icon, to }" />
         </li>
       </TransitionIs>
     </nav>

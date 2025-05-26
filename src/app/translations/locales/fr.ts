@@ -3,7 +3,7 @@ export const fr = {
     items: {
       administration: 'Administration',
       customers: 'Clients',
-      folder: 'Dossiers',
+      folders: 'Dossiers',
     },
   },
 }
