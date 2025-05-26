@@ -5,12 +5,14 @@
 
   align-items: center;
   display: flex;
+  flex-direction: column;
   flex: 1;
-  justify-content: center;
-  overflow: auto;
+  justify-content: space-between;
+  overflow: hidden;
   padding: var(--section-padding);
 
   > * {
     flex: 1;
+    width: 100%;
   }
 }

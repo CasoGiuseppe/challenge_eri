@@ -7,7 +7,7 @@
         </TransitionIs>
       </RouterView>
     </aside>
-    <header class="app-layout__header">b</header>
+    <header class="app-layout__header"></header>
     <section class="app-layout__content">
       <RouterView v-slot="{ Component }" name="content">
         <TransitionIs type="from-bottom">

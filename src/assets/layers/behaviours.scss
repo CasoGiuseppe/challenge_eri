@@ -16,6 +16,7 @@
 
     &__header {
       grid-area: 1 / 2 / 2 / 3;
+      height: var(--spacing-40);
     }
 
     &__content {
