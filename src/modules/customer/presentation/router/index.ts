@@ -18,7 +18,7 @@ export default {
       components: {
         tabs: () =>
           import(
-            /* webpackChunkName: "GeneralTab" */ '@modules/customer/presentation/ui/tabs-info/general-tab/GeneralTab.vue'
+            /* webpackChunkName: "GeneralTab" */ '@modules/customer/presentation/ui/areas-info/general-tab/GeneralTab.vue'
           ),
       },
     },
@@ -28,7 +28,7 @@ export default {
       components: {
         tabs: () =>
           import(
-            /* webpackChunkName: "CommunicationTab" */ '@modules/customer/presentation/ui/tabs-info/communication-tab/CommunicationTab.vue'
+            /* webpackChunkName: "CommunicationTab" */ '@modules/customer/presentation/ui/areas-info/communication-tab/CommunicationTab.vue'
           ),
       },
     },
@@ -38,7 +38,7 @@ export default {
       components: {
         tabs: () =>
           import(
-            /* webpackChunkName: "StatisticTab" */ '@modules/customer/presentation/ui/tabs-info/statistic-tab/StatisticTab.vue'
+            /* webpackChunkName: "StatisticTab" */ '@modules/customer/presentation/ui/areas-info/statistic-tab/StatisticTab.vue'
           ),
       },
     },
@@ -48,7 +48,7 @@ export default {
       components: {
         tabs: () =>
           import(
-            /* webpackChunkName: "ManagementTab" */ '@modules/customer/presentation/ui/tabs-info/management-tab/ManagementTab.vue'
+            /* webpackChunkName: "ManagementTab" */ '@modules/customer/presentation/ui/areas-info/management-tab/ManagementTab.vue'
           ),
       },
     },
