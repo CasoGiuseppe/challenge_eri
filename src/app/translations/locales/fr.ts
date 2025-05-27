@@ -2,6 +2,10 @@ import * as frCustomer from '@modules/customer/presentation/translations/locales
 import * as frMocks from '@app/translations/__mocks__/fr.json'
 
 export const fr = {
+  WELCOME: {
+    message: 'Bienvenue chez Eri Bancaire',
+    link: "Accéder à l'application",
+  },
   NAVIGATION: {
     items: {
       administration: 'Administration',
