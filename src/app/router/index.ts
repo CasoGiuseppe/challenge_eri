@@ -21,6 +21,10 @@ const router = createRouter({
               import(
                 /* webpackChunkName: "SideNavigation" */ '@layouts/partials/side-navigation/SideNavigation.vue'
               ),
+            header: () =>
+              import(
+                /* webpackChunkName: "SideHeader" */ '@layouts/partials/section-header/SectionHeader.vue'
+              ),
             content: () =>
               import(
                 /* webpackChunkName: "ContentBody" */ '@layouts/partials/section-content/SectionContent.vue'
@@ -37,9 +41,7 @@ const router = createRouter({
       path: '/welcome',
       name: 'welcome',
       component: () =>
-        import(
-          /* webpackChunkName: "RootLayout" */ '@components/modules/welcome-page/WelcomePage.vue'
-        ),
+        import(/* webpackChunkName: "RootLayout" */ '@app/ui/modules/welcome-page/WelcomePage.vue'),
     },
   ],
 })

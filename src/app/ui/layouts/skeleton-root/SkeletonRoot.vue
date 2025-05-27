@@ -7,7 +7,11 @@
         </TransitionIs>
       </RouterView>
     </aside>
-    <header class="app-layout__header"></header>
+    <header class="app-layout__header">
+      <RouterView v-slot="{ Component }" name="header">
+        <component :is="Component" />
+      </RouterView>
+    </header>
     <section class="app-layout__content">
       <RouterView
         v-slot="{
