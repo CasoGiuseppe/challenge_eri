@@ -2,8 +2,16 @@
   <section class="account-board">
     <AccordionBody hasIcon="iconCustomer" :actions="DEFAULT_ICONS" open>
       <template #summary>
-        {{ translate({ key: `CUSTOMER.client`, options: { id: customerID, name: completeName } }) }}
-        {{ accountCharacteristic }}
+        {{
+          translate({ key: `CUSTOMER.client`, options: { id: customerID, name: completeName } })
+        }}
+        -
+        {{
+          translate({
+            key: `ACCOUNT.labels.characteristic`,
+            options: { chr: accountCharacteristic },
+          })
+        }}
       </template>
       <template #actions="{ property: { id, icon } }">
         <BaseIcon :id="id" :name="icon"></BaseIcon>
@@ -31,7 +39,7 @@
         <AccordionInfo :actions="DEFAULT_ACTIONS">
           <template #summary>
             {{ translate({ key: `CUSTOMER.client`, options: { id: customerID } }) }}
-            {{ accountID }}
+            {{ translate({ key: `ACCOUNT.account`, options: { id: accountID } }) }}
           </template>
           <template #content>
             {{ translate({ key: `MOCKS.panels.client` }) }}

@@ -1,4 +1,5 @@
 import * as frCustomer from '@modules/customer/presentation/translations/locales/fr.json'
+import * as frAccount from '@modules/account/presentation/translations/locales/fr.json'
 import * as frMocks from '@app/translations/__mocks__/fr.json'
 
 export const fr = {
@@ -15,5 +16,6 @@ export const fr = {
   },
 
   ...frCustomer,
+  ...frAccount,
   ...frMocks,
 }

@@ -1,4 +1,5 @@
 import * as enCustomer from '@modules/customer/presentation/translations/locales/en.json'
+import * as enAccount from '@modules/account/presentation/translations/locales/en.json'
 import * as enMocks from '@app/translations/__mocks__/en.json'
 
 export const en = {
@@ -14,5 +15,6 @@ export const en = {
     },
   },
   ...enCustomer,
+  ...enAccount,
   ...enMocks,
 }
