@@ -1,6 +1,7 @@
 .app {
   &-layout {
     display: grid;
+    flex: 1;
     grid-template-columns: min-content auto;
     grid-template-rows: min-content auto;
     min-height: 100lvh;

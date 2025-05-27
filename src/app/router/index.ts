@@ -7,7 +7,7 @@ const router = createRouter({
       path: '/',
       name: 'root',
       redirect: () => ({
-        name: 'app',
+        name: 'welcome',
       }),
       component: () =>
         import(/* webpackChunkName: "RootLayout" */ '@layouts/skeleton-root/SkeletonRoot.vue'),
@@ -32,6 +32,14 @@ const router = createRouter({
           redirect: { name: 'app' },
         },
       ],
+    },
+    {
+      path: '/welcome',
+      name: 'welcome',
+      component: () =>
+        import(
+          /* webpackChunkName: "RootLayout" */ '@components/modules/welcome-page/WelcomePage.vue'
+        ),
     },
   ],
 })
