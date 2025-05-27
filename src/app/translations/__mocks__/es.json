@@ -12,6 +12,13 @@
       "communication": "Comunicación",
       "statistics": "Estadística",
       "managements": "Gestiones"
+    },
+    "tables": {
+      "account": "Cuenta",
+      "currency": "Abreviatura de moneda",
+      "category": "Categoría",
+      "description": "Descripción del artículo",
+      "status": "Estado"
     }
   }
 }
