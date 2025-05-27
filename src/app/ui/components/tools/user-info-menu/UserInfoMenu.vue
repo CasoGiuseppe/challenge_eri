@@ -6,7 +6,7 @@
         :key="id"
         :style="{ transitionDelay: `${index * 0.05}s` }"
       >
-        <slot name="tab" :property="{ id, label, icon, to }" />
+        <slot name="action" :property="{ id, label, icon, to }" />
       </li>
     </TransitionIs>
   </nav>

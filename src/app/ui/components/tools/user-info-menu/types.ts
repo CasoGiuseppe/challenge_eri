@@ -4,6 +4,6 @@ import type { Names } from '../../base/base-icon/types'
 export interface IUserNavigationItem {
   id: string
   label?: string
-  icon: Names
+  icon?: Names
   to: RouteLocationNamedRaw
 }
