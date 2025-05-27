@@ -15,10 +15,10 @@ export const globalNavigation: IMainNavigation = {
       to: { name: 'Customers' },
     },
     {
-      id: 'fld',
-      translation: 'folders',
+      id: 'acc',
+      translation: 'accounts',
       icon: 'iconFolder',
-      to: { name: 'Folders' },
+      to: { name: 'Accounts' },
     },
   ],
 }
