@@ -16,7 +16,7 @@ import { computed, toRefs, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
-import type { IUserNavigationItem } from './types'
+import type { ILocaleLangages } from '@shared/stores/configuration/locales/interfaces'
 
 const props = defineProps({
   /**
@@ -33,8 +33,8 @@ const props = defineProps({
    * Set the user navigation items
    */
   items: {
-    type: Array as PropType<IUserNavigationItem[]>,
-    validator: (type: IUserNavigationItem[]) => {
+    type: Array as PropType<ILocaleLangages[]>,
+    validator: (type: ILocaleLangages[]) => {
       new useIsArray(type)
       return true
     },

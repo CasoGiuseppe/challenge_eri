@@ -14,4 +14,12 @@
   > * {
     width: 100%;
   }
+
+  &:has(h2:only-child) {
+    justify-content: center;
+
+    > * {
+      text-align: center;
+    }
+  }
 }
