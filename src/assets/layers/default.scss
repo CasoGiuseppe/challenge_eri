@@ -9,6 +9,8 @@
     background: var(--color-gray-25, #000);
 
     * {
+      box-sizing: border-box;
+
       &:is(button) {
         @include useUtilities.resetButton;
       }

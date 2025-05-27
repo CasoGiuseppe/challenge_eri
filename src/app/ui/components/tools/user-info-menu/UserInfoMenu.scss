@@ -1,0 +1,21 @@
+.user-info-menu {
+  $userinfomenu: &;
+  --user-info-gap: var(--spacing-20, 0);
+
+  display: flex;
+  &__list {
+    @include useUtilities.resetSpacing;
+
+    display: flex;
+    gap: var(--user-info-gap);
+
+    > li {
+      @include useUtilities.resetSpacing;
+
+      &:deep(> *) {
+        display: flex;
+        height: 100%;
+      }
+    }
+  }
+}

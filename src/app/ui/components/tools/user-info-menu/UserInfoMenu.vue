@@ -1,6 +1,6 @@
 <template>
   <nav class="user-info-menu" :id="id" v-if="hasItems">
-    <TransitionIs group tag="ul" type="from-top">
+    <TransitionIs group tag="ul" type="from-top" class="user-info-menu__list">
       <li
         v-for="({ id, label, icon, to }, index) of items"
         :key="id"
@@ -47,3 +47,4 @@ const hasItems = computed(() => {
   return evaluables.every((state: boolean) => state)
 })
 </script>
+<style src="./UserInfoMenu.scss" lang="scss" scoped></style>

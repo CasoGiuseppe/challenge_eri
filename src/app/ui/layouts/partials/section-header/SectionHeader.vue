@@ -37,5 +37,4 @@ const DEFATULT_ITEMS: IUserNavigationItem[] = [
   },
 ]
 </script>
-
 <style src="./SectionHeader.scss" lang="scss" scoped></style>
