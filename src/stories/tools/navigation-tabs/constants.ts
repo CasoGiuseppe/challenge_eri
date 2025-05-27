@@ -1,14 +1,14 @@
-import type { ITab } from '@components/tools/navigation-tabs/types'
+import type { IArea } from '@modules/customer/presentation/store/interfaces'
 
-export const DEFAULT_TABS: ITab[] = [
+export const DEFAULT_TABS: IArea[] = [
   {
     id: '1',
-    label: 'tab 1',
+    translation: 'tab 1',
     to: { name: 'root' },
   },
   {
     id: '2',
-    label: 'tab 2',
+    translation: 'tab 2',
     to: { name: 'root' },
   },
 ]

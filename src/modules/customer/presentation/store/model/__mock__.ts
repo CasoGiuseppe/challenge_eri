@@ -6,4 +6,26 @@ export const customerData: IMainCustomer = {
     name: 'Giuseppe',
     surname: 'Caso',
   },
+  areas: [
+    {
+      id: 'gnr',
+      translation: 'general',
+      to: { name: 'General' },
+    },
+    {
+      id: 'cmm',
+      translation: 'communication',
+      to: { name: 'Communication' },
+    },
+    {
+      id: 'stt',
+      translation: 'statistics',
+      to: { name: 'Statistic' },
+    },
+    {
+      id: 'mnn',
+      translation: 'managements',
+      to: { name: 'Management' },
+    },
+  ],
 }

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { computed, reactive } from 'vue'
-import type { IMainCustomer } from './interfaces'
+import type { IArea, IMainCustomer } from './interfaces'
 import { customerData } from './model/__mock__'
 
 export const useCustomerData = defineStore('useCustomerData', () => {
@@ -8,11 +8,13 @@ export const useCustomerData = defineStore('useCustomerData', () => {
 
   const customerID = computed((): string => state.data.id)
   const completeName = computed((): string => `${state.data.name} ${state.data.surname}`)
+  const customerAreas = computed((): IArea[] => state.areas ?? [])
 
   return {
     state,
     customerID,
     completeName,
+    customerAreas,
   }
 })
 

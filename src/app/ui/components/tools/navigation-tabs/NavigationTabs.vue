@@ -3,11 +3,11 @@
     <nav v-if="hasTabs" class="navigation-tabs__bar">
       <TransitionIs class="navigation-tabs__list" group tag="ul" type="from-bottom">
         <li
-          v-for="({ id, label, to }, index) of tabs"
+          v-for="({ id, translation, to }, index) of tabs"
           :key="id"
           :style="{ transitionDelay: `${index * 0.05}s` }"
         >
-          <slot name="tab" :property="{ id, label, to, selected: to.name === currentRoot }" />
+          <slot name="tab" :property="{ id, translation, to, selected: to.name === currentRoot }" />
         </li>
       </TransitionIs>
     </nav>
@@ -24,9 +24,9 @@
 import { computed, toRefs, type PropType } from 'vue'
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
-import type { ITab } from './types'
 import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
 import { useRoute, type RouteRecordNameGeneric } from 'vue-router'
+import type { IArea } from '@/modules/customer/presentation/store/interfaces'
 
 const route = useRoute()
 const props = defineProps({
@@ -44,8 +44,8 @@ const props = defineProps({
    * Set the navigation items
    */
   tabs: {
-    type: Array as PropType<ITab[]>,
-    validator: (type: ITab[]) => {
+    type: Array as PropType<IArea[]>,
+    validator: (type: IArea[]) => {
       new useIsArray(type)
       return true
     },

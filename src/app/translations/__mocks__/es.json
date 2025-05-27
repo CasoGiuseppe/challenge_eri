@@ -6,6 +6,12 @@
       "communication": "Información de la pestaña Comunicación",
       "statistics": "Información de la pestaña Estadísticas",
       "managements": "Información de la pestaña de Gestión"
+    },
+    "areas": {
+      "general": "General",
+      "communication": "Comunicación",
+      "statistics": "Estadística",
+      "managements": "Gestiones"
     }
   }
 }
