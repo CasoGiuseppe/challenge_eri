@@ -18,7 +18,9 @@
     </template>
   </AccordionBody>
   <AccordionBody hasIcon="iconCustomer" :actions="DEFAULT_ICONS" open>
-    <template #summary>Client detail</template>
+    <template #summary>
+      {{ translate({ key: `CUSTOMER.labels.details` }) }}
+    </template>
     <template #actions="{ property: { id, icon } }">
       <BaseIcon :id="id" :name="icon"></BaseIcon>
     </template>

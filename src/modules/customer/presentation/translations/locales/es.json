@@ -1,5 +1,8 @@
 {
   "CUSTOMER": {
-    "client": "Cliente { id } - { name }"
+    "client": "Cliente { id } - { name }",
+    "labels": {
+      "details": "Datos del cliente"
+    }
   }
 }
