@@ -29,7 +29,7 @@ const router = createRouter({
         },
         {
           path: '/:pathMatch(.*)*',
-          redirect: { name: 'app' },
+          redirect: { name: 'welcome' },
         },
       ],
     },
@@ -46,8 +46,7 @@ const router = createRouter({
 
 router.beforeEach((to) => {
   if (!to.name) {
-    return { name: 'app' }
+    return { name: 'welcome' }
   }
 })
-
 export default router
