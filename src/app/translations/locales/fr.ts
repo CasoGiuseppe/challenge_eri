@@ -1,3 +1,5 @@
+import * as frCustomer from '@modules/customer/presentation/translations/locales/fr.json'
+
 export const fr = {
   NAVIGATION: {
     items: {
@@ -6,4 +8,6 @@ export const fr = {
       accounts: 'Comptes',
     },
   },
+
+  ...frCustomer,
 }
