@@ -5,7 +5,8 @@
       "general": "General Tab Info",
       "communication": "Communication Tab Info",
       "statistics": "Statistic Tab Info",
-      "managements": "Management Tab Info"
+      "managements": "Management Tab Info",
+      "listAccount": "List of accounts: { account }"
     },
     "areas": {
       "general": "General",

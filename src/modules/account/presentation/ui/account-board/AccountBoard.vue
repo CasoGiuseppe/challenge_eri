@@ -57,17 +57,24 @@
     </AccordionBody>
   </section>
 
-  <TableList id="account-data" :head="DEFAULT_HEAD" :body="DEFAULT_BODY">
-    <template #head="{ property: { translation } }">
-      {{ translate({ key: `MOCKS.tables.${translation}` }) }}
+  <AccordionBody hasIcon="iconAddDocument" :actions="DEFAULT_ICONS" open>
+    <template #summary>
+      {{ translate({ key: `MOCKS.panels.listAccount`, options: { account: accountID } }) }}
     </template>
-    <template #body="{ property: { id, label, state } }">
-      <template v-if="state">
-        <BasePill :variant="state" :id="id">{{ state }}</BasePill>
-      </template>
-      <template v-else>{{ label }}</template>
+    <template #content>
+      <TableList id="account-data" :head="DEFAULT_HEAD" :body="DEFAULT_BODY">
+        <template #head="{ property: { translation } }">
+          {{ translate({ key: `MOCKS.tables.${translation}` }) }}
+        </template>
+        <template #body="{ property: { id, label, state } }">
+          <template v-if="state">
+            <BasePill :variant="state" :id="id">{{ state }}</BasePill>
+          </template>
+          <template v-else>{{ label }}</template>
+        </template>
+      </TableList>
     </template>
-  </TableList>
+  </AccordionBody>
 </template>
 <script setup lang="ts">
 import { inject } from 'vue'

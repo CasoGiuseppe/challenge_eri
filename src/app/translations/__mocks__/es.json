@@ -5,7 +5,8 @@
       "general": "Información de la pestaña General",
       "communication": "Información de la pestaña Comunicación",
       "statistics": "Información de la pestaña Estadísticas",
-      "managements": "Información de la pestaña de Gestión"
+      "managements": "Información de la pestaña de Gestión",
+      "listAccount": "List of accounts: { account }"
     },
     "areas": {
       "general": "General",
