@@ -2,11 +2,11 @@
   <nav class="user-info-menu" :id="id" v-if="hasItems">
     <TransitionIs group tag="ul" type="from-top" class="user-info-menu__list">
       <li
-        v-for="({ id, label, icon, to }, index) of items"
+        v-for="({ id, label, icon, to, type }, index) of items"
         :key="id"
         :style="{ transitionDelay: `${index * 0.05}s` }"
       >
-        <slot name="action" :property="{ id, label, icon, to }" />
+        <slot name="action" :property="{ id, label, icon, to, type }" />
       </li>
     </TransitionIs>
   </nav>

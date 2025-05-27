@@ -1,5 +1,6 @@
 <template>
   <ComponentIs
+    :id="id"
     :class="[
       'base-button',
       `base-button--is-${size}`,

@@ -66,6 +66,7 @@
 
   &__label {
     @include useUtilities.resetSpacing;
+    pointer-events: none;
   }
 
   @media (hover) {

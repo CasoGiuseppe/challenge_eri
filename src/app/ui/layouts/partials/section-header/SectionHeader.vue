@@ -1,16 +1,17 @@
 <template>
   <section class="section-header">
     <UserInfoMenu id="user-menu" :items="DEFATULT_ITEMS">
-      <template #action="{ property: { id, label, icon, to } }">
+      <template #action="{ property: { id, label, icon, to, type } }">
         <BaseButton
           :id="id"
           size="s"
           :isRounded="false"
           :unsetStyle="false"
-          is="router-link"
+          :is="type"
           v-bind="{
             ...(icon && { hasIcon: icon }),
             ...(to && { to: to }),
+            ...(type === 'button' && { onclick: () => null }),
           }"
           :style="{ '--custom-background': 'hsla(219, 100%, 18%, 1)' }"
         >
@@ -26,12 +27,14 @@ import type { IUserNavigationItem } from '@/app/ui/components/tools/user-info-me
 import UserInfoMenu from '@components/tools/user-info-menu/UserInfoMenu.vue'
 const DEFATULT_ITEMS: IUserNavigationItem[] = [
   {
-    id: '1',
+    id: 'it',
+    type: 'button',
     label: 'it',
     to: { name: 'welcome' },
   },
   {
     id: '1',
+    type: 'router-link',
     icon: 'iconSearch',
     to: { name: 'welcome' },
   },
