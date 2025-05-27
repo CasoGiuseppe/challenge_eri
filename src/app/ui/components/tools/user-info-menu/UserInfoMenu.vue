@@ -4,7 +4,7 @@
       <li
         v-for="({ id, label, icon, to, type }, index) of items"
         :key="id"
-        :style="{ transitionDelay: `${index * 0.05}s` }"
+        :style="{ transitionDelay: `${index * 0.15}s` }"
       >
         <slot name="action" :property="{ id, label, icon, to, type }" />
       </li>

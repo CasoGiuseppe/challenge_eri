@@ -6,7 +6,7 @@
         <th
           v-for="({ id, label, state }, index) of head"
           :key="id"
-          :style="{ transitionDelay: `${index * 0.05}s` }"
+          :style="{ transitionDelay: `${index * 0.15}s` }"
         >
           <slot name="head" :property="{ label, state }" />
         </th>
@@ -16,7 +16,7 @@
       <tr
         v-for="({ row }, index) of body"
         :key="index"
-        :style="{ transitionDelay: `${index * 0.05}s` }"
+        :style="{ transitionDelay: `${index * 0.15}s` }"
       >
         <td v-for="{ id, label, state } of row" :key="id">
           <slot name="body" :property="{ id, label, state }" />

@@ -5,7 +5,7 @@
         <li
           v-for="({ id, translation, to }, index) of tabs"
           :key="id"
-          :style="{ transitionDelay: `${index * 0.05}s` }"
+          :style="{ transitionDelay: `${index * 0.15}s` }"
         >
           <slot name="tab" :property="{ id, translation, to, selected: to.name === currentRoot }" />
         </li>

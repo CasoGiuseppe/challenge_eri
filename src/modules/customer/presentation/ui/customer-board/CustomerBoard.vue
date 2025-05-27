@@ -7,12 +7,22 @@
       <BaseIcon :id="id" :name="icon"></BaseIcon>
     </template>
     <template #content>
-      <AccordionInfo>
+      <AccordionInfo :actions="DEFAULT_ACTIONS">
         <template #summary>
           {{ translate({ key: `CUSTOMER.client`, options: { id: customerID } }) }}
         </template>
         <template #content>
           {{ translate({ key: `MOCKS.panels.client` }) }}
+        </template>
+        <template #actions="{ property: { id, icon } }">
+          <BaseButton
+            :id="id"
+            :hasIcon="icon"
+            size="s"
+            :isRounded="false"
+            :unsetStyle="true"
+            :style="{ '--custom-foreground': 'black' }"
+          />
         </template>
       </AccordionInfo>
     </template>
@@ -43,6 +53,7 @@ import BaseTab from '@components/base/base-tab/BaseTab.vue'
 import AccordionInfo from '@components/tools/accordion-info/AccordionInfo.vue'
 import AccordionBody from '@components/tools/accordion-body/AccordionBody.vue'
 import BaseIcon from '@components/base/base-icon/BaseIcon.vue'
+import BaseButton from '@components/base/base-button/BaseButton.vue'
 import { keyUseTranslation } from '@shared/types/symbols'
 import type { IProvidedTranslation } from '@composables/useTranslations/interfaces'
 import { useCustomerDataStore } from '@modules/customer/presentation/store/customer'
@@ -51,6 +62,7 @@ import { useDefaultPanelIconsStore } from '@shared/stores/configuration/__mocks_
 const useTranslation = inject(keyUseTranslation) as IProvidedTranslation
 const { translate } = useTranslation()
 const { customerID, completeName, customerAreas } = storeToRefs(useCustomerDataStore)
-const { defaultIcons: DEFAULT_ICONS } = storeToRefs(useDefaultPanelIconsStore)
+const { defaultIcons: DEFAULT_ICONS, defaultActions: DEFAULT_ACTIONS } =
+  storeToRefs(useDefaultPanelIconsStore)
 const hasCustomerAreas = computed(() => customerAreas.value.length > 0)
 </script>

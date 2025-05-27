@@ -5,7 +5,7 @@
         <li
           v-for="({ id, translation, icon, to }, index) of navigation"
           :key="id"
-          :style="{ transitionDelay: `${index * 0.05}s` }"
+          :style="{ transitionDelay: `${index * 0.15}s` }"
         >
           <slot name="navigation" :property="{ id, translation, icon, to }" />
         </li>

@@ -6,5 +6,6 @@ export interface IDefaultIcons {
 }
 
 export interface IIcons {
-  icons: IDefaultIcons[]
+  icons?: IDefaultIcons[]
+  actions?: IDefaultIcons[]
 }

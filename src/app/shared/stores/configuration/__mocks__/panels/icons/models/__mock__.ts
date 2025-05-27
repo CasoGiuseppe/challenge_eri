@@ -11,4 +11,18 @@ export const defaultPanelIcons: IIcons = {
       icon: 'iconPrint',
     },
   ],
+  actions: [
+    {
+      id: 'adm',
+      icon: 'iconAdministration',
+    },
+    {
+      id: 'fld',
+      icon: 'iconFolder',
+    },
+    {
+      id: 'src',
+      icon: 'iconSearch',
+    },
+  ],
 }
