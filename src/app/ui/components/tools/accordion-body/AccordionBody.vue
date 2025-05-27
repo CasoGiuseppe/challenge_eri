@@ -57,7 +57,6 @@ import {
 import { useIsString } from '@validators/typeCheckers/useIsString'
 import { useIsArray } from '@validators//typeCheckers/useIsArray'
 import { useValidateTypeUnion } from '@validators/useValidateTypeUnion'
-import type { IAction } from './types'
 import type { Names } from '@components/base/base-icon/types'
 import { SUITABLE_NAMES } from '@components/base/base-icon/constants'
 import TransitionIs from '@components/abstracts/transition-is/TransitionIs.vue'
@@ -69,6 +68,7 @@ import {
 import type { IProvidedAsyncComponent } from '@shared/composables/useAsyncComponents/interfaces'
 import type { IProvidedComponentMapping } from '@composables/useComponentsMapping/interfaces'
 import type { IProvidedRenderableCheck } from '@composables/useRenderableSlots/interfaces'
+import type { IDefaultIcons } from '@shared/stores/configuration/__mocks__/panels/icons/interfaces'
 
 const currentIcon = ref<string | null>(null)
 const props = defineProps({
@@ -100,8 +100,8 @@ const props = defineProps({
    * Set action button collection
    */
   actions: {
-    type: Array as PropType<IAction[]>,
-    validator: (type: IAction[]) => {
+    type: Array as PropType<IDefaultIcons[]>,
+    validator: (type: IDefaultIcons[]) => {
       new useIsArray(type)
       return true
     },

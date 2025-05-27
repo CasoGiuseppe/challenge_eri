@@ -37,31 +37,20 @@
 </template>
 <script setup lang="ts">
 import { computed, inject } from 'vue'
+import { storeToRefs } from 'pinia'
 import NavigationTabs from '@components/tools/navigation-tabs/NavigationTabs.vue'
 import BaseTab from '@components/base/base-tab/BaseTab.vue'
 import AccordionInfo from '@components/tools/accordion-info/AccordionInfo.vue'
 import AccordionBody from '@components/tools/accordion-body/AccordionBody.vue'
 import BaseIcon from '@components/base/base-icon/BaseIcon.vue'
-import type { IAction } from '@/app/ui/components/tools/accordion-body/types'
 import { keyUseTranslation } from '@shared/types/symbols'
 import type { IProvidedTranslation } from '@composables/useTranslations/interfaces'
 import { useCustomerDataStore } from '@modules/customer/presentation/store/customer'
-import { storeToRefs } from 'pinia'
+import { useDefaultPanelIconsStore } from '@shared/stores/configuration/__mocks__/panels/icons/icons'
 
 const useTranslation = inject(keyUseTranslation) as IProvidedTranslation
 const { translate } = useTranslation()
 const { customerID, completeName, customerAreas } = storeToRefs(useCustomerDataStore)
+const { defaultIcons: DEFAULT_ICONS } = storeToRefs(useDefaultPanelIconsStore)
 const hasCustomerAreas = computed(() => customerAreas.value.length > 0)
-const DEFAULT_ICONS = computed<IAction[]>(() => {
-  return [
-    {
-      id: 'star',
-      icon: 'iconStar',
-    },
-    {
-      id: 'print',
-      icon: 'iconPrint',
-    },
-  ]
-})
 </script>
