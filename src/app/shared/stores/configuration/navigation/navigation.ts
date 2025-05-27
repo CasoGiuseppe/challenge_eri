@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, reactive } from 'vue'
 import type { IGlobalNavigation, IMainNavigation } from './interfaces'
-import { globalNavigation } from './models'
+import { globalNavigation } from './models/__mock__'
 
 export const useGlobalNavigation = defineStore('useGlobalNavigation', () => {
   const state = reactive<IMainNavigation>(structuredClone(globalNavigation))
