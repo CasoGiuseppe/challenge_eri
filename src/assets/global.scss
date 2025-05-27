@@ -3,6 +3,7 @@
 @use './_abstracts/easing' as useEasings;
 @use './_abstracts/spacing' as useSpacings;
 @use './_abstracts/fonts' as useFonts;
+@use './_abstracts/media' as useMedia;
 
 // mixins
 @use './mixins/createKeyFrames.scss' as useMixins;

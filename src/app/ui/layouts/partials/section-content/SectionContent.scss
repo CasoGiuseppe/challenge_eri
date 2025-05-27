@@ -1,15 +1,15 @@
 .section-content {
   $sectioncontent: &;
-  --section-padding: var(--spacing-70, 0) var(--spacing-70, 0) var(--spacing-70, 0)
-    var(--spacing-100, 0);
+  --section-padding: var(--spacing-70, 0);
 
   align-items: center;
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: space-between;
-  overflow: hidden;
+  overflow: auto;
   padding: var(--section-padding);
+  flex: 0 0 var(--max-width);
 
   > * {
     width: 100%;

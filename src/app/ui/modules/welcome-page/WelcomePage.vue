@@ -1,7 +1,7 @@
 <template>
   <section class="welcome-page">
     <h1>{{ translate({ key: `WELCOME.message` }) }}</h1>
-    <BaseButton id="welcome" is="router-link" :to="{ name: 'Admin' }">
+    <BaseButton id="welcome" is="router-link" :to="{ name: 'Customers' }">
       {{ translate({ key: `WELCOME.link` }) }}
     </BaseButton>
   </section>
