@@ -8,6 +8,7 @@
       !isRounded ? 'base-button--is-square' : null,
       unsetStyle ? 'base-button--is-unset' : null,
       isFullSize ? 'base-button--is-fullsize' : null,
+      isFullRounded ? 'base-button--is-fullrounded' : null,
     ]"
     :is="is"
     :to="toRouter"
@@ -140,7 +141,13 @@ const props = defineProps({
     type: Boolean as PropType<boolean>,
     default: true,
   },
-
+  /**
+   * Set corner component rounded state
+   */
+  isFullRounded: {
+    type: Boolean as PropType<boolean>,
+    default: false,
+  },
   /**
    * Remove applied styles as background or border
    */

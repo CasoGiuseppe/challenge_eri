@@ -62,6 +62,11 @@
       --btn-background: none;
       --btn-border-color: none;
     }
+
+    &fullrounded {
+      aspect-ratio: 1/1;
+      --btn-radius: 9999px;
+    }
   }
 
   &__label {

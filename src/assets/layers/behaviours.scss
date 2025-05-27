@@ -3,7 +3,7 @@
     display: grid;
     flex: 1;
     grid-template-columns: min-content auto;
-    grid-template-rows: min-content auto;
+    grid-template-rows: min-content 1fr;
     min-height: 100lvh;
 
     &__sidebar,
@@ -13,6 +13,7 @@
 
     &__sidebar {
       grid-area: 1 / 1 / 3 / 2;
+      padding-block: var(--spacing-60);
     }
 
     &__header {

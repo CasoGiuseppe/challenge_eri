@@ -7,7 +7,7 @@
           :key="id"
           :style="{ transitionDelay: `${index * 0.15}s` }"
         >
-          <slot name="navigation" :property="{ id, translation, icon, to }" />
+          <slot name="navigation" :property="{ id, translation, icon, to, isExpanded }" />
         </li>
       </TransitionIs>
     </nav>

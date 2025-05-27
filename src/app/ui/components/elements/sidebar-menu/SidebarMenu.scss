@@ -1,7 +1,7 @@
 .sidebar-menu {
   $sidebarmenu: &;
   --sidebar-background: inherit;
-  --sidebar-items-inline-padding: var(--spacing-70, 0);
+  --sidebar-items-inline-padding: var(--spacing-50, 0);
   --sidebar-items-gap: var(--spacing-70, 0);
 
   display: inline-flex;

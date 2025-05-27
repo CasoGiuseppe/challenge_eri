@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 export default {
   path: 'customers',
   name: 'Customers',
-  meta: { family: 'customer' },
+  meta: { family: 'customers' },
   redirect: { name: 'General' },
   components: {
     default: () =>
@@ -15,6 +15,7 @@ export default {
     {
       path: 'general',
       name: 'General',
+      meta: { family: 'customers' },
       components: {
         tabs: () =>
           import(
@@ -25,6 +26,7 @@ export default {
     {
       path: 'communication',
       name: 'Communication',
+      meta: { family: 'customers' },
       components: {
         tabs: () =>
           import(
@@ -35,6 +37,7 @@ export default {
     {
       path: 'statistic',
       name: 'Statistic',
+      meta: { family: 'customers' },
       components: {
         tabs: () =>
           import(
@@ -45,6 +48,7 @@ export default {
     {
       path: 'management',
       name: 'Management',
+      meta: { family: 'customers' },
       components: {
         tabs: () =>
           import(
