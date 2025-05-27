@@ -11,7 +11,9 @@
         <template #summary>
           {{ translate({ key: `CUSTOMER.client`, options: { id: customerID } }) }}
         </template>
-        <template #content>client info content</template>
+        <template #content>
+          {{ translate({ key: `MOCKS.panels.client` }) }}
+        </template>
       </AccordionInfo>
     </template>
   </AccordionBody>

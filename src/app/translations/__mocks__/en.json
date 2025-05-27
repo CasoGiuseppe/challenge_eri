@@ -1,0 +1,11 @@
+{
+  "MOCKS": {
+    "panels": {
+      "client": "client info content",
+      "general": "General Tab Info",
+      "communication": "Communication Tab Info",
+      "statistics": "Statistic Tab Info",
+      "managements": "Management Tab Info"
+    }
+  }
+}

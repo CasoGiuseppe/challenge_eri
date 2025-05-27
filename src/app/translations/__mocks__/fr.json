@@ -1,0 +1,11 @@
+{
+  "MOCKS": {
+    "panels": {
+      "client": "contenu des informations client",
+      "general": "Informations générales sur l'onglet",
+      "communication": "Informations sur l'onglet Communication",
+      "statistics": "Informations sur l'onglet Statistiques",
+      "managements": "Informations sur l'onglet Gestion"
+    }
+  }
+}
