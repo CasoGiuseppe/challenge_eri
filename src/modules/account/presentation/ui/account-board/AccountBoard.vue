@@ -3,6 +3,7 @@
     <AccordionBody hasIcon="iconCustomer" :actions="DEFAULT_ICONS" open>
       <template #summary>
         {{ translate({ key: `CUSTOMER.client`, options: { id: customerID, name: completeName } }) }}
+        {{ accountCharacteristic }}
       </template>
       <template #actions="{ property: { id, icon } }">
         <BaseIcon :id="id" :name="icon"></BaseIcon>
@@ -30,6 +31,7 @@
         <AccordionInfo :actions="DEFAULT_ACTIONS">
           <template #summary>
             {{ translate({ key: `CUSTOMER.client`, options: { id: customerID } }) }}
+            {{ accountID }}
           </template>
           <template #content>
             {{ translate({ key: `MOCKS.panels.client` }) }}
@@ -60,6 +62,7 @@ import { keyUseTranslation } from '@shared/types/symbols'
 import type { IProvidedTranslation } from '@composables/useTranslations/interfaces'
 import { useCustomerDataStore } from '@modules/customer/presentation/store/customer'
 import { useDefaultPanelIconsStore } from '@shared/stores/configuration/__mocks__/panels/icons/icons'
+import { useAccountDataStore } from '@modules/account/presentation/store/account'
 
 const useTranslation = inject(keyUseTranslation) as IProvidedTranslation
 const { translate } = useTranslation()
@@ -67,4 +70,6 @@ const { translate } = useTranslation()
 const { customerID, completeName } = storeToRefs(useCustomerDataStore)
 const { defaultIcons: DEFAULT_ICONS, defaultActions: DEFAULT_ACTIONS } =
   storeToRefs(useDefaultPanelIconsStore)
+
+const { accountID, accountCharacteristic } = storeToRefs(useAccountDataStore)
 </script>

@@ -7,10 +7,11 @@ export const useAccountData = defineStore('useAccountData', () => {
   const state = reactive<IMainAccount>(structuredClone(accountData))
 
   const accountID = computed((): string => state.data.id)
-
+  const accountCharacteristic = computed((): string => state.data.characteristic)
   return {
     state,
     accountID,
+    accountCharacteristic,
   }
 })
 
