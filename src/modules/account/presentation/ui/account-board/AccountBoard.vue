@@ -2,9 +2,7 @@
   <section class="account-board">
     <AccordionBody hasIcon="iconCustomer" :actions="DEFAULT_ICONS" open>
       <template #summary>
-        {{
-          translate({ key: `CUSTOMER.client`, options: { id: customerID, name: completeName } })
-        }}
+        {{ translate({ key: `CUSTOMER.client`, options: { id: customerID, name: completeName } }) }}
         -
         {{
           translate({
@@ -58,6 +56,10 @@
       </template>
     </AccordionBody>
   </section>
+
+  <TableList id="account-data" :head="DEFAULT_HEAD" :body="[]">
+    <template #head="{ property: { translation } }">{{ translation }}</template>
+  </TableList>
 </template>
 <script setup lang="ts">
 import { inject } from 'vue'
@@ -66,6 +68,7 @@ import AccordionInfo from '@components/tools/accordion-info/AccordionInfo.vue'
 import AccordionBody from '@components/tools/accordion-body/AccordionBody.vue'
 import BaseIcon from '@components/base/base-icon/BaseIcon.vue'
 import BaseButton from '@components/base/base-button/BaseButton.vue'
+import TableList from '@components/elements/table-list/TableList.vue'
 import { keyUseTranslation } from '@shared/types/symbols'
 import type { IProvidedTranslation } from '@composables/useTranslations/interfaces'
 import { useCustomerDataStore } from '@modules/customer/presentation/store/customer'
@@ -79,5 +82,9 @@ const { customerID, completeName } = storeToRefs(useCustomerDataStore)
 const { defaultIcons: DEFAULT_ICONS, defaultActions: DEFAULT_ACTIONS } =
   storeToRefs(useDefaultPanelIconsStore)
 
-const { accountID, accountCharacteristic } = storeToRefs(useAccountDataStore)
+const {
+  accountID,
+  accountCharacteristic,
+  tableInfoHead: DEFAULT_HEAD,
+} = storeToRefs(useAccountDataStore)
 </script>

@@ -35,7 +35,7 @@ const Templates: Story = {
       <TableList
         v-bind="args"
       >
-        <template #head="{ property: { label }}">{{ label }}</template>
+        <template #head="{ property: { translate }}">{{ translation }}</template>
         <template #body="{ property: { id, label, state }}">
           <template v-if="state">
             <BasePill :variant="state" id="id">{{ state }}</BasePill>

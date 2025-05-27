@@ -3,23 +3,23 @@ import type { ICell, IRow } from '@components/elements/table-list/types'
 export const DEFAULT_HEAD: ICell[] = [
   {
     id: '1',
-    label: 'Account',
+    translation: 'Account',
   },
   {
     id: '2',
-    label: 'Currency abbreviation',
+    translation: 'Currency abbreviation',
   },
   {
     id: '3',
-    label: 'Category',
+    translation: 'Category',
   },
   {
     id: '4',
-    label: 'Item description',
+    translation: 'Item description',
   },
   {
     id: '5',
-    label: 'Status',
+    translation: 'Status',
   },
 ]
 
