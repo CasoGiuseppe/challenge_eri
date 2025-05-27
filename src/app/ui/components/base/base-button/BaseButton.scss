@@ -134,4 +134,8 @@
       order: 1;
     }
   }
+
+  &:has(> svg:only-child) {
+    justify-content: center;
+  }
 }

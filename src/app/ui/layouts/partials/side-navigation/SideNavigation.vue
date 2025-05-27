@@ -1,5 +1,5 @@
 <template>
-  <SidebarMenu :navigation="mainNavigationItems" :isExpanded="false">
+  <SidebarMenu :navigation="mainNavigationItems" :isExpanded="expandedState">
     <template #navigation="{ property: { id, translation, icon, to, isExpanded } }">
       <BaseButton
         :id="id"
@@ -15,9 +15,15 @@
       </BaseButton>
     </template>
   </SidebarMenu>
+  <BaseButton
+    id="expand"
+    hasIcon="iconDropDown"
+    :style="{ '--custom-background': 'hsla(358, 78%, 27%, 1)' }"
+    @click="setExpandState"
+  />
 </template>
 <script setup lang="ts">
-import { computed, inject } from 'vue'
+import { computed, inject, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import SidebarMenu from '@components/elements/sidebar-menu/SidebarMenu.vue'
 import BaseButton from '@components/base/base-button/BaseButton.vue'
@@ -30,6 +36,10 @@ import { useRoute } from 'vue-router'
 const useTranslation = inject(keyUseTranslation) as IProvidedTranslation
 const { translate } = useTranslation()
 const { mainNavigationItems } = storeToRefs(useGlobalNavigationStore)
+const expandedState = ref<boolean>(false)
+const setExpandState = () => {
+  expandedState.value = !expandedState.value
+}
 
 const bindExpandedProps = (expanded: boolean) => {
   return {
