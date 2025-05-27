@@ -6,6 +6,12 @@
       "communication": "Informations sur l'onglet Communication",
       "statistics": "Informations sur l'onglet Statistiques",
       "managements": "Informations sur l'onglet Gestion"
+    },
+    "areas": {
+      "general": "General",
+      "communication": "Communication",
+      "statistics": "Statistiques",
+      "managements": "Procédures"
     }
   }
 }

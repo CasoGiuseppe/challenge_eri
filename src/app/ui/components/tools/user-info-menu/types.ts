@@ -6,5 +6,5 @@ export interface IUserNavigationItem {
   type: (typeof SUITABLE_IS)[number]
   label?: string
   icon?: Names
-  to: RouteLocationNamedRaw
+  to?: RouteLocationNamedRaw
 }

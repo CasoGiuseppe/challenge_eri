@@ -100,7 +100,7 @@
       pointer-events: none;
 
       &#{$basebutton}--is-primary {
-        --btn-background: var(--color-gray-100, #000);
+        background: var(--color-gray-100, #000);
       }
 
       &#{$basebutton}--is-secondary {

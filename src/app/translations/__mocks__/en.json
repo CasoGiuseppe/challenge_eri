@@ -6,6 +6,12 @@
       "communication": "Communication Tab Info",
       "statistics": "Statistic Tab Info",
       "managements": "Management Tab Info"
+    },
+    "areas": {
+      "general": "General",
+      "communication": "Communication",
+      "statistics": "Statistics",
+      "managements": "Procedures"
     }
   }
 }
