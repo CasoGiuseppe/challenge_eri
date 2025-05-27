@@ -49,6 +49,8 @@
 
     align-items: center;
     display: flex;
+    flex-direction: column;
+    gap: var(--spacing-60);
     justify-content: center;
     overflow: hidden;
     padding-block: var(--accordion-block-padding);
@@ -56,6 +58,7 @@
 
     > * {
       flex: 1;
+      width: 100%;
     }
   }
 }

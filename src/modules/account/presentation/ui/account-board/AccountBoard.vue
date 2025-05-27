@@ -26,6 +26,25 @@
             />
           </template>
         </AccordionInfo>
+
+        <AccordionInfo :actions="DEFAULT_ACTIONS">
+          <template #summary>
+            {{ translate({ key: `CUSTOMER.client`, options: { id: customerID } }) }}
+          </template>
+          <template #content>
+            {{ translate({ key: `MOCKS.panels.client` }) }}
+          </template>
+          <template #actions="{ property: { id, icon } }">
+            <BaseButton
+              :id="id"
+              :hasIcon="icon"
+              size="s"
+              :isRounded="false"
+              :unsetStyle="true"
+              :style="{ '--custom-foreground': 'black' }"
+            />
+          </template>
+        </AccordionInfo>
       </template>
     </AccordionBody>
   </section>
