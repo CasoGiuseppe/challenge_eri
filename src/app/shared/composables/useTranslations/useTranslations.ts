@@ -30,7 +30,8 @@ export default function useTranslation(): ITranslation {
    * @param {string} locale - new translation locale value
    * @returns {void}
    */
-  const setNewTranslationLocale = (locale: string): void => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const setNewTranslationLocale = (locale: any): void => {
     const checkLocaleExist = i18n.global.availableLocales.value.includes(locale)
     if (!checkLocaleExist) {
       throw new Error(`new locale ${locale} is not available`)
