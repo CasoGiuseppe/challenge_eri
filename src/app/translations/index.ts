@@ -4,8 +4,8 @@ import { en } from './locales/en'
 import { fr } from './locales/fr'
 
 export const i18n = await createI18n({
-  locale: import.meta.env.VITE_APP_LOCALE,
-  fallbackLocale: import.meta.env.VITE_APP_LOCALE_FALLBACK,
+  locale: 'es',
+  fallbackLocale: 'en',
   legacy: false,
   globalInjection: true,
   availableLocales: ['es', 'en'],
