@@ -20,10 +20,13 @@ import type { IProvidedComponentMapping } from '@composables/useComponentsMappin
 import type { IProvidedAsyncComponent } from '@composables/useAsyncComponents/interfaces'
 import type { IProvidedTranslation } from '@composables/useTranslations/interfaces'
 
-onBeforeMount(() => {
+onBeforeMount(async () => {
   provide<IProvidedAsyncComponent>(keyUseAsyncComponent, useAsyncComponents)
   provide<IProvidedComponentMapping>(keyUseMappingComponent, useComponentsMapping)
   provide<IProvidedRenderableCheck>(keyUseRenderableSlot, useRenderableSlots)
   provide<IProvidedTranslation>(keyUseTranslation, useTranslation)
+
+  const { setNewTranslationLocale } = useTranslation()
+  await setNewTranslationLocale(import.meta.env.VITE_APP_LOCALE)
 })
 </script>

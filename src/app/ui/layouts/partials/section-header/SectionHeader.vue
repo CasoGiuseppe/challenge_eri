@@ -34,9 +34,9 @@ const useTranslation = inject(keyUseTranslation) as IProvidedTranslation
 const { setNewTranslationLocale, getLocale } = useTranslation()
 const { localesLanguages: DEFATULT_LOCALES } = storeToRefs(useLocalesStore)
 
-const changeLanguage = (event: Event) => {
+const changeLanguage = async (event: Event) => {
   const { id } = event.target as HTMLDetailsElement
-  setNewTranslationLocale(id)
+  await setNewTranslationLocale(id)
 }
 </script>
 <style src="./SectionHeader.scss" lang="scss" scoped></style>

@@ -2,7 +2,7 @@ import * as frCustomer from '@modules/customer/presentation/translations/locales
 import * as frAccount from '@/modules/account/presentation/translations/locales/fr'
 import * as frMocks from '@/app/translations/__mocks__/fr'
 
-export const fr = {
+const fr = {
   WELCOME: {
     message: 'Bienvenue chez Eri Bancaire',
     link: "Accéder à l'application",
@@ -19,3 +19,5 @@ export const fr = {
   ...frAccount.default,
   ...frMocks.default,
 }
+
+export default fr

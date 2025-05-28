@@ -2,7 +2,7 @@ import * as esCustomer from '@modules/customer/presentation/translations/locales
 import * as esAccount from '@/modules/account/presentation/translations/locales/es'
 import * as esMocks from '@app/translations/__mocks__/es'
 
-export const es = {
+const es = {
   WELCOME: {
     message: 'Bienvenido a Eri Bancaire',
     link: 'Ir a la aplicación',
@@ -19,3 +19,5 @@ export const es = {
   ...esAccount.default,
   ...esMocks.default,
 }
+
+export default es

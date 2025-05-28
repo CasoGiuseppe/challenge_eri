@@ -1,6 +1,6 @@
 import { useI18n } from 'vue-i18n'
 import { i18n } from '@app/translations'
-import type { ITranslation } from './interfaces'
+import type { ITranslation, LocaleMessages } from './interfaces'
 import { computed } from 'vue'
 
 export default function useTranslation(): ITranslation {
@@ -31,15 +31,44 @@ export default function useTranslation(): ITranslation {
    * @returns {void}
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const setNewTranslationLocale = (locale: any): void => {
-    const checkLocaleExist = i18n.global.availableLocales.value.includes(locale)
-    if (!checkLocaleExist) {
-      throw new Error(`new locale ${locale} is not available`)
+  const setNewTranslationLocale = async (locale: any): Promise<void> => {
+    if (!i18n) {
+      console.warn('[i18n] i18n instance not initialized yet. Cannot set locale.')
+      return
     }
+
+    const messagesToSet = await loadLocaleMessages(locale)
+    // Set the locale message for the current locale
+    i18n.global.setLocaleMessage(locale, messagesToSet.default)
+
+    // Update the global locale value
     i18n.global.locale.value = locale
+  }
+
+  const loadedMessages: Record<string, LocaleMessages> = {}
+
+  /**
+   * Loads locale messages for a given locale.
+   * @param locale The locale to load (e.g., 'es', 'en').
+   * @returns A Promise that resolves with the loaded messages, or an empty object if loading fails.
+   */
+  const loadLocaleMessages = async (locale: string): Promise<LocaleMessages> => {
+    if (loadedMessages[locale]) {
+      return loadedMessages[locale]
+    }
+
+    try {
+      const module = await import(`@app/translations/locales/${locale}.ts`)
+      const messages = module as LocaleMessages
+      loadedMessages[locale] = messages // Cache the loaded messages
+      return messages
+    } catch (error) {
+      console.warn(`[i18n] Failed to load locale messages for ${locale}:`, error)
+      return {}
+    }
   }
 
   const getLocale = computed(() => i18n.global.locale.value)
 
-  return { translate, setNewTranslationLocale, getLocale }
+  return { translate, setNewTranslationLocale, getLocale, loadLocaleMessages }
 }
