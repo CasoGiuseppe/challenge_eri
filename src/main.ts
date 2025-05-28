@@ -9,12 +9,12 @@ import '@assets/index.scss'
 
 // create lazy APP
 const app = createApp(defineAsyncComponent(() => import('@app/ui/layouts/App.vue')))
-app.use(router).use(i18n)
+app.use(router)
 app.config.warnHandler = () => null
 
 router.isReady().then(() => {
   router.addRoute('app', customer)
   router.addRoute('app', administration)
   router.addRoute('app', folder)
-  app.use(pinia).mount('#app')
+  app.use(pinia).use(i18n).mount('#app')
 })
