@@ -1,6 +1,6 @@
-import * as esCustomer from '@modules/customer/presentation/translations/locales/es.json'
-import * as esAccount from '@modules/account/presentation/translations/locales/es.json'
-import * as esMocks from '@app/translations/__mocks__/es.json'
+import * as esCustomer from '@modules/customer/presentation/translations/locales/es'
+import * as esAccount from '@/modules/account/presentation/translations/locales/es'
+import * as esMocks from '@app/translations/__mocks__/es'
 
 export const es = {
   WELCOME: {
@@ -15,7 +15,7 @@ export const es = {
     },
   },
 
-  ...esCustomer,
-  ...esAccount,
-  ...esMocks,
+  ...esCustomer.default,
+  ...esAccount.default,
+  ...esMocks.default,
 }
