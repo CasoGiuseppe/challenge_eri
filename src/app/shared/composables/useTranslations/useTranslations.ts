@@ -38,6 +38,7 @@ export default function useTranslation(): ITranslation {
     }
 
     const messagesToSet = await loadLocaleMessages(locale)
+    console.warn(messagesToSet)
     // Set the locale message for the current locale
     i18n.global.setLocaleMessage(locale, messagesToSet.default)
 
